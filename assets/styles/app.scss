@@ -1,6 +1,29 @@
 @import 'variables.scss';
+@import "~bootstrap/scss/bootstrap";
 
 body {
-    background-color: $wild-color;
+    background-color: $light;
+    color: $dark;
+    font-family: $text-font;
+    scroll-behavior: smooth;
+    font-size: 16pt;
+  }
+  
+.h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+    font-family: $title-font;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $dark;
+  }
+
+nav {
+    background-color: $secondary;
+    color: $light;
+}
+
+footer {
+    background-color: $primary;
     color: $light;
 }
