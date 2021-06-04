@@ -1,7 +1,22 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Student Interim - Accueil{% endblock %}
 
 {% block body %}
-    <h1>Student-Interim</h1>
+    <h1 class="d-flex justify-content-center">Student-Interim</h1>
+    <div class="container">
+        <h2 class="m-3 d-flex justify-content-center">Nos valeurs</h2>
+        <p>
+            Rapide description de la société, de ses valeurs (à définir par le client).
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        </p>
+        <h2 class="m-3 d-flex justify-content-center">Nos services</h2>
+        <p>
+            Rapide description des services proposées par la société (à définir apr le client.
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        </p>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-secondary" href="#">Demander un devis</a>
+        </div>
+    </div>
 {% endblock %}
