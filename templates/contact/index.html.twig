@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Contact
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('message') %}
+		<div class="alert alert-success" role"alert">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<section class="py-lg-5 px-lg-5 py-3 px-3">
+		<h1 class="text-center pt-3 my-5">Nous contacter</h1>
+
+		<div class="form-row mt-sm-0 px-xs-0 py-sm-0">
+			<div class="justify-content-start">
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					{{ form_start(form) }}
+					{{ form_row(form.firstname, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					{{ form_start(form) }}
+					{{ form_row(form.lastname, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					{{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					{{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					<input type="submit" value="Envoyé" class="btn btn-primary btn-lg w-100">
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
