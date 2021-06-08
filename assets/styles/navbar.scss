@@ -1,0 +1,13 @@
+.logo {
+    width: 60px;
+}
+  
+.nav-style {
+    font-size: 20px;
+}
+  
+@media screen and (max-width: 850px) {
+    .nav-style {
+        font-size: 15px;
+    }
+}
