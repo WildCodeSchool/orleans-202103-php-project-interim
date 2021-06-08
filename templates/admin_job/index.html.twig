@@ -1,0 +1,49 @@
+{% extends 'layout_admin.html.twig' %}
+
+
+{% block body %}
+	<div class="container">
+		<h1 class="text-dark">Offres d'emploi</h1>
+		<a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+			Trier par
+		</a>
+		<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+			<li>
+				<a class="dropdown-item" href="#"></a>
+			</li>
+		</ul>
+
+		<form class="form-inline col-3 d-flex justify-content-start">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+
+		<div class="row">
+			{% for job in jobs %}
+				<div class="col-lg-4">
+					<div class="card text-center my-3">
+						<div class="card-header bg-secondary">
+							<p class="text-light">{{ job.Post | upper}}</p>
+							<p></p>
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">{{ job.PostalCode}}
+								{{ job.City | capitalize }}
+							</h5>
+							<p class="card-text">{{ job.Description }}</p>
+							<a href="#" class="btn btn-primary">Supprimer</a>
+							<a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="btn btn-primary">Modifier</a>
+						</div>
+						<div class="card-footer text-muted bg-secondary">
+							<p class="text-light">{{ job.RegistereAt ? job.RegistereAt|date('Y-m-d') : '' }}</p>
+							<p></p>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
+			{% endfor %}
+		</div>
+		<a href="{{ path('admin_job_new') }}">Ajouter une offre</a>
+	</div>
+{% endblock %}
