@@ -60,6 +60,7 @@ header img {
 
 header h1 {
     position: absolute;
+    filter: drop-shadow(0 0 0.75rem rgb(65, 65, 65))
 }
 
 @media only screen and (max-width: 768px) {
@@ -73,6 +74,6 @@ header h1 {
     }
 
     header h1 {
-        font-size: 90%;
+        font-size: 2em;
     }
 }
