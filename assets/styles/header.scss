@@ -1,0 +1,64 @@
+@import 'variables.scss';
+@import 'app.scss';
+@import '~bootstrap/scss/bootstrap';
+
+header {
+    position: relative;
+}
+
+header img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+header h1 {
+    position: absolute;
+    font-size: $header-size1;
+    filter: drop-shadow(0 0 0.75rem rgb(65, 65, 65))
+}
+
+@media only screen and (max-width: 1024px) {
+    header {
+        align-items: center;
+        margin-top: 58px;
+    }
+
+    header img {
+        height: auto;
+    }
+
+    header h1 {
+        font-size: $header-size2;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        align-items: center;
+        margin-top: 58px;
+    }
+
+    header img {
+        height: auto;
+    }
+
+    header h1 {
+        font-size: $header-size3;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    header {
+        align-items: center;
+        margin-top: 58px;
+    }
+
+    header img {
+        height: auto;
+    }
+
+    header h1 {
+        font-size: $header-size4;
+    }
+}

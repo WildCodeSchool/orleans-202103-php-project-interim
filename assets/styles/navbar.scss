@@ -1,0 +1,19 @@
+@import 'variables.scss';
+
+$navbar-font-size: 20px;
+$navbar-responsive-font-size: 15px;
+$navbar-logo-size: 60px;
+
+.logo {
+    width: $navbar-logo-size;
+}
+
+.nav-style {
+    font-size: $navbar-font-size;
+}
+
+@media screen and (max-width: 850px) {
+    .nav-style {
+        font-size: $navbar-responsive-font-size;
+    }
+}
