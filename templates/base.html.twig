@@ -18,6 +18,11 @@
 	</head>
 	<body>
 		{% block navbar %}{% endblock %}
+        		{% for message in app.flashes('message') %}
+			<div class="alert alert-success" role"alert">
+				{{ message }}
+			</div>
+		{% endfor %}
 		{% block body %}{% endblock %}
 		{% block footer %}{% endblock %}
 	</body>
