@@ -18,6 +18,11 @@ header h1 {
     filter: drop-shadow(0 0 0.75rem rgb(65, 65, 65))
 }
 
+.logo {
+    width: $navbar-logo-size;
+    height: $navbar-logo-size;
+}
+
 @media only screen and (max-width: 1024px) {
     header {
         align-items: center;
