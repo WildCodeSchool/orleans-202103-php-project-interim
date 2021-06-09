@@ -2,8 +2,13 @@
 
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
 {% block body %}
     <h1 class="d-flex justify-content-center">Student-Interim</h1>
+    <img class="banner" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"Plusieurs personnes travaillant ensemble (Photo de fauxels provenant de Pexels">
     <div class="container">
         <h2 class="m-3 d-flex justify-content-center">Nos valeurs</h2>
         <p>
