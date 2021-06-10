@@ -40,8 +40,7 @@
         font-weight: $card-font-weight;
         transition: color 0.45s ease;
     }
-    
-    
+
     h4 {
         border-top: 2px solid $dark;
         padding-top: 10px;
@@ -55,18 +54,17 @@
         transform: translateY(-1em);
         transition: opacity 0.45s ease, transform 0.5s ease;
     }
-    
-    
+
     &:hover {
         background: $primary;
         transform: scale(1.02);
-        
+
         .btn {
             background-color: $white;
             color: $dark;
             border: none;
         }
-        
+
         h2 {
             color: $white;
             border-bottom-color: $white;
@@ -92,8 +90,7 @@
     0% {
         transform: translateX(0);
     }
-    
-    
+
     100% {
         transform: translateX(0.125em);
     }
