@@ -24,7 +24,6 @@ class AdminJobController extends AbstractController
             'jobs' => $jobRepository->findAll(),
         ]);
     }
-    
     /**
      * @Route("/{id}/edit", name="admin_job_edit", methods={"GET","POST"})
      */
