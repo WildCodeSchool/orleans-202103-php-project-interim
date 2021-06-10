@@ -40,6 +40,7 @@
         font-weight: $card-font-weight;
         transition: color 0.45s ease;
     }
+    
     h4 {
         border-top: 2px solid $dark;
         padding-top: 10px;
@@ -89,6 +90,7 @@
     0% {
         transform: translateX(0);
     }
+    
     100% {
         transform: translateX(0.125em);
     }
