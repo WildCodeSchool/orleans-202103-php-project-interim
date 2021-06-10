@@ -41,6 +41,7 @@
         transition: color 0.45s ease;
     }
     
+    
     h4 {
         border-top: 2px solid $dark;
         padding-top: 10px;
@@ -54,6 +55,7 @@
         transform: translateY(-1em);
         transition: opacity 0.45s ease, transform 0.5s ease;
     }
+    
     
     &:hover {
         background: $primary;
@@ -90,6 +92,7 @@
     0% {
         transform: translateX(0);
     }
+    
     
     100% {
         transform: translateX(0.125em);
