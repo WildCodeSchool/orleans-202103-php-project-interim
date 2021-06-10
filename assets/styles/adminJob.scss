@@ -1,125 +1,122 @@
-@import 'variables.scss';
+@import "variables.scss";
 
-.adminOffre h1{
+.adminOffre h1 {
     color: $primary;
 }
 .adminOffre .data-card {
+    max-width: 20.75em;
+    min-height: 20.75em;
+    overflow: hidden;
+    border-radius: 0.5em;
+    text-decoration: none;
+    background: white;
+    margin: 1em;
+    padding: 1em 1em;
+    box-shadow: 0 1.5em 2.5em -0.5em rgba(#000000, 0.1);
+    transition: transform 0.45s ease, background 0.45s ease;
+    border: 2px solid #000000;
 
-  max-width: 20.75em;
-  min-height: 20.75em;
-  overflow: hidden;
-  border-radius: .5em;
-  text-decoration: none;
-  background: white;
-  margin: 1em;
-  padding: 1em 1em;
-  box-shadow: 0 1.5em 2.5em -.5em rgba(#000000, .1);
-  transition: transform .45s ease, background .45s ease;
-  border: 2px solid #000000;
-
-  
-.btn{
-    background-color: white;
-    border: 1px solid #000000;
-    font-weight: 600;
-}
-h2 {
-    color: #2E3C40;
-    font-size: 1.7em;
-    font-weight: 600;
-    line-height: 1;
-    border-bottom: 2px solid #000000;
-    transition: color .45s ease, border .45s ease;
-  }
-
-  h3,h4{
-    color: #2E3C40;
-    text-transform: uppercase;
-    font-size: 1.125em;
-    font-weight: 700;
-    transition: color .45s ease;
-  }
-  h4 {
-    border-top: 2px solid #000000;
-    padding-top: 10px;
-  }
-  
-
-  p {
-   
-    color: #2E3C40;
-    font-weight: 600;
-    line-height: 1.8;
-    margin: 0 0 1.25em;
-    transform: translateY(-1em);
-    transition: opacity .45s ease, transform .5s ease;
-  }
-
-  .link-text {
-    display: block;
-    color: #ffffff;
-    font-size: 1.125em;
-    font-weight: 600;
-    line-height: 1.2;
-    margin: auto 0 0;
-    transition: color .45s ease;
-
-    svg {
-      margin-left: .5em;
-      transition: transform .6s ease;
-      
-      path {
-        transition: fill .45s ease;
-      }
-    }
-  }
-  
-  &:hover {
-    background: $primary;
-    transform: scale(1.02);
-    .btn{
-        background-color: #FFFFFF;
-        color: black;
-        border: none;
+    .btn {
+        background-color: white;
+        border: 1px solid #000000;
+        font-weight: 600;
     }
     h2 {
-      color: #FFFFFF;
-      border-bottom-color: #FFFFFF;
+        color: #2e3c40;
+        font-size: 1.7em;
+        font-weight: 600;
+        line-height: 1;
+        border-bottom: 2px solid #000000;
+        transition: color 0.45s ease, border 0.45s ease;
     }
 
-    h3 {
-      color: #FFFFFF;
-    }
-    
+    h3,
     h4 {
-        color: #FFFFFF;
-        border-top-color: #FFFFFF;
-      }
-    
-      p {
-      transform: none;
-      color: #FFFFFF;
+        color: #2e3c40;
+        text-transform: uppercase;
+        font-size: 1.125em;
+        font-weight: 700;
+        transition: color 0.45s ease;
+    }
+    h4 {
+        border-top: 2px solid #000000;
+        padding-top: 10px;
+    }
+
+    p {
+        color: #2e3c40;
+        font-weight: 600;
+        line-height: 1.8;
+        margin: 0 0 1.25em;
+        transform: translateY(-1em);
+        transition: opacity 0.45s ease, transform 0.5s ease;
     }
 
     .link-text {
-      color: #FFFFFF;
+        display: block;
+        color: #ffffff;
+        font-size: 1.125em;
+        font-weight: 600;
+        line-height: 1.2;
+        margin: auto 0 0;
+        transition: color 0.45s ease;
 
-      svg {
-        animation: point 1.25s infinite alternate;
-        
-        path {
-          fill: #FFFFFF;
+        svg {
+            margin-left: 0.5em;
+            transition: transform 0.6s ease;
+
+            path {
+                transition: fill 0.45s ease;
+            }
         }
-      }
     }
-  }
+
+    &:hover {
+        background: $primary;
+        transform: scale(1.02);
+        .btn {
+            background-color: #ffffff;
+            color: black;
+            border: none;
+        }
+        h2 {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        h3 {
+            color: #ffffff;
+        }
+
+        h4 {
+            color: #ffffff;
+            border-top-color: #ffffff;
+        }
+
+        p {
+            transform: none;
+            color: #ffffff;
+        }
+
+        .link-text {
+            color: #ffffff;
+
+            svg {
+                animation: point 1.25s infinite alternate;
+
+                path {
+                    fill: #ffffff;
+                }
+            }
+        }
+    }
 }
 
 @keyframes point {
-  0% {
-   transform: translateX(0);
-  }
-  100% {
-    transform: translateX(.125em);
-  }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(0.125em);
+    }
 }
