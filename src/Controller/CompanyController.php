@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CompanyController extends AbstractController
 {
     /**
-     * @Route("/company/", name="company_home")
+     * @Route("/entreprise/", name="company_home")
      */
     public function index(): Response
     {

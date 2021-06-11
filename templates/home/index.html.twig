@@ -1,9 +1,18 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Student Interim - Accueil{% endblock %}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('home') }}
+    {{ encore_entry_link_tags('header') }}
+{% endblock %}
 
 {% block body %}
-    <h1 class="d-flex justify-content-center">Student-Interim</h1>
+    <header class="d-flex justify-content-center align-items-center">
+        <img src="{{ asset('build/images/pexels-fauxels-3182757.jpg') }}" alt"Plusieurs personnes travaillant ensemble (Photo de fauxels provenant de Pexels">
+        <h1 class="justify-content-center">Student-Interim</h1>
+    </header>
+    <img class="banner" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"Plusieurs personnes travaillant ensemble (Photo de fauxels provenant de Pexels">
     <div class="container">
         <h2 class="m-3 d-flex justify-content-center">Nos valeurs</h2>
         <p>
@@ -12,10 +21,10 @@
         </p>
         <h2 class="m-3 d-flex justify-content-center">Nos services</h2>
         <p>
-            Rapide description des services proposées par la société (à définir apr le client.
+            Rapide description des services proposées par la société (à définir par le client).
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         </p>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex pb-5 justify-content-center">
             <a class="btn btn-secondary" href="#">Demander un devis</a>
         </div>
     </div>
