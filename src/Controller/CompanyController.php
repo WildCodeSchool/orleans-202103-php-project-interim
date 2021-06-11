@@ -31,12 +31,12 @@ class CompanyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //Message de confirmation pour l'utilisateur
+            //Displaying a confirmation message to the user
             $this->addFlash(
-                'message',
+                'success',
                 'Merci pour votre demande, nous reviendrons vers vous dans les meilleurs délais.'
             );
-            // Envoyer un mail
+            // Sending an email to the admin
 
             return $this->redirectToRoute('company_quotation');
         }
