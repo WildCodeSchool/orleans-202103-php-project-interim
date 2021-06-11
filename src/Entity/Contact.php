@@ -7,26 +7,26 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Contact
 {
     /**
-     * @Assert\Notblank()
+     * @Assert\Notblank(message="Le champ Prénom est obligatoire")
      * @Assert\Length(max=255)
      */
     private ?string $firstname;
 
     /**
-     * @Assert\Notblank()
-     * @Assert\Length(max=255)
+     * @Assert\Notblank(message="Le champ Nom est obligatoire")
+     * @Assert\Length(max=255, maxMessage="Le Prénom ne doit pas dépasser {{ limit }} caractères")
      */
     private ?string $lastname;
 
     /**
-     * @Assert\Notblank()
+     * @Assert\Notblank(message="Le champ E-mail est obligatoire")
      * @Assert\Email()
-     * @Assert\Length(max=255)
+     * @Assert\Length(max=255, maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private ?string $email;
 
     /**
-     * @Assert\Notblank()
+     * @Assert\Notblank(message="Le champ Message est obligatoire")
      */
     private ?string $message;
 
