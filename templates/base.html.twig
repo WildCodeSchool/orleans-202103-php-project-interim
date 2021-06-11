@@ -5,11 +5,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
 		<title>
-			{% block title %}Student-Interim{% endblock %}
+			{% block title %}Student-Interim
+			{% endblock %}
 		</title>
 
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
+			{{ encore_entry_link_tags('navbar') }}
 		{% endblock %}
 
 		{% block javascripts %}
@@ -18,6 +20,11 @@
 	</head>
 	<body>
 		{% block navbar %}{% endblock %}
+		{% for message in app.flashes('message') %}
+			<div class="alert alert-success" role"alert">
+				{{ message }}
+			</div>
+		{% endfor %}
 		{% block body %}{% endblock %}
 		{% block footer %}{% endblock %}
 	</body>
