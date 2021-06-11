@@ -1,0 +1,9 @@
+@import 'variables.scss';
+@import 'app.scss';
+@import '~bootstrap/scss/bootstrap';
+
+.banner {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

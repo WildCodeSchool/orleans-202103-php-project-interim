@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class Userfixtures extends Fixture
+class UserFixtures extends Fixture
 {
     private $passwordEncoder;
 
@@ -18,21 +18,29 @@ class Userfixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
         $manager->flush();
 
-        // Création d’un utilisateur de type “contributeur” (= auteur)
-        $contributor = new User();
-        $contributor->setEmail('contributor@monsite.com');
-        $contributor->setRoles(['ROLE_CONTRIBUTOR']);
-        $contributor->setPassword($this->passwordEncoder->encodePassword(
-            $contributor,
-            'contributorpassword'
+        // Création d’un utilisateur de type "student"
+        $student = new User();
+        $student->setEmail('student@monsite.com');
+        $student->setRoles(['ROLE_student']);
+        $student->setPassword($this->passwordEncoder->encodePassword(
+            $student,
+            'studentpassword'
         ));
 
-        $manager->persist($contributor);
+        $manager->persist($student);
+
+        // Création d’un utilisateur de type “compagny”
+        $compagny = new User();
+        $compagny->setEmail('compagny@monsite.com');
+        $compagny->setRoles(['ROLE_COMPAGNY']);
+        $compagny->setPassword($this->passwordEncoder->encodePassword(
+            $compagny,
+            'compagnypassword'
+        ));
+
+        $manager->persist($compagny);
 
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();
