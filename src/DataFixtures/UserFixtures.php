@@ -34,16 +34,16 @@ class UserFixtures extends Fixture
 
         $manager->persist($student);
 
-        // Création d’un utilisateur de type “compagny”
-        $compagny = new User();
-        $compagny->setEmail('compagny@monsite.com');
-        $compagny->setRoles(['ROLE_COMPAGNY']);
-        $compagny->setPassword($this->passwordEncoder->encodePassword(
-            $compagny,
-            'compagnypassword'
+        // Création d’un utilisateur de type “company”
+        $company = new User();
+        $company->setEmail('company@monsite.com');
+        $company->setRoles(['ROLE_COMPANY']);
+        $company->setPassword($this->passwordEncoder->encodePassword(
+            $company,
+            'companypassword'
         ));
 
-        $manager->persist($compagny);
+        $manager->persist($company);
 
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();
