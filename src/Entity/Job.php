@@ -6,6 +6,7 @@ use DateTimeInterface;
 use App\Entity\Company;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\JobRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=JobRepository::class)
@@ -20,14 +21,18 @@ class Job
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Length(
+     * max=255,
+     * maxMessage = "Le nom du poste ne peut pas dépasser {{ limit }} caractères")
      */
     private string $post;
 
     /**
      * @ORM\Column(type="date")
      */
-    private DateTimeInterface $registereAt;
+    private DateTimeInterface $registeredAt;
 
     /**
      * @ORM\Column(type="date")
@@ -41,21 +46,32 @@ class Job
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Positive
      */
     private int $hoursAWeek;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Length(
+     * max=255,
+     * maxMessage = "Le nom de la ville ne peut pas dépasser {{ limit }} caractères")
      */
     private string $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Length(
+     * max=5,
+     * maxMessage = "Le Code postal ne peut pas dépasser {{ limit }} caractères")
      */
-    private int $postalCode;
+    private string $postalCode;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
      */
     private string $description;
 
@@ -81,14 +97,14 @@ class Job
         return $this;
     }
 
-    public function getRegistereAt(): ?\DateTimeInterface
+    public function getRegisteredAt(): ?\DateTimeInterface
     {
-        return $this->registereAt;
+        return $this->registeredAt;
     }
 
-    public function setRegistereAt(\DateTimeInterface $registereAt): self
+    public function setRegisteredAt(\DateTimeInterface $registeredAt): self
     {
-        $this->registereAt = $registereAt;
+        $this->registeredAt = $registeredAt;
 
         return $this;
     }
@@ -141,12 +157,12 @@ class Job
         return $this;
     }
 
-    public function getPostalCode(): ?int
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    public function setPostalCode(int $postalCode): self
+    public function setPostalCode(string $postalCode): self
     {
         $this->postalCode = $postalCode;
 

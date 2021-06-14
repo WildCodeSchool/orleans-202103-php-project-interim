@@ -30,7 +30,7 @@ class Contact
      */
     private ?string $message;
 
-     /**
+    /**
      * @return null|string
      */
     public function getFirstname(): ?string
@@ -48,7 +48,7 @@ class Contact
         return $this;
     }
 
-     /**
+    /**
      * @return null|string
      */
     public function getLastname(): ?string

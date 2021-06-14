@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CompanyRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CompanyRepository::class)
@@ -22,18 +23,32 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Length(
+     * max=255,
+     * maxMessage = "Le nom de l'entreprise ne peut pas dépasser {{ limit }} caractères")
      */
     private string $companyName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Length(
+     * max=255,
+     * maxMessage = "La raison social ne peut pas dépasser {{ limit }} caractères")
      */
     private string $socialReason;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
+     *  @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\Length(
+     * min=14,
+     * max=14,
+     * minMessage = "Le numéro de siret doit contenir {{ limit }} caractères")
+     *maxMessage = "Le numéro de siret ne peut pas dépasser {{ limit }} caractères")
      */
-    private int $siret;
+    private string $siret;
 
     /**
      * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company")
@@ -74,12 +89,12 @@ class Company
         return $this;
     }
 
-    public function getSiret(): ?int
+    public function getSiret(): ?string
     {
         return $this->siret;
     }
 
-    public function setSiret(int $siret): self
+    public function setSiret(string $siret): self
     {
         $this->siret = $siret;
 

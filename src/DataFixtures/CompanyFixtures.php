@@ -15,7 +15,7 @@ class CompanyFixtures extends Fixture
             $company = new Company();
             $company->setCompanyName('Nom de l\'entreprise : ' . $i);
             $company->setSocialReason('HYPERDRIVE EURL : ' . $i);
-            $company->setSiret(rand(10000, 40000));
+            $company->setSiret("12859875326478");
 
             $manager->persist($company);
             $this->addReference('company_' . $i, $company);

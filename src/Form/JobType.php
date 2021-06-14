@@ -2,8 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Company;
 use App\Entity\Job;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,15 +17,46 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('post')
-            ->add('registereAt')
-            ->add('startAt')
-            ->add('endAt')
-            ->add('hoursAWeek')
-            ->add('city')
-            ->add('postalCode')
-            ->add('description')
-            ->add('company');
+            ->add('post', TextType::class, [
+                'label' => 'Poste',
+                'attr' => [
+                    'placeholder' => 'Saisir un poste'
+                ]
+            ])
+            ->add('registeredAt', DateType::class, [
+                'label' => 'Date d\'enregistrement',
+            ])
+            ->add('startAt', DateType::class, [
+                'label' => 'Date de debut',
+            ])
+            ->add('endAt', DateType::class, [
+                'label' => 'Date de fin',
+            ])
+            ->add('hoursAWeek', NumberType::class, [
+                'label' => 'Heure par semaine',
+            ])
+            ->add('city', TextType::class, [
+                'label' => 'Ville',
+                'attr' => [
+                    'placeholder' => 'Saisir une ville'
+                ]
+            ])
+            ->add('postalCode', TextType::class, [
+                'label' => 'Code postal',
+                'attr' => [
+                    'placeholder' => 'Saisir une code postal'
+                ]
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Message',
+                'attr' => [
+                    'placeholder' => 'Votre message'
+                ]
+            ])
+            ->add('company', EntityType::class, [
+                'class' => Company::class,
+                'choice_label' => 'companyName',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

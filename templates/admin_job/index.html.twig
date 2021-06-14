@@ -24,14 +24,14 @@
             <div class="row d-flex justify-content-center">
                 {% for job in jobs %}
                     <div class="data-card text-center">
-                        <h2 class="pb-2">{{ job.Company.CompanyName|upper }}</h2>
-                        <h3 class="mt-2">{{ job.Post|upper }}</h3>
-                        <h3 class="mb-3 pb-2">{{ job.PostalCode }}
-                            {{ job.City|capitalize }}</h3>
-                        <p>{{ job.Description }}</p>
+                        <h2 class="pb-2">{{ job.company.companyName|upper }}</h2>
+                        <h3 class="mt-2">{{ job.post|upper }}</h3>
+                        <h3 class="mb-3 pb-2">{{ job.postalCode }}
+                            {{ job.city|capitalize }}</h3>
+                        <p>{{ job.description }}</p>
                         <a href="{{ path('admin_job_delete', {'id': job.id}) }}" class="btn btn-light">Supprimer</a>
                         <a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="btn btn-light">Modifier</a>
-                        <h4 class="mt-2">{{ job.RegistereAt ? job.RegistereAt|date('Y-m-d') : '' }}</h4>
+                        <h4 class="mt-2">{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
                         <h3>Id :
                             {{ job.id }}</h3>
                     </div>
