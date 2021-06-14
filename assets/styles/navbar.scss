@@ -1,11 +1,8 @@
 @import 'variables.scss';
 
-$navbar-font-size: 20px;
-$navbar-responsive-font-size: 15px;
-$navbar-logo-size: 60px;
-
 .logo {
     width: $navbar-logo-size;
+    height: $navbar-logo-size;
 }
 
 .nav-style {
