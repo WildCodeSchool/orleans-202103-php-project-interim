@@ -22,7 +22,9 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash('success', 'Votre message a été transmis, 
-            nous vous répondrons dans les meilleurs délais.'); // give a message if success
+
+            nous vous répondrons dans les meilleurs délais.'); // give mesage if success
+
             return $this->redirectToRoute('contact');
         }
         return $this->render('contact/index.html.twig', ['form' => $form->createView(), 'contact' => $contact]);
