@@ -45,7 +45,7 @@ class JobType extends AbstractType
             ->add('postalCode', TextType::class, [
                 'label' => 'Code postal',
                 'attr' => [
-                    'placeholder' => 'Saisir une code postal'
+                    'placeholder' => 'Saisir un code postal'
                 ]
             ])
             ->add('description', TextareaType::class, [

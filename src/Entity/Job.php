@@ -22,7 +22,7 @@ class Job
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=255,
      * maxMessage = "Le nom du poste ne peut pas dépasser {{ limit }} caractères")
@@ -46,14 +46,14 @@ class Job
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Positive
      */
     private int $hoursAWeek;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=255,
      * maxMessage = "Le nom de la ville ne peut pas dépasser {{ limit }} caractères")
@@ -62,7 +62,7 @@ class Job
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=5,
      * maxMessage = "Le Code postal ne peut pas dépasser {{ limit }} caractères")
@@ -71,7 +71,7 @@ class Job
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      */
     private string $description;
 

@@ -24,9 +24,7 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
             $job->setPostalCode('45');
             $job->setCity('Ville');
             $job->setDescription('Veniam qui aliqua deserunt do nisi consectetur pariatur consectetur tempor eiusmod.');
-            for ($c = 1; $c <= rand(1, CompanyFixtures::LOOPNUMBER); $c++) {
-                $job->setCompany($this->getReference('company_' . $c));
-            }
+            $job->setCompany($this->getReference('company_' . rand(1, CompanyFixtures::LOOPNUMBER)));
 
             $manager->persist($job);
         }

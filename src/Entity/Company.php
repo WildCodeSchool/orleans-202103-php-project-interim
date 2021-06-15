@@ -23,7 +23,7 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=255,
      * maxMessage = "Le nom de l'entreprise ne peut pas dépasser {{ limit }} caractères")
@@ -32,16 +32,16 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=255,
-     * maxMessage = "La raison social ne peut pas dépasser {{ limit }} caractères")
+     * maxMessage = "La raison sociale ne peut pas dépasser {{ limit }} caractères")
      */
     private string $socialReason;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait .")
+     *  @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * min=14,
      * max=14,
