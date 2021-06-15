@@ -13,7 +13,7 @@ class Contact
     private ?string $firstname;
 
     /**
-     * @Assert\Notblank()
+     * @Assert\Notblank(message="Le champ Nom est obligatoire")
      * @Assert\Length(max=255, maxMessage="Le nom ne doit pas dépasser {{ limit }} caractères")
      */
     private ?string $lastname;
@@ -26,7 +26,7 @@ class Contact
     private ?string $email;
 
     /**
-     * @Assert\Notblank()
+     * @Assert\Notblank(message="Le champ Message est obligatoire")
      */
     private ?string $message;
 
