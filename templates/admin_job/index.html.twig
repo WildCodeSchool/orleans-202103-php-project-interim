@@ -17,13 +17,13 @@
                 </div>
                 <div class="col-lg-8 d-flex justify-content-center">
                     <form class="form-inline mt-3 d-flex justify-content-start">
-                        <input class="form-control mr-sm-2 text-center" type="search" placeholder="Effectuer une recherche " aria-label="Search">
+                        <input class="form-control mr-sm-2 text-center" type="search" placeholder="Rechercher " aria-label="Search">
                     </form>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
                 {% for job in jobs %}
-                    <div class="data-card text-center">
+                    <div class=" col-lg-3 data-card text-center">
                         <h2 class="pb-2">{{ job.company.companyName|upper }}</h2>
                         <h3 class="mt-2">{{ job.post|upper }}</h3>
                         <h3 class="mb-3 pb-2">{{ job.postalCode }}
