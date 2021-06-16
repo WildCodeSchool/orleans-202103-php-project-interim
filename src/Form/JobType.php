@@ -34,7 +34,7 @@ class JobType extends AbstractType
                 'label' => 'Date de fin',
             ])
             ->add('hoursAWeek', NumberType::class, [
-                'label' => 'Heure par semaine',
+                'label' => 'Heures par semaine',
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville',
@@ -53,10 +53,6 @@ class JobType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Votre message'
                 ]
-            ])
-            ->add('company', EntityType::class, [
-                'class' => Company::class,
-                'choice_label' => 'companyName',
             ]);
     }
 
