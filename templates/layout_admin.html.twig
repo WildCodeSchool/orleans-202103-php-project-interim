@@ -3,6 +3,12 @@
 {% block title %}Admin -
 	{{ parent() }}
 {% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('navbar') }}
+	{{ encore_entry_link_tags('adminJob') }}
+{% endblock %}
 {% block navbar %}
 	{% include 'component/_navbar_admin.html.twig' %}
 {% endblock %}
