@@ -1,55 +1,60 @@
 <!-- Footer -->
-<footer
-	class="bg-secondary text-center text-white">
-
-	<!-- Section: Links -->
-	<section
-		class="">
+<footer class="bg-secondary text-center text-white">
+	<!-- Grid container -->
+	<div class="container pt-3">
 		<!--Grid row-->
-		<div class="d-flex justify-content-center row pt-3">
-			<div class="col justify-content-start">
-				<a href="{{ path('company_quotation') }}" class="text-white text-decoration-none">Demander un devis</a>
+		<div class="row py-3">
+			<!--Grid column-->
+			<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+
+				<!-- Section: Social media -->
+				<section class="d-flex justify-content-around">
+
+					<!-- Facebook -->
+					<a class="m-1" href="https://www.facebook.com/studentinterim" role="button">
+						<img src="{{ asset('build/images/facebook.png') }}" alt="logo facebook">
+					</a>
+
+					<!-- Instagram -->
+					<a class="m-1" href="https://www.instagram.com/studentinterim/" role="button">
+						<img src="{{ asset('build/images/insta.png') }}" alt="logo instagram">
+					</a>
+
+					<!-- Linkedin -->
+					<a class="m-1" href="https://www.linkedin.com/company/student-int%C3%A9rim" role="button">
+						<img src="{{ asset('build/images/linkedin.png') }}" alt="logo linkedin">
+					</a>
+
+					<!-- Youtube -->
+					<a class="m-1" href="https://youtube.com/channel/UCqQPYBaPQ7eRUtB-GKWIniQ" role="button">
+						<img src="{{ asset('build/images/youtube.png') }}" alt="logo youtube">
+					</a>
+				</section>
 			</div>
-			<div class="col justify-content-end">
-				<a href="{{ path('contact') }}" class="text-white text-decoration-none">Nous contacter</a>
+			<!--Grid column-->
+
+			<!--Grid column-->
+			<div class="col-lg-4 col-md-6 mb-4 mb-md-0 pt-2">
+				<!-- List: Links -->
+				<ul class="list-unstyled mb-0">
+					<li class="pb-3">
+						<a href="{{ path('contact') }}" class="text-white text-decoration-none">Nous contacter</a>
+					</li>
+					<li>
+						<a href="{{ path('company_quotation') }}" class="text-white text-decoration-none">Demander un devis</a>
+					</li>
+				</ul>
 			</div>
+			<!-- List: Links -->
 		</div>
-		<!--Grid row-->
-	</section>
-	<!-- Section: Links -->
-</div>
 
-<div
-	class="container p-4">
-	<!-- Section: Social media -->
-	<section
-		class="d-flex justify-content-around mb-4">
-		<!-- Facebook -->
-		<a class="m-1" href="https://www.facebook.com/studentinterim" role="button">
-			<img src="{{ asset('build/images/facebook.png') }}" alt="logo facebook">
-		</a>
-
-		<!-- Instagram -->
-		<a class="m-1" href="https://www.instagram.com/studentinterim/" role="button">
-			<img src="{{ asset('build/images/insta.png') }}" alt="logo instagram">
-		</a>
-
-		<!-- Linkedin -->
-		<a class="m-1" href="https://www.linkedin.com/company/student-int%C3%A9rim" role="button">
-			<img src="{{ asset('build/images/linkedin.png') }}" alt="logo linkedin">
-		</a>
-
-		<!-- Youtube -->
-		<a class="m-1" href="https://youtube.com/channel/UCqQPYBaPQ7eRUtB-GKWIniQ" role="button">
-			<img src="{{ asset('build/images/youtube.png') }}" alt="logo youtube">
-		</a>
-
-	</section>
-	<!-- Section: Social media -->
-
-	<!-- Copyright -->
-	<div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
-		<p class="text-white">© 2020 Copyright: Student-Interim</p>
+		<!--Grid column-->
+		<div class="col-lg-4 col-md-6 mb-4 mb-md-0 pt-2">
+			<!-- Section: Adresse -->
+			<p>1 faubourg Bannier</p>
+			<p>45000 Orléans</p>
+			<!-- Section: Adresse -->
+		</div>
+		<!--Grid column-->
 	</div>
-	<!-- Copyright -->
 </footer>

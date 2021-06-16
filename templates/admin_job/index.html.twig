@@ -1,0 +1,44 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block body %}
+    <section class="adminOffre">
+        <div class="container">
+            <h1 class="text-center mt-3">Offres d'emploi</h1>
+            <div class="row my-3">
+                <div class="col-lg-2">
+                    <a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trier par
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 d-flex justify-content-center">
+                    <form class="form-inline mt-3 d-flex justify-content-start">
+                        <input class="form-control mr-sm-2 text-center" type="search" placeholder="Effectuer une recherche " aria-label="Search">
+                    </form>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                {% for job in jobs %}
+                    <div class="data-card text-center">
+                        <h2 class="pb-2">{{ job.company.companyName|upper }}</h2>
+                        <h3 class="mt-2">{{ job.post|upper }}</h3>
+                        <h3 class="mb-3 pb-2">{{ job.postalCode }}
+                            {{ job.city|capitalize }}</h3>
+                        <p>{{ job.description }}</p>
+                        <a href="{{ path('admin_job_delete', {'id': job.id}) }}" class="btn btn-light">Supprimer</a>
+                        <a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="btn btn-light">Modifier</a>
+                        <h4 class="mt-2">{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+                        <h3>Id :
+                            {{ job.id }}</h3>
+                    </div>
+                {% else %}
+                    <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
