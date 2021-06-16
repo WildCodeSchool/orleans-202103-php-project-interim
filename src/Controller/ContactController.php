@@ -33,10 +33,7 @@ class ContactController extends AbstractController
                 ->subject('vous avez reçu un email')
 
                 //On créé le message avec la vue twig
-                ->text(
-                    'Envoyeur : ' . $contactFormData->getEmail() . PHP_EOL . $contactFormData->getMessage(),
-                    'text/html'
-                );
+                ->html($this->renderView('email/newContactEmail.html.twig', ['contact' => $contact]));
 
                 //on envoie le message
                 $mailer->send($message);
