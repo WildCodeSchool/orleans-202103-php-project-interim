@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block stylesheets %}
-	{{ encore_entry_link_tags('app') }}
-	{{ encore_entry_link_tags('navbar') }}
+	{{ parent() }}
 	{{ encore_entry_link_tags('adminJob') }}
 {% endblock %}
 {% block navbar %}

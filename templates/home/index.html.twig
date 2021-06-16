@@ -3,9 +3,9 @@
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     {{ encore_entry_link_tags('home') }}
     {{ encore_entry_link_tags('header') }}
-    {{ encore_entry_link_tags('app') }}
 {% endblock %}
 
 {% block body %}
