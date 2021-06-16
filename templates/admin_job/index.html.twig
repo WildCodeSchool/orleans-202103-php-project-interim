@@ -29,8 +29,11 @@
                         <h3 class="mb-3 pb-2">{{ job.postalCode }}
                             {{ job.city|capitalize }}</h3>
                         <p>{{ job.description }}</p>
-                        <a href="{{ path('admin_job_delete', {'id': job.id}) }}" class="btn btn-light">Supprimer</a>
-                        <a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="btn btn-light">Modifier</a>
+                        <form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
+                            <button class="btn">Supprimer</button>
+                            <a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="btn btn-light">Modifier</a>
+                        </form>
                         <h4 class="mt-2">{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
                         <h3>Id :
                             {{ job.id }}</h3>
