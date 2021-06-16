@@ -6,6 +6,7 @@ body {
     color: $dark;
     font-family: $text-font;
     scroll-behavior: smooth;
+    font-size: $text-size;
 }
 
 h1 {
@@ -21,21 +22,28 @@ h1 {
 h2 {
     margin: 0;
     padding: 0;
-    font-family: $title-font;
+    font-family: $subtitle-font;
     text-transform: uppercase;
-    font-weight: bold;
     color: $secondary;
-    font-size: $title-size;
+    font-size: $subtitle-size;
 }
 
 h3 {
     margin: 0;
     padding: 0;
-    font-family: $title-font;
+    font-family: $subtitle-font;
     text-transform: uppercase;
-    font-weight: bold;
     color: $primary;
-    font-size: $title-size;
+    font-size: $subtitle-size;
+}
+
+h4 {
+    margin: 0;
+    padding: 0;
+    font-family: $subtitle-font;
+    text-transform: uppercase;
+    color: $primary;
+    font-size: $subtitle-size;
 }
 
 nav {
@@ -44,6 +52,7 @@ nav {
 }
 
 footer {
-    background-color: $primary;
+    background-color: $secondary;
     color: $light;
+    font-size: 20px;
 }

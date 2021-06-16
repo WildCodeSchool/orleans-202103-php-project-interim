@@ -3,6 +3,7 @@
 {% block title %}{{ parent() }} - Accueil{% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     {{ encore_entry_link_tags('home') }}
     {{ encore_entry_link_tags('header') }}
 {% endblock %}
@@ -25,7 +26,7 @@
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         </p>
         <div class="d-flex pb-5 justify-content-center">
-            <a class="btn btn-secondary" href="#">Demander un devis</a>
+            <a class="btn btn-secondary" href="{{ path('company_quotation') }}">Demander un devis</a>
         </div>
     </div>
 {% endblock %}

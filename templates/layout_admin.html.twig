@@ -3,6 +3,11 @@
 {% block title %}Admin -
 	{{ parent() }}
 {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('adminJob') }}
+{% endblock %}
 {% block navbar %}
 	{% include 'component/_navbar_admin.html.twig' %}
 {% endblock %}

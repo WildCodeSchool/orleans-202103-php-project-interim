@@ -1,0 +1,116 @@
+@import "variables.scss";
+
+.adminOffre h1 {
+    color: $primary;
+}
+
+.adminOffre .data-card {
+    max-width: 20.75em;
+    min-height: 13em;
+    overflow: hidden;
+    border-radius: 0.5em;
+    text-decoration: none;
+    background: $white;
+    margin: 0.3em;
+    padding: 0.5em 0.5em;
+    box-shadow: 0 1.5em 2.5em -0.5em rgba($dark, 0.1);
+    transition: transform 0.45s ease, background 0.45s ease;
+    border: 2px solid $dark;
+
+    .btn {
+        background-color: $white;
+        border: 1px solid $dark;
+        font-weight: $card-font-weight;
+    }
+
+    .post {
+        height: 45px;
+    }
+
+    h2 {
+        color: $card-text-color;
+        font-size: 1em;
+        font-weight: $card-font-weight;
+        line-height: 1;
+        border-bottom: 2px solid $dark;
+        transition: color 0.45s ease, border 0.45s ease;
+    }
+
+    .postalCode {
+        border-top: 2px solid $dark;
+        padding-top: 10px;
+    }
+
+    h3 {
+        padding-bottom: 10px;
+    }
+
+    h4,
+    h3 {
+        color: $card-text-color;
+        text-transform: uppercase;
+        font-size: 0.7em;
+        font-weight: $card-font-weight;
+        transition: color 0.45s ease;
+    }
+
+    h4 {
+        border-top: 2px solid $dark;
+        padding-top: 10px;
+    }
+
+    p {
+        font-size: 0.6em;
+        color: $card-text-color;
+        font-weight: $card-font-weight;
+        line-height: 1.8;
+        margin: 0 0 1.25em;
+        transform: translateY(-1em);
+        transition: opacity 0.45s ease, transform 0.5s ease;
+    }
+
+    &:hover {
+        background: $primary;
+        transform: scale(1.02);
+
+        .postalCode {
+            border-top: 2px solid $white;
+            padding-top: 10px;
+        }
+
+        .btn {
+            background-color: $white;
+            color: $dark;
+            border: none;
+        }
+
+        h2 {
+            color: $white;
+            border-bottom-color: $white;
+        }
+
+        h3 {
+            color: $white;
+        }
+
+        h4 {
+            color: $white;
+            border-top-color: $white;
+        }
+
+        p {
+            transform: none;
+            color: $white;
+        }
+    }
+}
+
+@keyframes point {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(0.125em);
+    }
+}
