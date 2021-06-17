@@ -84,7 +84,7 @@ class Job
      * @ORM\ManyToOne(targetEntity=StudyField::class, inversedBy="jobs")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $studyField;
+    private ?StudyField $studyField;
 
     public function getId(): ?int
     {
