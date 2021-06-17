@@ -80,6 +80,12 @@ class Job
      */
     private ?Company $company;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=StudyField::class, inversedBy="jobs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $studyField;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -189,6 +195,18 @@ class Job
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getStudyField(): ?StudyField
+    {
+        return $this->studyField;
+    }
+
+    public function setStudyField(?StudyField $studyField): self
+    {
+        $this->studyField = $studyField;
 
         return $this;
     }
