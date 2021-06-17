@@ -23,7 +23,7 @@
             </div>
             <div class="row d-flex justify-content-center">
                 {% for job in jobs %}
-                    <div class=" col-lg-3 data-card text-center">
+                    <div class=" col-lg-3 col-md-2 data-card text-center">
                         <h2 class="pb-2">{{ job.company.companyName|upper }}</h2>
                         <h3 class="post mt-2">{{ job.post|upper }}</h3>
                         <h3 class="postalCode mb-3 pb-2">{{ job.postalCode }}
