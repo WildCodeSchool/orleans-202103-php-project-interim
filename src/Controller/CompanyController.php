@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\JobRepository;
 
 /**
  * @Route("/entreprise", name="company_")
@@ -21,6 +22,17 @@ class CompanyController extends AbstractController
     {
         return $this->render('company/index.html.twig');
     }
+
+    /**
+     * @Route("/offres", name="jobs")
+     */
+    public function list(JobRepository $jobRepository): Response
+    {
+        return $this->render('company/list.html.twig', [
+            'jobs' => $jobRepository->findAll(),
+        ]);
+    }
+
     /**
      * @Route("/devis", name="quotation")
      */

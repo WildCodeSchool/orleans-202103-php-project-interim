@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use DateTime;
 use App\Entity\Job;
 use App\DataFixtures\CompanyFixtures;
+use App\DataFixtures\StudyFieldFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -25,6 +26,7 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
             $job->setCity('Ville');
             $job->setDescription('Veniam qui aliqua deserunt do nisi consectetur pariatur consectetur tempor eiusmod.');
             $job->setCompany($this->getReference('company_' . rand(1, CompanyFixtures::LOOPNUMBER)));
+            $job->setStudyField($this->getReference('studyField_' . rand(1, StudyFieldFixtures::LOOPNUMBER)));
 
             $manager->persist($job);
         }
@@ -35,6 +37,7 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CompanyFixtures::class,
+            StudyFieldFixtures::class,
         ];
     }
 }
