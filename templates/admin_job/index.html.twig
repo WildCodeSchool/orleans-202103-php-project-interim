@@ -25,8 +25,9 @@
                 {% for job in jobs %}
                     <div class=" col-lg-3 data-card text-center">
                         <h2 class="pb-2">{{ job.company.companyName|upper }}</h2>
-                        <h3 class="mt-2">{{ job.post|upper }}</h3>
-                        <h3 class="mb-3 pb-2">{{ job.postalCode }}
+                        <h3 class="post mt-2">{{ job.post|upper }}</h3>
+                        <h3 class="postalCode mb-3 pb-2">{{ job.postalCode }}
+                            :
                             {{ job.city|capitalize }}</h3>
                         <p>{{ job.description }}</p>
                         <form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');">
