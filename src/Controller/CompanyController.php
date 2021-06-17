@@ -39,6 +39,16 @@ class CompanyController extends AbstractController
                 'Merci pour votre demande, nous reviendrons vers vous dans les meilleurs délais.'
             );
             // Sending an email to the admin
+            $email = (new Email())
+                ->from((string)$quotationRequest->getEmail())
+                ->to(strval($this->getParameter('mailer_to')))
+                ->subject('Une nouvelle demande de devis vient d\'être envoyée !')
+                ->html($this->renderView(
+                    'email/quotationRequestEmail.html.twig',
+                    ['quotationRequest' => $quotationRequest]
+                ));
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('company_quotation');
         }

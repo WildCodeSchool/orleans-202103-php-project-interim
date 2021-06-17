@@ -1,0 +1,26 @@
+{% extends 'email/layoutEmail.html.twig' %}
+
+{% block title %}{{ parent() }} - Demande de devis{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h2>Nouvelle demande de devis de {{ quotationRequest.companyName }}</h2>
+    <p>Bonjour, vous avez reçu une nouvelle demande de devis de la société {{ quotationRequest.companyName }}.</p>
+    <p>
+        <table style="border: 0;">
+            <tr>
+                <td>Personne à contacter : </td>
+                <td>{{ quotationRequest.contactName }}</td>
+            </tr>
+            <tr>
+                <td>Téléphone: </td>
+                <td>{{ quotationRequest.phone }}</td>
+            </tr>
+            <tr>
+                <td>Adresse mail: </td>
+                <td>{{ quotationRequest.email }}</td>
+            </tr>
+        </table>
+    </p>
+    <p>Message : {{ quotationRequest.message }}</p>
+{% endblock %}
