@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\QuotationRequest;
+use Symfony\Component\Mime\Email;
 use App\Form\QuotationRequestType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/entreprise", name="company_")
@@ -24,7 +26,7 @@ class CompanyController extends AbstractController
     /**
      * @Route("/devis", name="quotation")
      */
-    public function quotationRequest(Request $request): Response
+    public function quotationRequest(Request $request, MailerInterface $mailer): Response
     {
         $quotationRequest = new QuotationRequest();
         $form = $this->createForm(QuotationRequestType::class, $quotationRequest);
@@ -37,6 +39,16 @@ class CompanyController extends AbstractController
                 'Merci pour votre demande, nous reviendrons vers vous dans les meilleurs délais.'
             );
             // Sending an email to the admin
+            $email = (new Email())
+                ->from((string)$quotationRequest->getEmail())
+                ->to(strval($this->getParameter('mailer_to')))
+                ->subject('Une nouvelle demande de devis vient d\'être envoyée !')
+                ->html($this->renderView(
+                    'email/quotationRequestEmail.html.twig',
+                    ['quotationRequest' => $quotationRequest]
+                ));
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('company_quotation');
         }
