@@ -21,15 +21,12 @@
         background-color: $white;
         border: 1px solid $dark;
         font-weight: $card-font-weight;
-    }
-
-    .post {
-        height: 45px;
+        font-size: 0.8em;
     }
 
     h2 {
         color: $card-text-color;
-        font-size: 1em;
+        font-size: 1.5em;
         font-weight: $card-font-weight;
         line-height: 1;
         border-bottom: 2px solid $dark;
@@ -39,6 +36,7 @@
     .postalCode {
         border-top: 2px solid $dark;
         padding-top: 10px;
+        
     }
 
     h3 {
@@ -60,6 +58,7 @@
     }
 
     p {
+        height: 145px;;
         font-size: 0.6em;
         color: $card-text-color;
         font-weight: $card-font-weight;
