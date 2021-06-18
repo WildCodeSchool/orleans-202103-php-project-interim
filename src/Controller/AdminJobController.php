@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Job;
-use App\Form\JobType;
+use App\Form\AdminJobType;
 use App\Repository\JobRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,7 @@ class AdminJobController extends AbstractController
      */
     public function edit(Request $request, Job $job): Response
     {
-        $form = $this->createForm(JobType::class, $job);
+        $form = $this->createForm(AdminJobType::class, $job);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
