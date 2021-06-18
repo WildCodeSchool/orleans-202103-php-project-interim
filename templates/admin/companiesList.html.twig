@@ -1,0 +1,50 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}{{ parent() }} - Liste des entreprises{% endblock %}
+
+{% block body %}
+    <section class="adminOffre">
+        <div class="container">
+            <h2 class="text-center mt-3">Liste des comptes Entreprise</h2>
+            <div class="row my-3">
+                <div class="col-lg-2">
+                    <a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Trier par
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-8 d-flex justify-content-center">
+                    <form class="form-inline mt-3 d-flex justify-content-start">
+                        <input class="form-control mr-sm-2 text-center" type="search" placeholder="Rechercher " aria-label="Search">
+                    </form>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                {% for company in companies %}
+                    <div class=" col-lg-3 data-card text-center">
+                        <h2 class="pb-2">{{ company.companyName|upper }}</h2>
+                        <h3 class="mt-2">Raison sociale : {{ company.socialReason|upper }}</h3>
+                        <h3 class="mb-3 pb-2">Contact : {{ company.user.firstname ~ ' ' ~ company.user.lastname|upper }}</h3>
+                        <table>
+                            <tr>
+                                <td>Téléphone : </td>
+                                <td>{{ company.user.phone }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email : </td>
+                                <td>{{ company.user.email }}</td>
+                            </tr>
+                        </table>
+                        <h3>Siret : {{ company.siret }}</h3>
+                    </div>
+                {% else %}
+                    <p class="alert alert-warning text-center bg-primary text-light">Aucun compte Entreprise</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
