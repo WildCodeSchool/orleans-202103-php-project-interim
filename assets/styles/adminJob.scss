@@ -48,10 +48,12 @@
         font-size: 0.6em;
         transition: color 0.45s ease;
     }
+
     .post {
         height: 30px;
         font-size: 0.7em;
     }
+
     h4 {
         padding-top: 10px;
     }
@@ -68,10 +70,11 @@
 
     &:hover {
         transform: scale(1.02);
-        
+
         .post {
-            color:$secondary
+            color: $secondary;
         }
+
         .postalCode {
             border-top: 2px solid $dark;
             color: $secondary;
@@ -93,7 +96,7 @@
         }
 
         h4 {
-            border-top-color: $dark
+            border-top-color: $dark;
         }
 
         p {
