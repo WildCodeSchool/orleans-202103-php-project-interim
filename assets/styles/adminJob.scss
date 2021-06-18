@@ -69,7 +69,8 @@
     }
 
     &:hover {
-        transform: scale(1.02);
+        transform: scale(1.05);
+        box-shadow: 0px 5px 20px rgb(107, 107, 107);
 
         .post {
             color: $secondary;
