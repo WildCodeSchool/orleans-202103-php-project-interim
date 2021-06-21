@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class UserFixtures extends Fixture
 {
@@ -37,6 +38,7 @@ class UserFixtures extends Fixture
         // Création d’un utilisateur de type “company”
         $company = new User();
         $company->setEmail('company@monsite.com');
+        $company->setCompany($this->getReference('company_1'));
         $company->setRoles(['ROLE_COMPANY']);
         $company->setPassword($this->passwordEncoder->encodePassword(
             $company,

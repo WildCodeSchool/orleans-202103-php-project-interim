@@ -10,6 +10,10 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Entity\Job;
+use App\Entity\Company;
+use App\Repository\JobRepository;
 
 /**
  * @Route("/entreprise", name="company_")
@@ -23,6 +27,24 @@ class CompanyController extends AbstractController
     {
         return $this->render('company/index.html.twig');
     }
+
+    /**
+     * @Route("/offres", name="jobs")
+     */
+    public function list(): Response
+    {
+        if (!is_null($this->getUser())) {
+            /** @phpstan-ignore-next-line */
+            $jobs = $this->getUser()->getCompany()->getJobs();
+        } else {
+            $jobs = [];
+        }
+
+        return $this->render('company/list.html.twig', [
+            'jobs' =>  $jobs,
+        ]);
+    }
+
     /**
      * @Route("/devis", name="quotation")
      */
