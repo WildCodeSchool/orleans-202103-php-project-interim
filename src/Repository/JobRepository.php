@@ -20,31 +20,6 @@ class JobRepository extends ServiceEntityRepository
         parent::__construct($registry, Job::class);
     }
 
-    public function findCompanyOffers(int $id): ?Job
-    {
-        return $this->createQueryBuilder('job')
-            ->select(
-                'job.id',
-                'job.post',
-                'job.registeredAt',
-                'job.startAt',
-                'job.endAt',
-                'job.hoursAWeek',
-                'job.city',
-                'job.postalCode',
-                'job.description',
-                'company.companyName',
-            )
-            ->from('job', 'j')
-            ->join('job', 'company', 'company.id = job.company_id')
-            ->where('company.id=:id')
-            ->setParameter('id', $id)
-            ->orderBy('job.registeredAt', 'DESC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-
     // /**
     //  * @return Job[] Returns an array of Job objects
     //  */

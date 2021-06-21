@@ -40,7 +40,7 @@ class CompanyController extends AbstractController
             $jobs = [];
         }
 
-        return $this->render('company/list.html.twig', [
+        return $this->render('company/list_jobs.html.twig', [
             'jobs' =>  $jobs,
         ]);
     }

@@ -9,6 +9,8 @@
                 <a class="nav-link ms-5 me-5 active" href="
                 {% if is_granted('ROLE_COMPANY') %}
                     {{ path('company_jobs') }}
+                {% else %}
+                    #
                 {% endif %}">Offres</a>
             </li>
             <li class="nav-item">
