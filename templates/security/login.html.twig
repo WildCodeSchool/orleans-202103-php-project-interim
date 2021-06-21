@@ -1,30 +1,42 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion
+{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            vous etes connecté en tant que  {{ app.user.username }}, <a href="{{ path('app_logout') }}">Deconnexion</a>
-        </div>
-    {% endif %}
+        {% if app.user %}
+            <div class="mb-3">
+                vous etes connecté en tant que
+                {{ app.user.username }},
+                <a href="{{ path('app_logout') }}">Deconnexion</a>
+            </div>
+        {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        <section class="container">
+            <h3 class="text-center pt-3 my-5">Connexion</h3>
+            <div class="bg-info shadow p-3 mb-5 rounded form-group row mt-sm-0 px-xs-0 py-sm-0">
+                <div class="justify-content-start">
+                    <div class="form-group pt-5 col col-lg-6 col-md-12 mx-auto">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    </div>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-    <button class="btn btn-lg btn-primary" type="submit">
-        Connexion
-    </button>
-</form>
+                    <div class="form-group pt-2 col col-lg-6 col-md-12 mx-auto">
+                        <label for="inputPassword">Mot de passe</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    </div>
+
+                    <div class="form-group pb-5 col pt-3 col-lg-6 col-md-12 mx-auto">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        <button class="btn btn-primary btn-lg w-100" type="submit">Connexion</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
 {% endblock %}

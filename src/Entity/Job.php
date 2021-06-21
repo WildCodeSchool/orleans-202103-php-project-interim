@@ -23,33 +23,32 @@ class Job
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
-     * @Assert\Length(
-     * max=255,
+     * @Assert\Length(max=255,
      * maxMessage = "Le nom du poste ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $post;
+    private ?string $post;
 
     /**
      * @ORM\Column(type="date")
      */
-    private DateTimeInterface $registeredAt;
+    private ?DateTimeInterface $registeredAt;
 
     /**
      * @ORM\Column(type="date")
      */
-    private DateTimeInterface $startAt;
+    private ?DateTimeInterface $startAt;
 
     /**
      * @ORM\Column(type="date")
      */
-    private DateTimeInterface $endAt;
+    private ?DateTimeInterface $endAt;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Positive
      */
-    private int $hoursAWeek;
+    private ?int $hoursAWeek;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -58,7 +57,7 @@ class Job
      * max=255,
      * maxMessage = "Le nom de la ville ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $city;
+    private ?string $city;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,13 +66,13 @@ class Job
      * max=5,
      * maxMessage = "Le Code postal ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $postalCode;
+    private ?string $postalCode;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      */
-    private string $description;
+    private ?string $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=Company::class, inversedBy="jobs")
@@ -96,7 +95,7 @@ class Job
         return $this->post;
     }
 
-    public function setPost(string $post): self
+    public function setPost(?string $post): self
     {
         $this->post = $post;
 
@@ -108,7 +107,7 @@ class Job
         return $this->registeredAt;
     }
 
-    public function setRegisteredAt(\DateTimeInterface $registeredAt): self
+    public function setRegisteredAt(?\DateTimeInterface $registeredAt): self
     {
         $this->registeredAt = $registeredAt;
 
@@ -120,7 +119,7 @@ class Job
         return $this->startAt;
     }
 
-    public function setStartAt(\DateTimeInterface $startAt): self
+    public function setStartAt(?\DateTimeInterface $startAt): self
     {
         $this->startAt = $startAt;
 
@@ -132,7 +131,7 @@ class Job
         return $this->endAt;
     }
 
-    public function setEndAt(\DateTimeInterface $endAt): self
+    public function setEndAt(?\DateTimeInterface $endAt): self
     {
         $this->endAt = $endAt;
 
@@ -144,7 +143,7 @@ class Job
         return $this->hoursAWeek;
     }
 
-    public function setHoursAWeek(int $hoursAWeek): self
+    public function setHoursAWeek(?int $hoursAWeek): self
     {
         $this->hoursAWeek = $hoursAWeek;
 
@@ -156,7 +155,7 @@ class Job
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
@@ -168,7 +167,7 @@ class Job
         return $this->postalCode;
     }
 
-    public function setPostalCode(string $postalCode): self
+    public function setPostalCode(?string $postalCode): self
     {
         $this->postalCode = $postalCode;
 
@@ -180,7 +179,7 @@ class Job
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
