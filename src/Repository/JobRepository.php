@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Job;
+use App\Entity\CompanyRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,6 +18,31 @@ class JobRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Job::class);
+    }
+
+    public function findCompanyOffers(int $id): ?Job
+    {
+        return $this->createQueryBuilder('job')
+            ->select(
+                'job.id',
+                'job.post',
+                'job.registeredAt',
+                'job.startAt',
+                'job.endAt',
+                'job.hoursAWeek',
+                'job.city',
+                'job.postalCode',
+                'job.description',
+                'company.companyName',
+            )
+            ->from('job', 'j')
+            ->join('job', 'company', 'company.id = job.company_id')
+            ->where('company.id=:id')
+            ->setParameter('id', $id)
+            ->orderBy('job.registeredAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**

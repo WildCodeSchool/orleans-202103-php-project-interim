@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\QuotationRequest;
+use App\Entity\User;
+use App\Entity\Job;
+use App\Entity\Company;
 use App\Form\QuotationRequestType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,10 +29,17 @@ class CompanyController extends AbstractController
     /**
      * @Route("/offres", name="jobs")
      */
-    public function list(JobRepository $jobRepository): Response
+    public function list(): Response
     {
+        if (!is_null($this->getUser())) {
+            /** @phpstan-ignore-next-line */
+            $jobs = $this->getUser()->getCompany()->getJobs();
+        } else {
+            $jobs = [];
+        }
+
         return $this->render('company/list.html.twig', [
-            'jobs' => $jobRepository->findAll(),
+            'jobs' =>  $jobs,
         ]);
     }
 
