@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\Student;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,8 +30,22 @@ class AdminController extends AbstractController
             ->findAll();
 
         return $this->render(
-            'admin/companiesList.html.twig',
+            'admin/companies_list.html.twig',
             ['companies' => $companies]
+        );
+    }
+    /**
+     * @Route("/etudiants", name="students")
+     */
+    public function studentsList(): Response
+    {
+        $students = $this->getDoctrine()
+            ->getRepository(Student::class)
+            ->findAll();
+
+        return $this->render(
+            'admin/students_list.html.twig',
+            ['students' => $students]
         );
     }
 }

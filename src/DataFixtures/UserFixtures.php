@@ -2,10 +2,11 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
+use App\Entity\User;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Persistence\ObjectManager;
-use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
@@ -27,9 +28,10 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         // Création d’un utilisateur de type “student”
         $student = new User();
         $student->setFirstname('Etudiant');
-        $student->setLastname('n°1');
+        $student->setLastname('Chaprot');
         $student->setPhone('0123456789');
         $student->setEmail('student@monsite.com');
+        $student->setStudent($this->getReference('student_1'));
         $student->setRoles(['ROLE_STUDENT']);
         $student->setPassword($this->passwordEncoder->encodePassword(
             $student,
@@ -37,6 +39,23 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         ));
 
         $manager->persist($student);
+
+        // Création d’une liste  d'utilisateurs de type “student”
+        for ($i = 2; $i < StudentFixtures::LOOPNUMBER; $i++) {
+            $faker = Factory::create('FR,fr');
+            $student = new User();
+            $student->setFirstname($faker->firstName());
+            $student->setLastname($faker->lastName());
+            $student->setPhone($faker->e164PhoneNumber());
+            $student->setEmail($faker->email());
+            $student->setStudent($this->getReference('student_' . $i));
+            $student->setRoles(['ROLE_STUDENT']);
+            $student->setPassword($this->passwordEncoder->encodePassword(
+                $student,
+                $faker->password()
+            ));
+            $manager->persist($student);
+        }
 
         // Création d’un utilisateur de type “company”
         $company = new User();
@@ -75,6 +94,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
           CompanyFixtures::class,
+          StudentFixtures::class,
         ];
     }
 }

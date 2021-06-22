@@ -54,6 +54,11 @@ class User implements UserInterface
      */
     private ?Company $company;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Student::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private ?Student $student;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -179,6 +184,18 @@ class User implements UserInterface
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getStudent(): ?Student
+    {
+        return $this->student;
+    }
+
+    public function setStudent(?Student $student): self
+    {
+        $this->student = $student;
 
         return $this;
     }
