@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
 use App\Entity\User;
 use App\DataFixtures\CompanyFixtures;
 use Doctrine\Persistence\ObjectManager;
@@ -40,17 +41,33 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($student);
 
         // Création d’un utilisateur de type “company”
-        for ($i = 0; $i < CompanyFixtures::LOOPNUMBER; $i++) {
+        $company = new User();
+        $company->setFirstname('Monsieur');
+        $company->setLastname('Ramu');
+        $company->setPhone('0836656565');
+        $company->setEmail('company@monsite.com');
+        $company->setCompany($this->getReference('company_1'));
+        $company->setRoles(['ROLE_COMPANY']);
+        $company->setPassword($this->passwordEncoder->encodePassword(
+            $company,
+            'companypassword'
+        ));
+
+        $manager->persist($company);
+
+        // Création d’une liste d'utilisateurs de type “company”
+        for ($i = 2; $i < CompanyFixtures::LOOPNUMBER; $i++) {
+            $faker = Factory::create('FR,fr');
             $company = new User();
-            $company->setFirstname('Monsieur');
-            $company->setLastname('Ramu');
-            $company->setPhone('0836656565');
-            $company->setEmail('company@monsite.com');
+            $company->setFirstname($faker->firstName());
+            $company->setLastname($faker->lastName());
+            $company->setPhone($faker->e164PhoneNumber());
+            $company->setEmail($faker->email());
             $company->setCompany($this->getReference('company_' . $i));
             $company->setRoles(['ROLE_COMPANY']);
             $company->setPassword($this->passwordEncoder->encodePassword(
                 $company,
-                'companypassword'
+                $faker->password()
             ));
 
             $manager->persist($company);
