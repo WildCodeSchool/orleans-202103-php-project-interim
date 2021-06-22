@@ -157,4 +157,9 @@ class Company
 
         return $this;
     }
+
+    public function __serialize(): array
+    {
+        return [];
+    }
 }
