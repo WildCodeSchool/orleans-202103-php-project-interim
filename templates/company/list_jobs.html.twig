@@ -1,4 +1,6 @@
-{% extends 'layout_admin.html.twig' %}
+{% extends 'layout_company.html.twig' %}
+
+{% block title %}{{ parent() }} - Offres{% endblock %}
 
 {% block body %}
     <section class="adminOffre">
@@ -23,19 +25,15 @@
             </div>
             <div class="row d-flex justify-content-center">
                 {% for job in jobs %}
-                    <div class=" col-lg-3 data-card">
-                        <h2 class="pb-2 text-center">{{ job.post|upper }}</h2>
-                        <h3 class="post mt-2 text-center">{{ job.company.companyName|upper }}</h3>
-                        <h3 class="postalCode mb-3 pb-2 text-center">{{ job.postalCode }}
-                            :
-                            {{ job.city|capitalize }}</h3>
+                    <div class=" col-lg-3 data-card text-center">
+                        <h2 class="pb-2">{{ job.company.companyName|upper }}</h2>
+                        <h3 class="mt-2">{{ job.post|upper }}</h3>
+                        <h3 class="mb-3 pb-2">{{ job.postalCode }} {{ job.city|capitalize }}</h3>
+                        <p><h3>{{ job.studyField.studyFieldName }}</h3></p>
                         <p>{{ job.description }}</p>
-                        <form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');"class="post mt-2 text-center">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
-                            <button class="btn">Supprimer</button>
-                            <a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="btn btn-light">Modifier</a>
-                        </form>
-                        <h4 class="mt-2 text-center">Postez-le : {{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+                        <a href="#" class="btn btn-light">Modifier</a>
+                        <h4 class="mt-2">{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+                        <h3>Id : {{ job.id }}</h3>
                     </div>
                 {% else %}
                     <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
@@ -43,4 +41,4 @@
             </div>
         </div>
     </section>
-{% endblock %}
+{% endblock %} 

@@ -29,8 +29,8 @@ class ContactController extends AbstractController
                 ->from($contactFormData->getEmail())
 
                 //on attribue le receveur
-                ->to('wildinterim@gmail.com')
-                ->subject('vous avez reçu un email')
+                ->to(strval($this->getParameter('mailer_to')))
+                ->subject('Vous avez reçu un email')
 
                 //On créé le message avec la vue twig
                 ->html($this->renderView('email/newContactEmail.html.twig', ['contact' => $contact]));
