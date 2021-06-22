@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class OfferController extends AbstractController
 {
     /**
-     * @Route("/offer", name="offer")
+     * @Route("/offre", name="offer")
      */
     public function index(JobRepository $jobRepository): Response
     {
