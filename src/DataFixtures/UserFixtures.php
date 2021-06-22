@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture
 {
+    public const USERS = 20;
     private $passwordEncoder;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
@@ -27,6 +28,8 @@ class UserFixtures extends Fixture
         $student = new User();
         $student->setEmail('student@monsite.com');
         $student->setRoles(['ROLE_STUDENT']);
+        $student->setFirstname('studentfirstname');
+        $student->setLastname('studentlastname');
         $student->setPassword($this->passwordEncoder->encodePassword(
             $student,
             'studentpassword'
@@ -38,6 +41,8 @@ class UserFixtures extends Fixture
         $company = new User();
         $company->setEmail('company@monsite.com');
         $company->setRoles(['ROLE_COMPANY']);
+        $company->setFirstname('companyfirstname');
+        $company->setLastname('companylastname');
         $company->setPassword($this->passwordEncoder->encodePassword(
             $company,
             'companypassword'
@@ -49,6 +54,8 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setFirstname('adminfirstname');
+        $admin->setLastname('adminlastname');
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
             'adminpassword'
@@ -56,7 +63,6 @@ class UserFixtures extends Fixture
 
         $manager->persist($admin);
 
-        // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
     }
 }
