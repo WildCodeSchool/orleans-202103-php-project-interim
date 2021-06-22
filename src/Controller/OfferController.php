@@ -7,19 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class OfferController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/offer", name="offer")
      */
     public function index(JobRepository $jobRepository): Response
     {
-        return $this->render('home/index.html.twig', [
-            'jobs' => $jobRepository->findBy(
-                [],
-                ['id' => 'DESC'],
-                3
-            )
+        return $this->render('offer/index.html.twig', [
+            'jobs' => $jobRepository->findAll(),
         ]);
     }
 }
