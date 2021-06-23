@@ -30,7 +30,6 @@ class JobType extends AbstractType
                 'choice_label' => 'studyFieldName',
                 'multiple' => false,
                 'expanded' => false,
-                'by_reference' => false,
             ])
             ->add('startAt', DateType::class, [
                 'label' => 'Date de debut',
