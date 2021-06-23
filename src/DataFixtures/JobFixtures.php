@@ -28,8 +28,10 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
             $job->setCity($faker->city());
             $job->setDescription($faker->paragraph(3, true));
             $job->setCompany($this->getReference('company_' . rand(1, CompanyFixtures::LOOPNUMBER)));
-            for ($i = 1; $i < count(StudyFieldFixtures::STUDYFIELD); $i++) {
-                $job->setStudyField($this->getReference('studyField_' . $i));
+            for ($i = 0; $i < count(StudyFieldFixtures::STUDYFIELD); $i++) {
+                $job->setStudyField(
+                    $this->getReference('studyField_' . rand(1, count(StudyFieldFixtures::STUDYFIELD) - 1))
+                );
             }
 
             $manager->persist($job);
