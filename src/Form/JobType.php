@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Job;
 use App\Entity\Company;
+use App\Entity\StudyField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -24,8 +25,12 @@ class JobType extends AbstractType
                     'placeholder' => 'Saisir un poste'
                 ]
             ])
-            ->add('registeredAt', DateType::class, [
-                'label' => 'Date d\'enregistrement',
+            ->add('studyField', EntityType::class, [
+                'class' => StudyField::class,
+                'choice_label' => 'studyFieldName',
+                'multiple' => false,
+                'expanded' => false,
+                'by_reference' => false,
             ])
             ->add('startAt', DateType::class, [
                 'label' => 'Date de debut',
@@ -49,9 +54,9 @@ class JobType extends AbstractType
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Message',
+                'label' => 'Description de l\'offre',
                 'attr' => [
-                    'placeholder' => 'Votre message'
+                    'placeholder' => 'Saisir une description'
                 ]
             ]);
     }

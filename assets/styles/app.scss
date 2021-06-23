@@ -56,3 +56,9 @@ footer {
     color: $light;
     font-size: 20px;
 }
+
+@media only screen and (max-width: 1024px) {
+    body {
+        font-size: $text-size2;
+    }
+}
