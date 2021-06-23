@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\User;
+use App\DataFixtures\CompanyFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -58,19 +59,21 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         }
 
         // Création d’un utilisateur de type “company”
-        $company = new User();
-        $company->setFirstname('Monsieur');
-        $company->setLastname('Ramu');
-        $company->setPhone('0836656565');
-        $company->setEmail('company@monsite.com');
-        $company->setCompany($this->getReference('company_1'));
-        $company->setRoles(['ROLE_COMPANY']);
-        $company->setPassword($this->passwordEncoder->encodePassword(
-            $company,
-            'companypassword'
-        ));
+        for ($i = 0; $i < CompanyFixtures::LOOPNUMBER; $i++) {
+            $company = new User();
+            $company->setFirstname('Monsieur');
+            $company->setLastname('Ramu');
+            $company->setPhone('0836656565');
+            $company->setEmail('company@monsite.com');
+            $company->setCompany($this->getReference('company_' . $i));
+            $company->setRoles(['ROLE_COMPANY']);
+            $company->setPassword($this->passwordEncoder->encodePassword(
+                $company,
+                'companypassword'
+            ));
 
-        $manager->persist($company);
+            $manager->persist($company);
+        }
 
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();
