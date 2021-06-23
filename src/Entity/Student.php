@@ -35,22 +35,6 @@ class Student
     private ?DateTimeInterface $birthdate;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(
-     * max=255,
-     * maxMessage = "Le lien ne peut pas dépasser {{ limit }} caractères")
-     */
-    private string $resume;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(
-     * max=255,
-     * maxMessage = "Le niveau d'étude ne peut pas dépasser {{ limit }} caractères")
-     */
-    private string $letter;
-
-    /**
      * @ORM\OneToOne(targetEntity=User::class, mappedBy="student", cascade={"persist", "remove"})
      */
     private ?User $user;
@@ -80,30 +64,6 @@ class Student
     public function setBirthdate(?\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    public function getResume(): ?string
-    {
-        return $this->resume;
-    }
-
-    public function setResume(string $resume): self
-    {
-        $this->resume = $resume;
-
-        return $this;
-    }
-
-    public function getLetter(): ?string
-    {
-        return $this->letter;
-    }
-
-    public function setLetter(string $letter): self
-    {
-        $this->letter = $letter;
 
         return $this;
     }
