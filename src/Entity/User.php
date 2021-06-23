@@ -44,6 +44,17 @@ class User implements UserInterface
      */
     private string $lastname;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $phone;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Company::class, inversedBy="user", cascade={"persist", "remove"})
+     */
+    private ?Company $company;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -145,6 +156,31 @@ class User implements UserInterface
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
 
         return $this;
     }
