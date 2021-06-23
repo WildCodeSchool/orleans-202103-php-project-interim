@@ -14,6 +14,8 @@ use App\Entity\User;
 use App\Entity\Job;
 use App\Entity\Company;
 use App\Repository\JobRepository;
+use App\Form\JobType;
+use DateTime;
 
 /**
  * @Route("/entreprise", name="company_")
@@ -42,6 +44,32 @@ class CompanyController extends AbstractController
 
         return $this->render('company/list_jobs.html.twig', [
             'jobs' =>  $jobs,
+        ]);
+    }
+
+    /**
+     * @Route("/offres/ajouter", name="jobs_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $job = new Job();
+        $form = $this->createForm(JobType::class, $job);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $job->setRegisteredAt(new DateTime('now'));
+            /** @phpstan-ignore-next-line */
+            $job->setCompany($this->getUser()->getCompany());
+            $entityManager->persist($job);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('company_jobs');
+        }
+
+        return $this->render('job/new.html.twig', [
+            'job' => $job,
+            'form' => $form->createView(),
         ]);
     }
 
