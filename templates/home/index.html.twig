@@ -41,15 +41,44 @@
     <img class="banner pt-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"Plusieurs personnes travaillant ensemble (Photo de fauxels provenant de Pexels">
     <div class="container">
         <h2 class="m-3 d-flex justify-content-center pt-5">Nos valeurs</h2>
-        <p>
-            Rapide description de la société, de ses valeurs (à définir par le client).
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        </p>
+        <div class="row mb-4 mb-lg-5">
+            <div class="col-5 mb-lg-3 align-self-center">
+                <img class="d-none d-lg-block img-fluid rounded shadow-lg" src="{{ asset('build/images/pexels-fauxels-3184338.jpg') }}" alt="trois personnes en réunion de travail">
+            </div>
+            <div class="col-12 col-lg-7 mb-lg-3">
+                <p>
+                    Chez Student Intérim nous apportons une nouvelle perspective de job étudiant.
+                    Nous vous aidons à acquérir de l’expérience et des compétences en lien avec le
+                    métier de vos rêves ! Grâce à notre offre nous vous accompagnons dans votre
+                    projet professionnel et nous vous guidons pour une meilleure insertion
+                    professionnelle. Remplissez vos disponibilités et on s’occupe du reste ! Tous
+                    nos jobs étudiants sont adaptés à votre emploi du temps.
+                    Concernant la rémunération, notre taux horaire est de 13,19€ de plus à la fin de
+                    votre job étudiant, Student Intérim vous délivrera une indemnité de fin de
+                    mission égale à 10% de votre rémunération brute.
+                </p>
+            </div>
+        </div>
         <h2 class="m-3 d-flex justify-content-center">Nos services</h2>
-        <p>
-            Rapide description des services proposées par la société (à définir par le client).
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        </p>
+        <div class="row">
+            <div class="col-12 col-lg-7">
+                <p>
+                    <div>
+                        Student intérim permet aux entreprises d’avoir une main d’œuvre compétente
+                        en lien avec le domaine de votre entreprise. Vous ne vous occupez de rien, le
+                        processus de recrutement est géré à 100% par nous et rapidement, vous
+                        pouvez donc vous concentrer sur votre entreprise. Nous vous garantissons de
+                        trouver les meilleurs profils en 48h. Suivez en direct le recrutement des
+                        étudiants. Notre site internet vous permet de trouver des étudiants disponibles
+                        qui coïncident avec vos besoins.
+                    </div>
+                    <a href="{{ path('company_quotation') }}">Découvrez nos tarifs ici.</a>
+                </p>
+            </div>
+            <div class="col-lg-5 align-self-center">
+                <img class="d-none d-lg-block img-fluid rounded shadow-lg" src="{{ asset('build/images/pexels-cottonbro-7439129.jpg') }}" alt="Trois personnes observent le même écran d'ordinateur">
+            </div>
+        </div>
         <div class="d-flex pb-5 justify-content-center">
             <a class="btn btn-secondary text-light" href="{{ path('company_quotation') }}">Demander un devis</a>
         </div>
