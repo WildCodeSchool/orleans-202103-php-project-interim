@@ -108,4 +108,19 @@ class CompanyController extends AbstractController
             "quotationRequest" => $quotationRequest,
         ]);
     }
+
+    /**
+     * @Route("/profil", name="profile")
+     */
+    public function profile(): Response
+    {
+        $user = new User();
+        $company = new Company();
+        $user = $this->getUser();
+
+        return $this->render('company/profile.html.twig', [
+            "user" => $user,
+            "company" => $company,
+        ]);
+    }
 }
