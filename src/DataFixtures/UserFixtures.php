@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
+    public const USERS = 20;
     private $passwordEncoder;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
@@ -59,17 +60,33 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         }
 
         // Création d’un utilisateur de type “company”
-        for ($i = 0; $i < CompanyFixtures::LOOPNUMBER; $i++) {
+        $company = new User();
+        $company->setFirstname('Monsieur');
+        $company->setLastname('Ramu');
+        $company->setPhone('0836656565');
+        $company->setEmail('company@monsite.com');
+        $company->setCompany($this->getReference('company_1'));
+        $company->setRoles(['ROLE_COMPANY']);
+        $company->setPassword($this->passwordEncoder->encodePassword(
+            $company,
+            'companypassword'
+        ));
+
+        $manager->persist($company);
+
+        // Création d’une liste d'utilisateurs de type “company”
+        for ($i = 2; $i < CompanyFixtures::LOOPNUMBER; $i++) {
+            $faker = Factory::create('FR,fr');
             $company = new User();
-            $company->setFirstname('Monsieur');
-            $company->setLastname('Ramu');
-            $company->setPhone('0836656565');
-            $company->setEmail('company@monsite.com');
+            $company->setFirstname($faker->firstName());
+            $company->setLastname($faker->lastName());
+            $company->setPhone($faker->e164PhoneNumber());
+            $company->setEmail($faker->email());
             $company->setCompany($this->getReference('company_' . $i));
             $company->setRoles(['ROLE_COMPANY']);
             $company->setPassword($this->passwordEncoder->encodePassword(
                 $company,
-                'companypassword'
+                $faker->password()
             ));
 
             $manager->persist($company);
@@ -82,6 +99,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $admin->setPhone('01100110');
         $admin->setEmail('admin@monsite.com');
         $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setFirstname('adminfirstname');
+        $admin->setLastname('adminlastname');
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
             'adminpassword'
@@ -89,7 +108,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 
         $manager->persist($admin);
 
-        // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
     }
 

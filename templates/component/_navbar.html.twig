@@ -13,12 +13,22 @@
                     Inscription
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Étudiant</a></li>
-                    <li><a class="dropdown-item" href="#">Entreprise</a></li>
+                    <li>
+                        <a class="dropdown-item" href="#">Étudiant</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Entreprise</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link ms-5 me-5 active" href= "{{ path('app_login') }}" >Connexion</a>
+
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a class="nav-link ms-5 me-5" href="{{ path('app_logout') }}">Deconnexion</a>
+                {% else %}
+                    <a class="nav-link ms-5 me-5" href="{{ path('app_login') }}">Connexion</a>
+                {% endif %}
+
             </li>
             <li class="nav-item">
                 <a class="nav-link ms-5 me-5 active" href="{{ path('contact') }}">Contact</a>
@@ -29,4 +39,3 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 </nav>
-    

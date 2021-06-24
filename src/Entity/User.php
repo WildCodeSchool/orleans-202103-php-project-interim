@@ -164,6 +164,7 @@ class User implements UserInterface
         return $this;
     }
 
+
     public function getPhone(): ?string
     {
         return $this->phone;
