@@ -21,11 +21,11 @@
                 {% for company in companies %}
                     {% if company.user is not null %}
                         <div class=" col-lg-3 data-card text-center">
-                            <h2 class="pb-2">{{ company.companyName|upper }}</h2>
-                            <h3 class="mt-2">Raison sociale :
-                                {{ company.socialReason|upper }}</h3>
-                            <h3 class="mb-3 pb-2">Contact :
-                                {{ company.user.firstname ~ ' ' ~ company.user.lastname|upper }}</h3>
+                            
+                            <h2 class="pb-2 d-flex align-items-center justify-content-center">{{ company.companyName|upper }}</h2>
+                            <h3 class="mt-2">Raison sociale : {{ company.socialReason|upper }}</h3>
+                            <h3 class="mb-3 pb-2">Contact : {{ company.user.firstname ~ ' ' ~ company.user.lastname|upper }}</h3>
+
                             <table>
                                 <tr>
                                     <td>Téléphone :

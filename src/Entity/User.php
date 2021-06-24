@@ -54,6 +54,7 @@ class User implements UserInterface
      */
     private ?Company $company;
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -158,6 +159,7 @@ class User implements UserInterface
 
         return $this;
     }
+
 
     public function getPhone(): ?string
     {

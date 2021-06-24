@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use DateTimeInterface;
 use App\Entity\Company;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\JobRepository;
 use Symfony\Component\Validator\Constraints as Assert;
+use DateTimeInterface;
 
 /**
  * @ORM\Entity(repositoryClass=JobRepository::class)
@@ -102,36 +102,36 @@ class Job
         return $this;
     }
 
-    public function getRegisteredAt(): ?\DateTimeInterface
+    public function getRegisteredAt(): ?DateTimeInterface
     {
         return $this->registeredAt;
     }
 
-    public function setRegisteredAt(?\DateTimeInterface $registeredAt): self
+    public function setRegisteredAt(?DateTimeInterface $registeredAt): self
     {
         $this->registeredAt = $registeredAt;
 
         return $this;
     }
 
-    public function getStartAt(): ?\DateTimeInterface
+    public function getStartAt(): ?DateTimeInterface
     {
         return $this->startAt;
     }
 
-    public function setStartAt(?\DateTimeInterface $startAt): self
+    public function setStartAt(?DateTimeInterface $startAt): self
     {
         $this->startAt = $startAt;
 
         return $this;
     }
 
-    public function getEndAt(): ?\DateTimeInterface
+    public function getEndAt(): ?DateTimeInterface
     {
         return $this->endAt;
     }
 
-    public function setEndAt(?\DateTimeInterface $endAt): self
+    public function setEndAt(?DateTimeInterface $endAt): self
     {
         $this->endAt = $endAt;
 
@@ -194,6 +194,8 @@ class Job
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
+        /** @phpstan-ignore-next-line */
+        $company->addJob($this);
 
         return $this;
     }
