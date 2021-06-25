@@ -31,7 +31,7 @@ class AdminController extends AbstractController
         $data = new SearchData();
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
-        $companies = $repository->findsearch($data);
+        $companies = $repository->findSearch($data);
 
         return $this->render(
             'admin/companiesList.html.twig',
