@@ -3,33 +3,32 @@
 {% block title %}{{ parent() }} - Profil{% endblock %}
 
 {% block body %}
-    <h2>Student Interim Entreprise</h2>
-    <section class="container">
-		<h3 class="text-center pt-3 my-5">Profil</h3>
-
-		<div class="bg-info shadow p-3 mb-5 rounded form-group row mt-sm-0 px-xs-0 py-sm-0">
-			<div class="justify-content-start">
-				{{ form_start(form) }}
-				<div class="form-group pt-5 col col-lg-6 col-md-12 mx-auto">
-					{{ form_row(form.companyName, {'attr': {'class': 'form-control'}}) }}
-				</div>
-				<div class="form-group col col-lg-6 col-md-12 mx-auto">
-					{{ form_row(form.contactName, {'attr': {'class': 'form-control'}}) }}
-				</div>
-				<div class="form-group col col-lg-6 col-md-12 mx-auto">
-					{{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
-				</div>
-                <div class="form-group col col-lg-6 col-md-12 mx-auto">
-					{{ form_row(form.phone, {'attr': {'class': 'form-control'}}) }}
-				</div>
-				<div class="form-group col col-lg-6 col-md-12 mx-auto">
-					{{ form_row(form.message, {'attr': {'class': 'form-control'}}) }}
-				</div>
-				<div class="form-group pb-5 col pt-3 col-lg-6 col-md-12 mx-auto">
-					<input class="btn btn-primary btn-lg w-100" type="submit" value="Envoyer">
-				</div>
-				{{ form_end(form) }}
-			</div>
-		</div>
-	</section>
+    <h2 class="text-center my-3 my-lg-4 my-xl-5">Student Interim Entreprise</h2>
+    <h3 class="text-center my-lg-5">Profil</h3>
+    <div class="card container-fluid text-center pb-2 mb-3 w-75">
+        <div class="card-body">
+            <div class="row pt-3">
+                <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">Date de début de mission</li>
+                        <li>Oui</li>
+                        <li class="text-muted">Date de fin de mission</li>
+                        <li>Oui</li>
+                    </ul>
+                </div>
+                <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            Localisation
+                        </li>
+                        <li>Oui</li>
+                        <li class="text-muted">Heures par semaine</li>
+                        <li>Oui</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="btn btn-primary btn-lg w-25 mt-4">POSTULER</a>
+        </div>
+    </div>
 {% endblock %}
