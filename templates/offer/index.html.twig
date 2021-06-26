@@ -10,26 +10,10 @@
 		<div class="container">
 			<h1 class="text-center mt-3">Offres d'emploi</h1>
 			<div class="d-flex justify-content-center">
-				<select class="form-select form-select-lg mb-3 w-75" aria-label=".form-select-lg example">
-					<option selected>Domaine d'études</option>
-					<option value="1">Général (c’est-à-dire tous les job étudiants classique)</option>
-					<option value="2">Droit</option>
-					<option value="3">Economie</option>
-					<option value="4">Gestion</option>
-					<option value="5">STAPS (Sciences Techniques des Activités Physiques et Sportives)</option>
-					<option value="6">Biologie</option>
-					<option value="7">Chimie</option>
-					<option value="8">Informatique</option>
-					<option value="9">Mathématiques</option>
-					<option value="10">Physique</option>
-					<option value="11">Histoire</option>
-					<option value="12">Langues</option>
-					<option value="13">Lettres</option>
-					<option value="14">Géographie et Aménagement</option>
-					<option value="15">Polytech</option>
-					<option value="16">Médecine</option>
-					<option value="17">MEEF (métiers de l’enseignement de l’éducation et de la formation)</option>
-				</select>
+            	{{ form_start(form) }}
+                	{{ form_widget(form) }}
+                    <button>Filtrer</button>
+                {{ form_end(form) }}
 			</div>
 			<div class="row d-flex justify-content-center">
 				{% for job in jobs %}
@@ -41,7 +25,7 @@
 							{{ job.city|capitalize }}</h3>
 						<p>{{ job.description }}</p>
 						<div class="d-flex justify-content-center">
-							<a href="#" class="btn btn-light text-center">Postuler</a>
+							<a href="#" class="btn btn-light text-center">En savoir plus</a>
 						</div>
 						<h4 class="mt-2 text-center">Postez-le :
 							{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
