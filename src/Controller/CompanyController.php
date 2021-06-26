@@ -74,6 +74,26 @@ class CompanyController extends AbstractController
     }
 
     /**
+     * @Route("/offres/modifier/{id}", name="jobs_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Job $job): Response
+    {
+        $form = $this->createForm(JobType::class, $job);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('company_jobs');
+        }
+
+        return $this->render('job/edit.html.twig', [
+            'job' => $job,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/devis", name="quotation")
      */
     public function quotationRequest(Request $request, MailerInterface $mailer): Response

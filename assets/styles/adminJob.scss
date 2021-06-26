@@ -25,13 +25,18 @@
     }
 
     h2 {
+        align-items: center;
         color: $secondary;
         font-size: 1em;
         font-weight: $card-font-weight;
         line-height: 1;
         border-bottom: 2px solid $dark;
         transition: color 0.45s ease, border 0.45s ease;
-        height: 40px;
+        min-height: 70px;
+    }
+
+    .postuler {
+        background-color: $primary;
     }
 
     .fa-industry {
