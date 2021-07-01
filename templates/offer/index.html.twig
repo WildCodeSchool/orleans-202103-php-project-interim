@@ -10,10 +10,10 @@
 		<div class="container">
 			<h1 class="text-center mt-3">Offres d'emploi</h1>
 			<div class="d-flex justify-content-center">
-            	{{ form_start(form) }}
-                	{{ form_widget(form) }}
-                    <button>Filtrer</button>
-                {{ form_end(form) }}
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button>Filtrer</button>
+				{{ form_end(form) }}
 			</div>
 			<div class="row d-flex justify-content-center">
 				{% for job in jobs %}
