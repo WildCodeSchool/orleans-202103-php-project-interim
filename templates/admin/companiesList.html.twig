@@ -1,6 +1,9 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}{{ parent() }} - Liste des entreprises{% endblock %}
+{% block title %}
+    {{ parent() }}
+    - Liste des entreprises
+{% endblock %}
 
 {% block body %}
     <section class="adminOffre">
@@ -22,20 +25,22 @@
                 {% for company in companies %}
                     {% if company.user is not null %}
                         <div class=" col-lg-3 data-card text-center">
-                            <h2 class="pb-2">{{ company.companyName|upper }}</h2>
-                            <h3 class="mt-2">Raison sociale : {{ company.socialReason|upper }}</h3>
-                            <h3 class="mb-3 pb-2">Contact : {{ company.user.firstname ~ ' ' ~ company.user.lastname|upper }}</h3>
-                            <table>
-                                <tr>
-                                    <td>Téléphone : </td>
-                                    <td>{{ company.user.phone }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Email : </td>
-                                    <td>{{ company.user.email }}</td>
-                                </tr>
-                            </table>
-                            <h3>Siret : {{ company.siret }}</h3>
+                            <h2 class="pb-2 d-flex align-items-center justify-content-center">{{ company.companyName|upper }}</h2>
+                            <h3 class="mt-2"><i class="fas fa-university"></i>
+                                {{ company.socialReason|upper }}</h3>
+                            <h3 class="mb-3">
+                                <i class="fas fa-user-alt"></i>
+                                {{ company.user.firstname ~ ' ' ~ company.user.lastname|upper }}</h3>
+                            <h3 class="mb-3">
+                                <i class="fas fa-phone-square-alt"></i>
+                                {{ company.user.phone }}</h3>
+                            <h4 class="mb-3"><i class="fas fa-envelope"></i> {{ company.user.email }}</h4>
+                            <form method="post" action="#" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post mb-3 text-center">
+                                <input type="hidden" name="_token" value="#">
+                                <button class="delete btn">Supprimer</button>
+                            </form>
+                            <h4 class="mt-">Siret :
+                                {{ company.siret }}</h4>
                         </div>
                     {% endif %}
                 {% else %}
