@@ -24,10 +24,10 @@ class CompanyRepository extends ServiceEntityRepository
     {
         $query = $this->createQueryBuilder('company');
 
-        if (!empty($search->searchQuery)) {
+        if (!empty($search->getSearchQuery())) {
             $query = $query
             ->andWhere('company.companyName LIKE :searchQuery')
-            ->setParameter('searchQuery', "%{$search->searchQuery}%");
+            ->setParameter('searchQuery', "%{$search->getSearchQuery()}%");
         }
         return $query->getQuery()->getResult();
     }
