@@ -6,12 +6,20 @@ class SearchData
 {
     private ?string $searchQuery = '';
 
+    /**
+     * Get the value of searchQuery
+     */
     public function getSearchQuery(): ?string
     {
         return $this->searchQuery;
     }
 
-    public function setSearchQuery(string $searchQuery): self
+    /**
+     * Set the value of searchQuery
+     *
+     * @return  self
+     */
+    public function setSearchQuery(string $searchQuery)
     {
         $this->searchQuery = $searchQuery;
         return $this;
