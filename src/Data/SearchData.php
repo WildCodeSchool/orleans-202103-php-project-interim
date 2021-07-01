@@ -19,7 +19,7 @@ class SearchData
      *
      * @return  self
      */
-    public function setSearchQuery(string $searchQuery)
+    public function setSearchQuery(?string $searchQuery)
     {
         $this->searchQuery = $searchQuery;
         return $this;
