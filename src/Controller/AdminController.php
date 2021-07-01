@@ -24,6 +24,21 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig');
     }
+
+    /**
+     * @Route("/entreprises/{id}", name="delete_company", methods={"POST"})
+     */
+    public function deleteCompany(Request $request, Company $company): Response
+    {
+        if ($this->isCsrfTokenValid('deleteCompany' . $company->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($company);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_companies');
+    }
+
     /**
      * @Route("/entreprises", name="companies")
      */
@@ -39,6 +54,21 @@ class AdminController extends AbstractController
             ['companies' => $companies, 'form' => $form->createView()]
         );
     }
+
+    /**
+     * @Route("/etudiants/{id}", name="delete_student", methods={"POST"})
+     */
+    public function deleteStudent(Request $request, Student $student): Response
+    {
+        if ($this->isCsrfTokenValid('deleteStudent' . $student->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($student);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('admin_students');
+    }
+
     /**
      * @Route("/etudiants", name="students")
      */
