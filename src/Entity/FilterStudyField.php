@@ -7,9 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class FilterStudyField
 {
-    /**
-     *
-     */
     private StudyField $studyField;
 
     /**
