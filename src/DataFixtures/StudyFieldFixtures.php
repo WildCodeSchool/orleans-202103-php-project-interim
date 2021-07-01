@@ -8,15 +8,19 @@ use Doctrine\Persistence\ObjectManager;
 
 class StudyFieldFixtures extends Fixture
 {
-    public const LOOPNUMBER = 10;
+    public const STUDYFIELD = ['Général' , 'Droit' , 'Economie' ,
+    'Gestion' , 'STAPS' , 'Biologie' , 'Chimie' , 'Informatique' , 'Mathématiques' ,
+    'Physique' , 'Histoire' , 'Langues' , 'Lettres' , 'Géographie et Aménagement' ,
+    'Polytech' , 'Médecine' ,
+    'MEEF'];
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= self ::LOOPNUMBER; $i++) {
+        foreach (self ::STUDYFIELD as $key => $field) {
             $studyField = new StudyField();
-            $studyField->setStudyFieldName('Domaine : ' . $i);
+            $studyField->setStudyFieldName($field);
 
             $manager->persist($studyField);
-            $this->addReference('studyField_' . $i, $studyField);
+            $this->addReference('studyField_' . $key, $studyField);
         }
 
         $manager->flush();

@@ -30,18 +30,34 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         // Création d’un utilisateur de type “student”
         $student = new User();
         $student->setFirstname('Etudiant');
-        $student->setLastname('n°1');
+        $student->setLastname('Chaprot');
         $student->setPhone('0123456789');
         $student->setEmail('student@monsite.com');
+        $student->setStudent($this->getReference('student_1'));
         $student->setRoles(['ROLE_STUDENT']);
-        $student->setFirstname('studentfirstname');
-        $student->setLastname('studentlastname');
         $student->setPassword($this->passwordEncoder->encodePassword(
             $student,
             'studentpassword'
         ));
 
         $manager->persist($student);
+
+        // Création d’une liste  d'utilisateurs de type “student”
+        for ($i = 2; $i < StudentFixtures::LOOPNUMBER; $i++) {
+            $faker = Factory::create('FR,fr');
+            $student = new User();
+            $student->setFirstname($faker->firstName());
+            $student->setLastname($faker->lastName());
+            $student->setPhone($faker->e164PhoneNumber());
+            $student->setEmail($faker->email());
+            $student->setStudent($this->getReference('student_' . $i));
+            $student->setRoles(['ROLE_STUDENT']);
+            $student->setPassword($this->passwordEncoder->encodePassword(
+                $student,
+                $faker->password()
+            ));
+            $manager->persist($student);
+        }
 
         // Création d’un utilisateur de type “company”
         $company = new User();
@@ -98,7 +114,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CompanyFixtures::class,
+          CompanyFixtures::class,
+          StudentFixtures::class,
         ];
     }
 }

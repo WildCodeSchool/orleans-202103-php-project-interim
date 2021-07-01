@@ -6,6 +6,7 @@ use App\Data\SearchData;
 use App\Entity\Company;
 use App\Form\SearchType;
 use App\Repository\CompanyRepository;
+use App\Entity\Student;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,8 +35,22 @@ class AdminController extends AbstractController
         $companies = $repository->findSearch($data);
 
         return $this->render(
-            'admin/companiesList.html.twig',
+            'admin/companies_list.html.twig',
             ['companies' => $companies, 'form' => $form->createView()]
+        );
+    }
+    /**
+     * @Route("/etudiants", name="students")
+     */
+    public function studentsList(): Response
+    {
+        $students = $this->getDoctrine()
+            ->getRepository(Student::class)
+            ->findAll();
+
+        return $this->render(
+            'admin/students_list.html.twig',
+            ['students' => $students]
         );
     }
 }
