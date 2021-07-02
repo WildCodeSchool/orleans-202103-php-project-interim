@@ -18,18 +18,24 @@
 			<div class="row d-flex justify-content-center">
 				{% for job in jobs %}
 					<div class=" col-lg-3 data-card">
-						<h2 class="pb-2 text-center">{{ job.post|upper }}</h2>
-						<h3 class="post mt-2 text-center">{{ job.company.companyName|upper }}</h3>
-						<h3 class="postalCode mb-3 pb-2 text-center">{{ job.postalCode }}
-							:
-							{{ job.city|capitalize }}</h3>
-						<p>{{ job.description }}</p>
-						<div class="d-flex justify-content-center">
-							<a href="#" class="btn btn-light text-center">En savoir plus</a>
-						</div>
-						<h4 class="mt-2 text-center">Postez-le :
-							{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
-					</div>
+                        <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper }}</h2>
+                        <h3 class="post mt-2 text-center">
+                            <i class="fas fa-industry"></i>
+                            {{ job.company.companyName|upper }}</h3>
+                        <h3 class="postalCode mb-3 pb-2 text-center">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{ job.city|capitalize }}
+                            ({{ job.postalCode }})
+                        </h3>
+                        <p>{{ job.description }}</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="postuler btn btn-light text-center">Postuler</a>
+                        </div>
+                        <h4 class="mt-2 text-center">
+                            <i class="fas fa-table"></i>
+                            Postée le :
+                            {{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+                    </div>
 				{% else %}
 					<p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
 				{% endfor %}

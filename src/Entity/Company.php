@@ -51,7 +51,7 @@ class Company
     private string $siret;
 
     /**
-     * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company")
+     * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company", cascade={"persist", "remove"})
      */
     private Collection $jobs;
 

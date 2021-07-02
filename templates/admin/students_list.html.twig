@@ -39,8 +39,8 @@
                                 {{ student.birthdate|date("d/m/Y") }}</h3>
 
 
-                            <form method="post" action="#" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post d-flex justify-content-center w-100">
-                                <input type="hidden" name="_token" value="#">
+                             <form method="post" action="{{ path('admin_delete_student', {'id': student.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');"class="post d-flex justify-content-center w-100">
+                                <input type="hidden" name="_token" value="{{ csrf_token('deleteStudent' ~ student.id) }}">
                                 <h4>
                                     <i class="fas fa-file"></i>
                                     {{ 'CV' }}</h4>
