@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Company;
-use App\Entity\Student;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\FilterStudyField;
+use App\Form\FilterStudyFieldType;
+use App\Repository\StudentRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin", name="admin_")
@@ -37,15 +40,21 @@ class AdminController extends AbstractController
     /**
      * @Route("/etudiants", name="students")
      */
-    public function studentsList(): Response
+    public function studentsList(StudentRepository $studentRepository, Request $request): Response
     {
-        $students = $this->getDoctrine()
-            ->getRepository(Student::class)
-            ->findAll();
+        $filter = new FilterStudyField();
+        $form = $this->createForm(FilterStudyFieldType::class, $filter);
+        $form->handleRequest($request);
+        $students = $studentRepository->findAll();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $students = $studentRepository->findBy([
+                'studyField' => $filter->getStudyField()
+            ]);
+        }
 
         return $this->render(
             'admin/students_list.html.twig',
-            ['students' => $students]
+            ['students' => $students, 'form' => $form->createView()]
         );
     }
 }
