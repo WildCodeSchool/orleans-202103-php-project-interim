@@ -41,6 +41,10 @@
                             </table>
                             <h3>CV : {{ 'CV' }}</h3>
                             <h3>Lettre de motivation : {{ 'Lettre' }}</h3>
+                            <form method="post" action="{{ path('admin_delete_student', {'id': student.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('deleteStudent' ~ student.id) }}">
+                                <button class="delete btn">Supprimer</button>
+                            </form>
                         </div>
                     {% endif %}
                 {% else %}
