@@ -16,9 +16,11 @@ use App\Entity\Company;
 use App\Repository\JobRepository;
 use App\Form\JobType;
 use DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/entreprise", name="company_")
+ * @IsGranted("ROLE_COMPANY")
  */
 class CompanyController extends AbstractController
 {
@@ -114,9 +116,9 @@ class CompanyController extends AbstractController
      */
     public function profile(): Response
     {
-        $user = new User();
-        $company = new Company();
+        /** @var User */
         $user = $this->getUser();
+        $company = $user->getCompany();
 
         return $this->render('company/profile.html.twig', [
             "user" => $user,
