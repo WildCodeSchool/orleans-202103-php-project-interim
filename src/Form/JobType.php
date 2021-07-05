@@ -28,6 +28,7 @@ class JobType extends AbstractType
             ->add('studyField', EntityType::class, [
                 'class' => StudyField::class,
                 'choice_label' => 'studyFieldName',
+                'label' => 'Domaine',
                 'multiple' => false,
                 'expanded' => false,
             ])
