@@ -1,51 +1,58 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}{{ parent() }} - Liste des étudiants{% endblock %}
+{% block title %}
+    {{ parent() }}
+    - Liste des étudiants
+{% endblock %}
 
 {% block body %}
     <section class="adminOffre">
         <div class="container">
             <h3 class="text-center mt-3">Liste des comptes Étudiants</h3>
-            <div class="row my-3">
-                <div class="col-lg-2">
-                    <a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Trier par
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div class="row d-flex justify-content-center">
+                {{ form_start(form, {'attr': {'class': 'form-group d-flex justify-content-center'}}) }}
+                <div class="col-md-3">
+                    <div class="form-group">
+                        {{ form_row(form.studyField, {'attr': {'class': 'form-control w-100'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-primary mb-2 w-100">Filtrer</button>
+                </div>
+                {{ form_end(form) }}
                 {% for student in students %}
                     {% if student.user is not null %}
                         <div class=" col-lg-3 data-card text-center">
-                            <h2 class="pb-2">{{ student.user.firstname ~ ' ' ~ student.user.lastname|upper }}</h2>
-                            <h3 class="mt-2">Niveau d'étude : {{ student.level|upper }}</h3>
-                            <h3 class="mb-3 pb-2">Domaine : {{ 'TO DO'|upper }}</h3>
-                            <table>
-                                <tr>
-                                    <td>Téléphone : </td>
-                                    <td>{{ student.user.phone }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Email : </td>
-                                    <td>{{ student.user.email }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Date de naissance : </td>
-                                    <td>{{ student.birthdate|date("d/m/Y") }}</td>
-                                </tr>
-                            </table>
-                            <h3>CV : {{ 'CV' }}</h3>
-                            <h3>Lettre de motivation : {{ 'Lettre' }}</h3>
-                            <form method="post" action="{{ path('admin_delete_student', {'id': student.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');">
+                            <h2 class="pb-2 d-flex align-items-center justify-content-center">{{ student.user.firstname ~ ' ' ~ student.user.lastname|upper }}</h2>
+                            <h3 class="mt-2">
+                                <i class="fas fa-user-graduate"></i>
+                                {{ student.level|upper }}</h3>
+                            <h3 class="mb-3">{{ student.studyField.studyFieldName }}</h3>
+                            <h3 class="mb-3">
+                                <i class="fas fa-phone-square-alt"></i>
+                                {{ student.user.phone }}</h3>
+                            <h3 class="mb-3">
+                                <i class="fas fa-envelope"></i>
+                                {{ student.user.email }}</h3>
+                            <h3 class="mb-3">
+                                <i class="fas fa-birthday-cake"></i>
+                                {{ student.birthdate|date("d/m/Y") }}</h3>
+
+
+                             <form method="post" action="{{ path('admin_delete_student', {'id': student.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');"class="post d-flex justify-content-center w-100">
                                 <input type="hidden" name="_token" value="{{ csrf_token('deleteStudent' ~ student.id) }}">
-                                <button class="delete btn">Supprimer</button>
+                                <h4>
+                                    <i class="fas fa-file"></i>
+                                    {{ 'CV' }}</h4>
+                                <button class="delete btn mx-3 text-center h-100 align-items-center btn-sm">Supprimer</button>
+                                <h4>
+                                    <i class="fas fa-envelope-open-text"></i>
+                                    {{ 'LM' }}</h4>
                             </form>
+
+
                         </div>
+
                     {% endif %}
                 {% else %}
                     <p class="alert alert-warning text-center bg-primary text-light">Aucun compte Etudiant</p>
