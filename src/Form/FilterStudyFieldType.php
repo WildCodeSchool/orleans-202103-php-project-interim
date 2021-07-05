@@ -16,7 +16,6 @@ class FilterStudyFieldType extends AbstractType
         $builder
             ->add('studyField', EntityType::class, [
                 'class' => StudyField::class,
-                'label' => false,
                 'choice_label' => 'studyFieldName',
                 'label' => 'Domaine d\'étude',
                 'multiple' => false,
