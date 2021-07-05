@@ -31,9 +31,15 @@ class StudyField
      */
     private Collection $jobs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="studyField")
+     */
+    private Collection $students;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+        $this->students = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +83,36 @@ class StudyField
             // set the owning side to null (unless already changed)
             if ($job->getStudyField() === $this) {
                 $job->setStudyField(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Student[]
+     */
+    public function getStudents(): Collection
+    {
+        return $this->students;
+    }
+
+    public function addStudent(Student $student): self
+    {
+        if (!$this->students->contains($student)) {
+            $this->students[] = $student;
+            $student->setStudyField($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStudent(Student $student): self
+    {
+        if ($this->students->removeElement($student)) {
+            // set the owning side to null (unless already changed)
+            if ($student->getStudyField() === $this) {
+                $student->setStudyField(null);
             }
         }
 

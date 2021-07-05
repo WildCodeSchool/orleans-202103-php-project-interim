@@ -39,6 +39,11 @@ class Student
      */
     private ?User $user;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=StudyField::class, inversedBy="students")
+     */
+    private ?StudyField $studyField;
+
     public function __serialize(): array
     {
         return [];
@@ -91,6 +96,18 @@ class Student
         }
 
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getStudyField(): ?StudyField
+    {
+        return $this->studyField;
+    }
+
+    public function setStudyField(?StudyField $studyField): self
+    {
+        $this->studyField = $studyField;
 
         return $this;
     }

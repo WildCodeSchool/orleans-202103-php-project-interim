@@ -17,8 +17,12 @@ class FilterStudyFieldType extends AbstractType
             ->add('studyField', EntityType::class, [
                 'class' => StudyField::class,
                 'choice_label' => 'studyFieldName',
+                'label' => 'Domaine d\'étude',
                 'multiple' => false,
                 'expanded' => false,
+                'attr' => [
+                    'aria-label' => 'Domaines d\'etudes'
+                ]
             ]);
     }
 
