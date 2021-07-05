@@ -1,5 +1,10 @@
-@import 'variables.scss';
-@import '~bootstrap/scss/bootstrap';
+@import "variables.scss";
+@import "~bootstrap/scss/bootstrap";
+
+main {
+    margin-top: 98px;
+    min-height: calc(100vh - var(--footerNavbar-height));
+}
 
 body {
     background-color: $light;
