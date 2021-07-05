@@ -39,6 +39,11 @@ class Student
      */
     private ?User $user;
 
+    public function __serialize(): array
+    {
+        return [];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
