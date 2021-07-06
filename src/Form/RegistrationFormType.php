@@ -54,7 +54,12 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'placeholder' => 'jean.dupond@Email.fr'
+                ]
+            ])
+
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
