@@ -16,6 +16,7 @@ use App\Entity\Company;
 use App\Repository\JobRepository;
 use App\Form\JobType;
 use DateTime;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
@@ -35,7 +36,7 @@ class CompanyController extends AbstractController
     /**
      * @Route("/offres", name="jobs")
      */
-    public function list(): Response
+    public function list(PaginatorInterface $paginator, Request $request): Response
     {
         if (!is_null($this->getUser())) {
             /** @phpstan-ignore-next-line */
@@ -43,7 +44,11 @@ class CompanyController extends AbstractController
         } else {
             $jobs = [];
         }
-
+        $jobs = $paginator->paginate(
+            $jobs, /* query NOT result */
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render('company/list_jobs.html.twig', [
             'jobs' =>  $jobs,
         ]);
