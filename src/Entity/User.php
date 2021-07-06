@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="Cette Email à deja été utilisé sur ce site.")
+ * @UniqueEntity(fields={"email"}, message="Cet email a déjà été utilisé sur ce site.")
  */
 class User implements UserInterface
 {
