@@ -58,7 +58,7 @@ class AdminController extends AbstractController
         $companies = $paginator->paginate(
             $companies, /* query NOT result */
             $request->query->getInt('page', 1),
-            6/*limit per page*/
+            9/*limit per page*/
         );
 
         return $this->render(
@@ -101,11 +101,11 @@ class AdminController extends AbstractController
         $students = $paginator->paginate(
             $students, /* query NOT result */
             $request->query->getInt('page', 1),
-            6
+            9
         );
         return $this->render(
             'admin/students_list.html.twig',
-            ['students' => $students, 'form' => $form->createView(), 'pagination' => $paginator,]
+            ['students' => $students, 'form' => $form->createView()]
         );
     }
 }

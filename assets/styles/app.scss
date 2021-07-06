@@ -1,5 +1,5 @@
-@import 'variables.scss';
-@import '~bootstrap/scss/bootstrap';
+@import "variables.scss";
+@import "~bootstrap/scss/bootstrap";
 
 body {
     background-color: $light;
@@ -53,6 +53,13 @@ h5 {
     text-transform: uppercase;
     color: $primary;
     font-size: $h5-size;
+}
+
+.page-link {
+    font-family: $subtitle-font;
+    text-transform: uppercase;
+    color: $primary;
+    font-size: 0.5em;
 }
 
 footer {
