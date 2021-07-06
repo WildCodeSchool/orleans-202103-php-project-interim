@@ -1,0 +1,52 @@
+{% extends 'layout_company.html.twig' %}
+
+{% block title %}{{ parent() }} - Profil{% endblock %}
+
+{% block body %}
+    <h2 class="text-center my-3 my-lg-4 my-xl-5">Student Interim Étudiant</h2>
+    <h3 class="text-center my-lg-5">Profil</h3>
+    <div class="card container-fluid text-center pb-2 mb-5 w-75">
+        <div class="card-body">
+            <div class="row pt-3">
+                <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">
+                            <i class="fas fa-user-alt"></i>
+                            Contact
+                        </li>
+                        <li>{{ user.firstname ~ ' ' ~ user.lastname }}</li>
+                        <li class="text-muted">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </li>
+                        <li>{{ user.email }}</li>
+                    </ul>
+                </div>
+                <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">
+                            <i class="fas fa-user-graduate"></i>
+                            Niveau d'étude
+                        </li>
+                        <li>{{ student.level }}</li>
+                        <li class="text-muted">
+                            <i class="fas fa-phone-square-alt"></i>
+                            Téléphone
+                        </li>
+                        <li>{{ user.phone }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">
+                            <i class="fas fa-birthday-cake"></i>
+                            Date de naissance
+                        </li>
+                        <li>{{ student.birthdate|date("d/m/Y") }}</li>
+                    </ul>
+                </div>
+            <a href="#" class="btn btn-primary btn-lg w-25 mt-4">EDITER</a>
+        </div>
+    </div>
+{% endblock %}

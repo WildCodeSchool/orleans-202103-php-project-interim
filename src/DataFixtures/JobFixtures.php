@@ -9,6 +9,8 @@ use App\DataFixtures\CompanyFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use App\DataFixtures\StudyFieldFixtures;
+use App\Entity\StudyField;
 
 class JobFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -26,6 +28,9 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
             $job->setCity($faker->city());
             $job->setDescription($faker->paragraph(3, true));
             $job->setCompany($this->getReference('company_' . rand(1, CompanyFixtures::LOOPNUMBER)));
+            $job->setStudyField(
+                $this->getReference('studyField_' . rand(0, count(StudyFieldFixtures::STUDYFIELD) - 1))
+            );
 
             $manager->persist($job);
         }
@@ -36,6 +41,7 @@ class JobFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CompanyFixtures::class,
+            StudyFieldFixtures::class,
         ];
     }
 }

@@ -10,9 +10,17 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Entity\Job;
+use App\Entity\Company;
+use App\Repository\JobRepository;
+use App\Form\JobType;
+use DateTime;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/entreprise", name="company_")
+ * @IsGranted("ROLE_COMPANY")
  */
 class CompanyController extends AbstractController
 {
@@ -23,6 +31,70 @@ class CompanyController extends AbstractController
     {
         return $this->render('company/index.html.twig');
     }
+
+    /**
+     * @Route("/offres", name="jobs")
+     */
+    public function list(): Response
+    {
+        if (!is_null($this->getUser())) {
+            /** @phpstan-ignore-next-line */
+            $jobs = $this->getUser()->getCompany()->getJobs();
+        } else {
+            $jobs = [];
+        }
+
+        return $this->render('company/list_jobs.html.twig', [
+            'jobs' =>  $jobs,
+        ]);
+    }
+
+    /**
+     * @Route("/offres/ajouter", name="jobs_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $job = new Job();
+        $form = $this->createForm(JobType::class, $job);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $job->setRegisteredAt(new DateTime('now'));
+            /** @phpstan-ignore-next-line */
+            $job->setCompany($this->getUser()->getCompany());
+            $entityManager->persist($job);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('company_jobs');
+        }
+
+        return $this->render('job/new.html.twig', [
+            'job' => $job,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/offres/modifier/{id}", name="jobs_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Job $job): Response
+    {
+        $form = $this->createForm(JobType::class, $job);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('company_jobs');
+        }
+
+        return $this->render('job/edit.html.twig', [
+            'job' => $job,
+            'form' => $form->createView(),
+        ]);
+    }
+
     /**
      * @Route("/devis", name="quotation")
      */
@@ -56,6 +128,21 @@ class CompanyController extends AbstractController
         return $this->render('company/quotationRequest.html.twig', [
             "form" => $form->createView(),
             "quotationRequest" => $quotationRequest,
+        ]);
+    }
+
+    /**
+     * @Route("/profil", name="profile")
+     */
+    public function profile(): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $company = $user->getCompany();
+
+        return $this->render('company/profile.html.twig', [
+            "user" => $user,
+            "company" => $company,
         ]);
     }
 }

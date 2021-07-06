@@ -1,5 +1,11 @@
-@import 'variables.scss';
-@import '~bootstrap/scss/bootstrap';
+@import "variables.scss";
+@import "~bootstrap/scss/bootstrap";
+
+
+main {
+    margin-top: 98px;
+    min-height: calc(100vh - 246px);
+}
 
 body {
     background-color: $light;
@@ -43,16 +49,38 @@ h4 {
     font-family: $subtitle-font;
     text-transform: uppercase;
     color: $primary;
-    font-size: $subtitle-size;
+    font-size: $h4-size;
 }
 
-nav {
-    background-color: $primary;
-    color: $light;
+h5 {
+    margin: 0;
+    padding: 0;
+    font-family: $subtitle-font;
+    text-transform: uppercase;
+    color: $primary;
+    font-size: $h5-size;
+}
+
+.page-link {
+    font-family: $subtitle-font;
+    text-transform: uppercase;
+    color: $primary;
+    font-size: 0.5em;
 }
 
 footer {
     background-color: $secondary;
     color: $light;
     font-size: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+    body {
+        font-size: $text-size2;
+    }
+}
+
+.filter {
+    font-size: $filter-size;
+    font-weight: bold;
 }

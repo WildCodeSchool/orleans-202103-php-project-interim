@@ -1,29 +1,113 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <img src="{{ asset('build/images/logo.png') }}" alt="logo" class="navbar-logo logo">
-    <div class="collapse navbar-collapse justify-content-around nav-style" id="navbarNavAltMarkup">
-        <ul class="navbar-nav navlinks">
-            <li class="nav-item">
-                <a class="nav-link ms-5 me-5 active" href="{{ path('home') }}">Accueil</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle ms-5 me-5 active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Inscription
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Étudiant</a></li>
-                    <li><a class="dropdown-item" href="#">Entreprise</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link ms-5 me-5" href= "{{ path('app_login') }}" >Connexion</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link ms-5 me-5 active" href="{{ path('contact') }}">Contact</a>
-            </li>
-        </ul>
-    </div>
-    <button class="navbar-toggler hidden-md-up pull-left " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar bg-light navbar-expand-lg navbar-light fixed-top pb-2">
+    <a href="{{ path('home') }}"><img src="{{ asset('build/images/logo.png') }}" alt="logo" class="navbar-logo mx-4 logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_job_index') }}">Offres</a>
+                </li>
+                <div class="dropdown">
+                    <button class="nav-link py-1 px-3 mx-1 dropdown-toggle blue-button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Gestion
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item nav-link" href="{{ path('admin_students') }}">Étudiant</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item nav-link" href="{{ path('admin_companies') }}">Entreprise</a>
+                        </li>
+                    </ul>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link py-1 px-4 mx-2 red-button" href="{{ path('app_logout') }}">
+                        Déconnexion
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% elseif is_granted('ROLE_STUDENT') %}
+        <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('offer') }}">Offres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item ml-5">
+                    <a class="nav-link py-1 px-3 ms-3 blue-button" href="{{ path('student_profile') }}">
+                        <i class="fas fa-user-alt"></i>
+                        {{ app.user.lastname|upper ~ ' ' ~ app.user.firstname|capitalize }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-1 px-4 mx-3 red-button" href="{{ path('app_logout') }}">
+                        Déconnexion
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% elseif is_granted('ROLE_COMPANY') %}
+        <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('company_jobs') }}">Offres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('company_quotation') }}">Devis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item ml-5">
+                    <a class="nav-link py-1 px-3 ms-3 blue-button" href="{{ path('company_profile') }}">
+                        <i class="fas fa-user-alt"></i>
+                        {{ app.user.company.companyName }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-1 px-4 mx-3 red-button" href="{{ path('app_logout') }}">
+                        Déconnexion
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('offer') }}">Offres</a>
+                </li>
+                <li class="nav-item ml-5">
+                    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-1 px-4 mx-1 red-button" href="#">
+                        Inscription
+                   </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link py-1 px-4 mx-3 blue-button" href="{{ path('app_login') }}">
+                        Connexion
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
 </nav>
-    

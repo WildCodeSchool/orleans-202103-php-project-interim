@@ -1,0 +1,33 @@
+<div class="bg-info shadow p-3 mb-5 rounded form-group row mt-sm-0 px-xs-0 py-sm-0">
+    <div class="justify-content-start">
+        {{ form_start(form) }}
+        <div class="form-group pt-5 col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.post, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.studyField, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.city, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.postalCode, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.startAt, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.endAt, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.hoursAWeek, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+            {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group pb-5 col pt-5 col-lg-6 col-md-12 mx-auto">
+            <button class="btn btn-primary btn-lg w-100">{{ button_label|default('Poster') }}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

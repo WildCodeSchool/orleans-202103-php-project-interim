@@ -2,8 +2,13 @@
 
 {% block title %}Student-Interim{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminJob') }}
+{% endblock %}
+
 {% block navbar %}
-    {% include 'component/_navbar_user.html.twig' %}
+    {% include 'component/_navbar.html.twig' %}
 {% endblock %}
 
 {% block footer %}
