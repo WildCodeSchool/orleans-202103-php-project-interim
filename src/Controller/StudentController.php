@@ -40,6 +40,7 @@ class StudentController extends AbstractController
 
     /**
      * @Route("/postulate/{job}", name="postulate")
+     * @IsGranted("ROLE_STUDENT")
      */
     public function postulate(Request $request, MailerInterface $mailer, Job $job): Response
     {
