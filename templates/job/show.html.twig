@@ -42,7 +42,11 @@
                         </ul>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary btn-lg w-25 mt-4">POSTULER</a>
+                {% if is_granted('ROLE_STUDENT') %}
+                    <a href="{{ path('postulate', {'job': job.id}) }}" class="btn btn-primary btn-lg w-25 mt-4">Postuler</a>
+                {% else %}
+                    <button href="#" class="btn btn-dark text-light btn-lg w-25 mt-4" disabled>Postuler</button>
+                {% endif %}
             </div>
         </div>
         <div class="form-group col pt-5 col-lg-6 col-md-12 mx-auto mb-5 text-center">
