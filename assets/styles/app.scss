@@ -1,6 +1,12 @@
 @import "variables.scss";
 @import "~bootstrap/scss/bootstrap";
 
+
+main {
+    margin-top: 98px;
+    min-height: calc(100vh - 246px);
+}
+
 body {
     background-color: $light;
     color: $dark;
