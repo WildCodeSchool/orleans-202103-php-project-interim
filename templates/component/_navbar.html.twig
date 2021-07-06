@@ -1,5 +1,5 @@
 <nav class="navbar bg-light navbar-expand-lg navbar-light fixed-top pb-2">
-    <a href="{{ path('home') }}"><img src="{{ asset('build/images/logo.png') }}" alt="logo" class="navbar-logo mx-5 logo"></a>
+    <a href="{{ path('home') }}"><img src="{{ asset('build/images/logo.png') }}" alt="logo" class="navbar-logo mx-4 logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +45,10 @@
                     <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                 </li>
                 <li class="nav-item ml-5">
-                    <a class="nav-link" href="#">Compte</a>
+                    <a class="nav-link py-1 px-3 ms-3 blue-button" href="{{ path('student_profile') }}">
+                        <i class="fas fa-user-alt"></i>
+                        {{ app.user.student.lastname ~ ' ' ~ app.user.student.firstname|capitalize }}
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link py-1 px-4 mx-3 red-button" href="{{ path('app_logout') }}">
@@ -70,7 +73,10 @@
                     <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                 </li>
                 <li class="nav-item ml-5">
-                    <a class="nav-link" href="#">Compte</a>
+                    <a class="nav-link py-1 px-3 ms-3 blue-button" href="{{ path('company_profile') }}">
+                        <i class="fas fa-user-alt"></i>
+                        {{ app.user.company.companyName }}
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link py-1 px-4 mx-3 red-button" href="{{ path('app_logout') }}">
@@ -91,19 +97,11 @@
                 <li class="nav-item ml-5">
                     <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                 </li>
-                <div class="dropdown">
-                    <button class="nav-link py-1 px-3 mx-1 dropdown-toggle red-button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link py-1 px-4 mx-1 red-button" href="#">
                         Inscription
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li>
-                            <a class="dropdown-item nav-link" href="#">Étudiant</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item nav-link" href="#">Entreprise</a>
-                        </li>
-                    </ul>
-                </div>
+                   </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link py-1 px-4 mx-3 blue-button" href="{{ path('app_login') }}">
                         Connexion
