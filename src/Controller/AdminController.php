@@ -2,14 +2,15 @@
 
 namespace App\Controller;
 
-use App\Data\SearchData;
 use App\Entity\Company;
+use App\Entity\Student;
+use App\Data\SearchData;
+use App\Form\SearchType;
 use App\Entity\FilterStudyField;
 use App\Form\FilterStudyFieldType;
-use App\Repository\StudentRepository;
-use App\Form\SearchType;
 use App\Repository\CompanyRepository;
-use App\Entity\Student;
+use App\Repository\StudentRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,12 +46,20 @@ class AdminController extends AbstractController
     /**
      * @Route("/entreprises", name="companies")
      */
-    public function companiesList(CompanyRepository $repository, Request $request): Response
-    {
+    public function companiesList(
+        CompanyRepository $repository,
+        Request $request,
+        PaginatorInterface $paginator
+    ): Response {
         $data = new SearchData();
         $form = $this->createForm(SearchType::class, $data);
         $form->handleRequest($request);
         $companies = $repository->findSearch($data);
+        $companies = $paginator->paginate(
+            $companies, /* query NOT result */
+            $request->query->getInt('page', 1),
+            9/*limit per page*/
+        );
 
         return $this->render(
             'admin/companies_list.html.twig',
@@ -75,8 +84,11 @@ class AdminController extends AbstractController
     /**
      * @Route("/etudiants", name="students")
      */
-    public function studentsList(StudentRepository $studentRepository, Request $request): Response
-    {
+    public function studentsList(
+        StudentRepository $studentRepository,
+        Request $request,
+        PaginatorInterface $paginator
+    ): Response {
         $filter = new FilterStudyField();
         $form = $this->createForm(FilterStudyFieldType::class, $filter);
         $form->handleRequest($request);
@@ -86,7 +98,11 @@ class AdminController extends AbstractController
                 'studyField' => $filter->getStudyField()
             ]);
         }
-
+        $students = $paginator->paginate(
+            $students, /* query NOT result */
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render(
             'admin/students_list.html.twig',
             ['students' => $students, 'form' => $form->createView()]
