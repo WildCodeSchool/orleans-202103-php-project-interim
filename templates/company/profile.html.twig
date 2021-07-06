@@ -1,0 +1,53 @@
+{% extends 'layout_company.html.twig' %}
+
+{% block title %}{{ parent() }} - Profil{% endblock %}
+
+{% block body %}
+    <h2 class="text-center my-3 my-lg-4 my-xl-5">Student Interim Entreprise</h2>
+    <h3 class="text-center my-lg-5">Profil</h3>
+    <div class="card container-fluid text-center pb-2 mb-5 w-75">
+        <div class="card-body">
+            <div class="row pt-3">
+                <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">
+                            <i class="fas fa-industry"></i>
+                            Nom de la société
+                        </li>
+                        <li>{{ company.companyName }}</li>
+                        <li class="text-muted">
+                            <i class="fas fa-user-alt"></i>
+                            Contact
+                        </li>
+                        <li>{{ user.firstname ~ ' ' ~ user.lastname }}</li>
+                        <li class="text-muted">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </li>
+                        <li>{{ user.email }}</li>
+                    </ul>
+                </div>
+                <div class="col list-unstyled"
+                    <ul>
+                        <li class="text-muted">
+                            <i class="fas fa-university"></i>
+                            Raison sociale
+                        </li>
+                        <li>{{ company.socialReason }}</li>
+                        <li class="text-muted">
+                            <i class="fas fa-info"></i>
+                            Siret
+                        </li>
+                        <li>{{ company.siret }}</li>
+                        <li class="text-muted">
+                            <i class="fas fa-phone-square-alt"></i>
+                            Téléphone
+                        </li>
+                        <li>{{ user.phone }}</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="btn btn-primary btn-lg w-25 mt-4">EDITER</a>
+        </div>
+    </div>
+{% endblock %}

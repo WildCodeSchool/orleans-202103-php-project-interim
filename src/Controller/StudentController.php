@@ -10,11 +10,14 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Student;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class StudentController extends AbstractController
 {
     /**
      * @Route("/etudiant/", name="student_home")
+     * @IsGranted("ROLE_STUDENT")
      */
     public function index(): Response
     {
@@ -50,5 +53,19 @@ class StudentController extends AbstractController
         $this->addFlash('success', 'Nous prenons en compte votre demande, 
         nous vous répondrons dans les meilleurs délais.');
         return $this->redirectToRoute('offer');
+
+    /**
+    * @Route("/etudiant/profil", name="student_profile")
+    */
+    public function profile(): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $student = $user->getStudent();
+
+        return $this->render('student/profile.html.twig', [
+            "user" => $user,
+            "student" => $student,
+        ]);
     }
 }
