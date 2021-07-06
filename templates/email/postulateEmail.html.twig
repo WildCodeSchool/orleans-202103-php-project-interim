@@ -1,0 +1,25 @@
+{% extends 'email/layoutEmail.html.twig' %}
+
+{% block title %}{{ parent() }} - Postulation{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <p>Bonjour,</p>
+    <p>un étudiant a confirmé vouloir postuler à l'offre : "{{ job.post }}"
+    postée par l'entreprise : "{{ job.company.companyName|upper }}"
+    située à {{ job.city|capitalize }} ({{ job.postalCode }}).</p>
+    <table style="border: 0;">
+        <tr>
+            <td>Étudiant à contacter : </td>
+            <td>{{ user.lastname|upper }} {{ user.firstname }}</td>
+        </tr>
+        <tr>
+            <td>Téléphone: </td>
+            <td>{{ user.phone }}</td>
+        </tr>
+        <tr>
+            <td>Adresse mail: </td>
+            <td>{{ user.email }}</td>
+        </tr>
+    </table>
+{% endblock %} 
