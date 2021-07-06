@@ -45,13 +45,14 @@
 						<h4 class="mt-2 text-center">
 							<i class="fas fa-table"></i>
 
-							Postée le :
-							{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
-					</div>
-				{% else %}
-					<p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
-				{% endfor %}
-			</div>
-		</div>
-	</section>
+                            Postée le :
+                            {{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+                    </div>
+                {% else %}
+                    <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
+                {% endfor %}
+            </div>
+            {{ knp_pagination_render(jobs) }}
+        </div>
+    </section>
 {% endblock %}

@@ -54,6 +54,7 @@
                     <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
                 {% endfor %}
             </div>
+            {{ knp_pagination_render(jobs) }}
         </div>
     </section>
 {% endblock %}

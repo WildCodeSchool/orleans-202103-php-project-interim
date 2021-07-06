@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -36,7 +37,7 @@ class CompanyController extends AbstractController
     /**
      * @Route("/offres", name="jobs")
      */
-    public function list(): Response
+    public function list(PaginatorInterface $paginator, Request $request): Response
     {
         if (!is_null($this->getUser())) {
             /** @phpstan-ignore-next-line */
@@ -44,7 +45,11 @@ class CompanyController extends AbstractController
         } else {
             $jobs = [];
         }
-
+        $jobs = $paginator->paginate(
+            $jobs, /* query NOT result */
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render('company/list_jobs.html.twig', [
             'jobs' =>  $jobs,
         ]);
