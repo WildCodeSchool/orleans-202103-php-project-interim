@@ -86,7 +86,7 @@ class CompanyController extends AbstractController
         /** @var Company */
         $company = $user->getCompany();
 
-        if (!$user->$company->getJobs()->contains($job)) {
+        if (!$company->getJobs()->contains($job)) {
             throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
 
