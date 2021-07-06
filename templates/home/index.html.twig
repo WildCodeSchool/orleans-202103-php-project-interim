@@ -34,7 +34,7 @@
                         </h3>
                         <p>{{ job.description }}</p>
                         <div class="d-flex justify-content-center">
-                            <a href="#" class="postuler btn btn-light text-center">Postuler</a>
+                            <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
                         </div>
                         <h4 class="mt-2 text-center">
                             <i class="fas fa-table"></i>
