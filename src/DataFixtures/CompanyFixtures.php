@@ -9,7 +9,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class CompanyFixtures extends Fixture
 {
-    public const LOOPNUMBER = 10;
+    public const LOOPNUMBER = 50;
     public function load(ObjectManager $manager)
     {
         for ($i = 1; $i <= self::LOOPNUMBER; $i++) {

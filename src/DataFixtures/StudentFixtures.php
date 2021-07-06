@@ -10,7 +10,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class StudentFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const LOOPNUMBER = 10;
+    public const LOOPNUMBER = 50;
     public function load(ObjectManager $manager)
     {
         for ($i = 1; $i <= self::LOOPNUMBER; $i++) {
