@@ -52,6 +52,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
+            $user->setRoles([$form->get('roles')->getData()]);
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
