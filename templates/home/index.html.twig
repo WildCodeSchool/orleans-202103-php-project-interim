@@ -13,26 +13,26 @@
 
 {% block body %}
     <header class="d-flex justify-content-center align-items-center pb-3">
-        <img class="banner banner-head" src="{{ asset('build/images/pexels-fauxels-3182757.jpg') }}" alt"Plusieurs personnes travaillant ensemble (Photo de fauxels provenant de Pexels">
+        <img class="banner banner-head" src="{{ asset('build/images/pexels-fauxels-3182757.jpg') }}" alt"plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
         <h1 class="justify-content-center">Student Interim</h1>
     </header>
 
     <h2 class="m-3 d-flex justify-content-center p-xl-4">Nos dernières annonces</h2>
-        <section class="adminOffre pb-5">
+    <section class="adminOffre pb-5">
         <div class="container job-advert">
             <div class="row d-flex justify-content-center">
                 {% for job in jobs %}
                     <div class=" col-lg-3 mx-5 data-card">
-                        <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper }}</h2>
+                        <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
                         <h3 class="post mt-2 text-center">
                             <i class="fas fa-industry"></i>
-                            {{ job.company.companyName|upper }}</h3>
+                            {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
                         <h3 class="postalCode mb-3 pb-2 text-center">
                             <i class="fas fa-map-marker-alt"></i>
                             {{ job.city|capitalize }}
                             ({{ job.postalCode }})
                         </h3>
-                        <p>{{ job.description }}</p>
+                        <p>{{ job.description|length > 150 ? job.description|slice(0, 150) ~ '...' : job.description }}</p>
                         <div class="d-flex justify-content-center">
                             {% if app.user %}
                                 <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
@@ -52,7 +52,7 @@
         </div>
     </section>
 
-    <img class="banner pt-lg-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"Plusieurs personnes travaillant ensemble (Photo de fauxels provenant de Pexels">
+    <img class="banner pt-lg-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
     <div class="container">
         <h2 class="m-3 d-flex justify-content-center pt-5">Nos valeurs</h2>
         <div class="row mb-4 mb-lg-5">
@@ -62,14 +62,14 @@
             <div class="col-12 col-lg-7 mb-lg-3">
                 <p>
                     Chez Student Intérim nous apportons une nouvelle perspective de job étudiant.
-                    Nous vous aidons à acquérir de l’expérience et des compétences en lien avec le
-                    métier de vos rêves ! Grâce à notre offre nous vous accompagnons dans votre
-                    projet professionnel et nous vous guidons pour une meilleure insertion
-                    professionnelle. Remplissez vos disponibilités et on s’occupe du reste ! Tous
-                    nos jobs étudiants sont adaptés à votre emploi du temps.
-                    Concernant la rémunération, notre taux horaire est de 13,19€ de plus à la fin de
-                    votre job étudiant, Student Intérim vous délivrera une indemnité de fin de
-                    mission égale à 10% de votre rémunération brute.
+                                                            Nous vous aidons à acquérir de l’expérience et des compétences en lien avec le
+                                                            métier de vos rêves ! Grâce à notre offre nous vous accompagnons dans votre
+                                                            projet professionnel et nous vous guidons pour une meilleure insertion
+                                                            professionnelle. Remplissez vos disponibilités et on s’occupe du reste ! Tous
+                                                            nos jobs étudiants sont adaptés à votre emploi du temps.
+                                                            Concernant la rémunération, notre taux horaire est de 13,19€ de plus à la fin de
+                                                            votre job étudiant, Student Intérim vous délivrera une indemnité de fin de
+                                                            mission égale à 10% de votre rémunération brute.
                 </p>
             </div>
         </div>
@@ -79,12 +79,12 @@
                 <p>
                     <div>
                         Student intérim permet aux entreprises d’avoir une main d’œuvre compétente
-                        en lien avec le domaine de votre entreprise. Vous ne vous occupez de rien, le
-                        processus de recrutement est géré à 100% par nous et rapidement, vous
-                        pouvez donc vous concentrer sur votre entreprise. Nous vous garantissons de
-                        trouver les meilleurs profils en 48h. Suivez en direct le recrutement des
-                        étudiants. Notre site internet vous permet de trouver des étudiants disponibles
-                        qui coïncident avec vos besoins.
+                                                                        en lien avec le domaine de votre entreprise. Vous ne vous occupez de rien, le
+                                                                        processus de recrutement est géré à 100% par nous et rapidement, vous
+                                                                        pouvez donc vous concentrer sur votre entreprise. Nous vous garantissons de
+                                                                        trouver les meilleurs profils en 48h. Suivez en direct le recrutement des
+                                                                        étudiants. Notre site internet vous permet de trouver des étudiants disponibles
+                                                                        qui coïncident avec vos besoins.
                     </div>
                     <a href="{{ path('company_quotation') }}">Découvrez nos tarifs ici.</a>
                 </p>
