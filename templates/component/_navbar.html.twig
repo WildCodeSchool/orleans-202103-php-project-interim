@@ -75,7 +75,7 @@
                 <li class="nav-item ml-5">
                     <a class="nav-link py-1 px-3 ms-3 blue-button" href="{{ path('company_profile') }}">
                         <i class="fas fa-user-alt"></i>
-                        {{ app.user.company.companyName }}
+                        {{ app.user.company.companyName ?? "Compte" }}
                     </a>
                 </li>
                 <li class="nav-item">
