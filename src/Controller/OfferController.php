@@ -23,7 +23,7 @@ class OfferController extends AbstractController
         $form = $this->createForm(FilterStudyFieldType::class, $filter);
         $form->handleRequest($request);
         $jobs = $jobRepository->findAll();
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $filter->getStudyField() != '') {
             $jobs = $jobRepository->findBy([
                 'studyField' => $filter->getStudyField()
             ]);
@@ -34,7 +34,7 @@ class OfferController extends AbstractController
             9
         );
         return $this->render('offer/index.html.twig', [
-            'jobs' => $jobs,
+            'jobs' => $jobs ?? $jobRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
