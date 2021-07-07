@@ -1,61 +1,69 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('adminJob') }}
+	{{ parent() }}
+	{{ encore_entry_link_tags('adminJob') }}
 {% endblock %}
 
 {% block body %}
-    <section class="adminOffre">
-        <div class="container">
-            <h1 class="text-center pt-3 pb-3">Offres d'emploi</h1>
-            <div class="container">
-                <div class="d-flex justify-content-center">
-                    {{ form_start(form) }}
-                    <div class="column">
-                        <div class="row text-center">
-                            {{ form_label(form.studyField) }}
-                        </div>
-                        <div class="row">
-                            {{ form_widget(form.studyField) }}
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center py-3">
-                        <button class="filter btn btn-primary btn-lg w-50">Filtrer</button>
-                        {{ form_end(form) }}
-                    </div>
-                </div>
-            </div>
-            <div class="row pb-3 d-flex justify-content-center">
-                {% for job in jobs %}
-                    <div class=" col-lg-3 data-card">
-                        <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper }}</h2>
-                        <h3 class="post mt-2 text-center">
-                            <i class="fas fa-industry"></i>
-                            {{ job.company.companyName|upper }}</h3>
-                        <h3 class="postalCode mb-3 pb-2 text-center">
-                            <i class="fas fa-map-marker-alt"></i>
-                            {{ job.city|capitalize }}
-                            ({{ job.postalCode }})
-                        </h3>
-                        <p>{{ job.description }}</p>
-                        <div class="d-flex justify-content-center">
-                            {% if app.user %}
-                                <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
-                            {% else %}
-                                <a href="{{ path('app_register') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
-                            {% endif %}
-                        </div>
-                        <h4 class="mt-2 text-center">
-                            <i class="fas fa-table"></i>
-                            Postée le :
-                            {{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
-                    </div>
-                {% else %}
-                    <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
-                {% endfor %}
-            </div>
-            {{ knp_pagination_render(jobs) }}
-        </div>
-    </section>
+	<section class="adminOffre">
+		<div class="container">
+			<h1 class="text-center pt-3 pb-3">Offres d'emploi</h1>
+			<div class="container">
+				<div class="d-flex justify-content-center">
+					{{ form_start(form) }}
+					<div class="column">
+						<div class="row text-center">
+							{{ form_label(form.studyField) }}
+						</div>
+						<div class="row">
+							{{ form_widget(form.studyField) }}
+						</div>
+					</div>
+					<div class="d-flex justify-content-center py-3">
+						<button class="filter btn btn-primary btn-lg w-50">Filtrer</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+			</div>
+			<div class="row pb-3 d-flex justify-content-center">
+				{% for job in jobs %}
+					<div class=" col-lg-3 data-card">
+						<h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper }}</h2>
+						<h3 class="post mt-2 text-center">
+							<i class="fas fa-industry"></i>
+							{{ job.company.companyName|upper }}</h3>
+						<h3 class="postalCode mb-3 pb-2 text-center">
+							<i class="fas fa-map-marker-alt"></i>
+							{{ job.city|capitalize }}
+							({{ job.postalCode }})
+						</h3>
+						<p>{{ job.description }}</p>
+						{% if is_granted('ROLE_ADMIN') %}
+							<form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post mt-2 text-center">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
+								<a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="update btn btn-light">Modifier</a>
+								<button class="delete btn">Supprimer</button>
+							</form>
+						{% else %}
+							<div class="d-flex justify-content-center">
+								{% if app.user %}
+									<a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
+								{% else %}
+									<a href="{{ path('app_register') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
+								{% endif %}
+							</div>
+						{% endif %}
+						<h4 class="mt-2 text-center">
+							<i class="fas fa-table"></i>
+							Postée le :
+							{{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+					</div>
+				{% else %}
+					<p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
+				{% endfor %}
+			</div>
+			{{ knp_pagination_render(jobs) }}
+		</div>
+	</section>
 {% endblock %}
