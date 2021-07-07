@@ -7,54 +7,56 @@
 
 {% block body %}
     <section class="adminOffre">
-        <div class="container">
-            <h3 class="text-center pt-3 my-5">Mes offres</h3>
-            <div class="form-group pb-5 col pt-3 col-lg-6 col-md-12 mx-auto">
-                <a class="btn btn-primary btn-lg w-100" href="{{ path('company_jobs_new') }}">+ Ajouter une offre</a>
-            </div>
-            <div class="row my-3">
-                <div class="col-lg-2">
-                    <a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Trier par
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="#"></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-8 d-flex justify-content-center">
-                    <form class="form-inline mt-3 d-flex justify-content-start">
-                        <input class="form-control mr-sm-2 text-center" type="search" placeholder="Rechercher " aria-label="Search">
-                    </form>
-                </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                {% for job in jobs %}
-                    <div class=" col-lg-3 data-card">
-                       <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
-                        <h3 class="post mt-2 text-center">
-                            <i class="fas fa-industry"></i>
-                            {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
-                        <h3 class="postalCode mb-3 pb-2 text-center">
-                            <i class="fas fa-map-marker-alt"></i>
-                            {{ job.city|capitalize }}
-                            ({{ job.postalCode }})
-                        </h3>
-                        <p>{{ job.description|length > 150 ? job.description|slice(0, 150) ~ '...' : job.description }}</p>
-                        <div class="d-flex justify-content-center">
-                            <a href="{{ path('company_jobs_edit', {'id': job.id}) }}" class="postuler btn btn-light text-center">Modifier</a>
-                        </div>
-                        <h4 class="mt-2 text-center">
-                            <i class="fas fa-table"></i>
-                            Postée le :
-                            {{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
-                    </div>
-                {% else %}
-                    <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
-                {% endfor %}
-            </div>
-            {{ knp_pagination_render(jobs) }}
+        <h3 class="text-center pt-3 my-5">Mes offres</h3>
+        <div class="form-group pb-5 col pt-3 col-lg-6 col-md-12 mx-auto">
+            <a class="btn btn-primary btn-lg w-100" href="{{ path('company_jobs_new') }}">+ Ajouter une offre</a>
         </div>
+        <div class="row my-3">
+            <div class="col-lg-2">
+                <a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Trier par
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a class="dropdown-item" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-8 d-flex justify-content-center">
+                <form class="form-inline mt-3 d-flex justify-content-start">
+                    <input class="form-control mr-sm-2 text-center" type="search" placeholder="Rechercher " aria-label="Search">
+                </form>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            {% for job in jobs %}
+                <div class=" col-lg-3 data-card mx-3">
+                    <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
+                    <h3 class="post mt-2 text-center">
+                        <i class="fas fa-industry"></i>
+                        {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
+                    <h3 class="postalCode  pb-2 text-center">
+                        <i class="fas fa-graduation-cap"></i>
+                        {{ job.studyField.studyFieldName }}</h3>
+                    <h3 class="postalCode mb-3 pb-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {{ job.city|capitalize }}
+                        ({{ job.postalCode }})
+                    </h3>
+                    <p>{{ job.description|length > 200 ? job.description|slice(0, 200) ~ '...' : job.description }}</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ path('company_jobs_edit', {'id': job.id}) }}" class="postuler btn btn-light text-center">Modifier</a>
+                    </div>
+                    <h4 class="mt-2 text-center">
+                        <i class="fas fa-table"></i>
+                        Postée le :
+                        {{ job.registeredAt ? job.registeredAt|date('Y-m-d') : '' }}</h4>
+                </div>
+            {% else %}
+                <p class="alert alert-warning text-center bg-primary text-light">Aucune offre d'emploi</p>
+            {% endfor %}
+        </div>
+        {{ knp_pagination_render(jobs) }}
+
     </section>
 {% endblock %}
