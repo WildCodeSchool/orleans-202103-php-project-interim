@@ -1,9 +1,13 @@
-<h1>Bonjour!</h1>
+{% extends 'email/layoutEmail.html.twig' %}
 
-<p>Vous avez demandé à réinitialiser votre mot de passe. Pour cela, veuillez cliquer sur le lien ci-dessous :</p>
+{% block title %}{{ parent() }} - Mot de passe perdu{% endblock %}
 
-<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
-
-<p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
-
-<p>Bonne journée!</p>
+{% block body %}
+    {{ parent() }}
+    <h1>Student Interim - mot de passe perdu</h1>
+    <p>Bonjour!</p>
+    <p>Vous avez demandé à réinitialiser votre mot de passe. Pour cela, veuillez cliquer sur le lien ci-dessous :</p>
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+    <p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+    <p>Bonne journée!</p>
+{% endblock %}
