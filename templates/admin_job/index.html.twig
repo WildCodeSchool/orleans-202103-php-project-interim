@@ -26,17 +26,18 @@
 					<div class=" col-lg-3 data-card">
 
 
-						<h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper }}</h2>
+						<h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
 						<h3 class="post mt-2 text-center">
 							<i class="fas fa-industry"></i>
-							{{ job.company.companyName|upper }}</h3>
+							{{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
 						<h3 class="postalCode mb-3 pb-2 text-center">
 							<i class="fas fa-map-marker-alt"></i>
 							{{ job.city|capitalize }}
 							({{ job.postalCode }})
 
 						</h3>
-						<p>{{ job.description }}</p>
+						<p>{{ job.description|length > 150 ? job.description|slice(0, 150) ~ '...' : job.description }}
+</p>
 						<form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post mt-2 text-center">
 							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
 							<a href="{{ path('admin_job_edit', {'id': job.id}) }}" class="update btn btn-light">Modifier</a>
