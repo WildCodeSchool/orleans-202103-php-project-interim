@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class FilterStudyField
 {
-    private StudyField $studyField;
+    private ?StudyField $studyField = null;
 
     /**
      * @return null|StudyField
@@ -20,7 +20,7 @@ class FilterStudyField
     /**
      * @return FilterStudyField
      */
-    public function setStudyField(StudyField $studyField): self
+    public function setStudyField(?StudyField $studyField): self
     {
         $this->studyField = $studyField;
 
