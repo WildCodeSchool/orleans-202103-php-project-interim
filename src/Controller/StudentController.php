@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\Student;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\Job;
+use App\Entity\User;
+use App\Form\RegistrationFormType;
+use App\Entity\Student;
+use App\Form\StudentEditType;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class StudentController extends AbstractController
 {
@@ -23,9 +25,32 @@ class StudentController extends AbstractController
     {
         return $this->render('student/index.html.twig');
     }
+
+
     /**
-    * @Route("/etudiant/profil", name="student_profile")
-    */
+     * @Route("/{id}/edit", name="student_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Student $student): Response
+    {
+        $form = $this->createForm(StudentEditType::class, $student);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            // give mesage if success
+            $this->addFlash('success', 'Votre profil a été modifié.');
+
+            return $this->redirectToRoute('student_index');
+        }
+
+        return $this->render('student_edit.html.twig', [
+            'student' => $student,
+            'form' => $form->createView(),
+        ]);
+    }
+    /**
+     * @Route("/etudiant/profil", name="student_profile")
+     */
     public function profile(): Response
     {
         /** @var User */
@@ -37,7 +62,6 @@ class StudentController extends AbstractController
             "student" => $student,
         ]);
     }
-
     /**
      * @Route("/postulate/{job}", name="postulate")
      * @IsGranted("ROLE_STUDENT")
@@ -48,16 +72,16 @@ class StudentController extends AbstractController
         $user = $this->getUser();
         // Ici nous enverrons l'e-mail
         $message = (new Email())
-        //on attribue l'expéditeur
-        ->from(strval($user->getEmail()))
-        //on attribue le receveur
-        ->to(strval($this->getParameter('mailer_to')))
-        ->subject('Un étudiant a confirmé vouloir postuler à une annonce')
-        //On créé le message avec la vue twig
-        ->html($this->renderView('email/postulateEmail.html.twig', [
-            'user' => $user,
-            'job' => $job,
-        ]));
+            //on attribue l'expéditeur
+            ->from(strval($user->getEmail()))
+            //on attribue le receveur
+            ->to(strval($this->getParameter('mailer_to')))
+            ->subject('Un étudiant a confirmé vouloir postuler à une annonce')
+            //On créé le message avec la vue twig
+            ->html($this->renderView('email/postulateEmail.html.twig', [
+                'user' => $user,
+                'job' => $job,
+            ]));
         //on envoie le message
         $mailer->send($message);
         // give mesage if success
