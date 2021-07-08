@@ -28,19 +28,20 @@
         <div class="row pb-3 d-flex justify-content-center">
             {% for job in jobs %}
                 <div class=" col-lg-3 data-card">
-                    <h2 class="pb-2 text-center d-flex align-items-center justify-content-center">{{ job.post|upper }}</h2>
-                    <h3 class="post mt-2 text-center">
+                    <h2 class="text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
+                    <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
-                        {{ job.company.companyName|upper }}</h3>
+                        {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
                     <h3 class="postalCode pb-2 text-center">
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
-                    <h3 class="postalCode mb-3 pb-2 ">
+
+                    <h3 class="postalCode mb-3 pb-2">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
                     </h3>
-                    <p>{{ job.description }}</p>
+                    <p>{{ job.description|length > 200 ? job.description|slice(0, 200) ~ '...' : job.description }}</p>
                     {% if is_granted('ROLE_ADMIN') %}
                         <form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post mt-2 text-center">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
