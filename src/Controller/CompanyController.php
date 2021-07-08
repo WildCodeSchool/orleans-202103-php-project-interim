@@ -11,18 +11,19 @@ use App\Entity\QuotationRequest;
 use App\Repository\JobRepository;
 use Symfony\Component\Mime\Email;
 use App\Form\QuotationRequestType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/entreprise", name="company_")
- * @IsGranted("ROLE_COMPANY")
+ * @Security("is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN')")
  */
 class CompanyController extends AbstractController
 {
