@@ -23,12 +23,12 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/entreprise", name="company_")
- * @Security("is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN')")
  */
 class CompanyController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @IsGranted("ROLE_COMPANY")
      */
     public function index(): Response
     {
@@ -37,6 +37,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/offres", name="jobs")
+     * @IsGranted("ROLE_COMPANY")
      */
     public function list(PaginatorInterface $paginator, Request $request): Response
     {
@@ -58,6 +59,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/offres/ajouter", name="jobs_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function new(Request $request): Response
     {
@@ -84,6 +86,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/offres/modifier/{id}", name="jobs_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function edit(Request $request, Job $job): Response
     {
@@ -113,6 +116,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/devis", name="quotation")
+     * @Security("is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN')")
      */
     public function quotationRequest(Request $request, MailerInterface $mailer): Response
     {
@@ -149,6 +153,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/profil", name="profile")
+     * @IsGranted("ROLE_COMPANY")
      */
     public function profile(): Response
     {
