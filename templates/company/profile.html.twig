@@ -3,8 +3,7 @@
 {% block title %}{{ parent() }} - Profil{% endblock %}
 
 {% block body %}
-    <h2 class="text-center my-3 my-lg-4 my-xl-5">Student Interim Entreprise</h2>
-    <h3 class="text-center my-lg-5">Profil</h3>
+    <h3 class="text-center pt-3 pb-3 my-lg-5">Profil</h3>
     <div class="card container-fluid text-center pb-2 mb-5 w-75">
         <div class="card-body">
             <div class="row pt-3">
@@ -14,7 +13,7 @@
                             <i class="fas fa-industry"></i>
                             Nom de la société
                         </li>
-                        <li>{{ company.companyName }}</li>
+                        <li>{{ company.companyName ?? "Compte" }}</li>
                         <li class="text-muted">
                             <i class="fas fa-user-alt"></i>
                             Contact
@@ -33,12 +32,12 @@
                             <i class="fas fa-university"></i>
                             Raison sociale
                         </li>
-                        <li>{{ company.socialReason }}</li>
+                        <li>{{ company.socialReason ?? "Non defini" }}</li>
                         <li class="text-muted">
                             <i class="fas fa-info"></i>
                             Siret
                         </li>
-                        <li>{{ company.siret }}</li>
+                        <li>{{ company.siret ?? "Non defini" }}</li>
                         <li class="text-muted">
                             <i class="fas fa-phone-square-alt"></i>
                             Téléphone

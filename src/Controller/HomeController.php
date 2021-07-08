@@ -22,4 +22,12 @@ class HomeController extends AbstractController
             )
         ]);
     }
+
+    /**
+     * @Route("/tarifs", name="price_list")
+     */
+    public function priceList(): Response
+    {
+        return $this->render('home/price_list.html.twig');
+    }
 }

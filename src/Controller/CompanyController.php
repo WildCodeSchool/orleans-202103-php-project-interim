@@ -2,21 +2,23 @@
 
 namespace App\Controller;
 
+use DateTime;
+use App\Entity\Job;
+use App\Entity\User;
+use App\Form\JobType;
+use App\Entity\Company;
 use App\Entity\QuotationRequest;
+use App\Repository\JobRepository;
 use Symfony\Component\Mime\Email;
 use App\Form\QuotationRequestType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\User;
-use App\Entity\Job;
-use App\Entity\Company;
-use App\Repository\JobRepository;
-use App\Form\JobType;
-use DateTime;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/entreprise", name="company_")
@@ -35,7 +37,7 @@ class CompanyController extends AbstractController
     /**
      * @Route("/offres", name="jobs")
      */
-    public function list(): Response
+    public function list(PaginatorInterface $paginator, Request $request): Response
     {
         if (!is_null($this->getUser())) {
             /** @phpstan-ignore-next-line */
@@ -43,7 +45,11 @@ class CompanyController extends AbstractController
         } else {
             $jobs = [];
         }
-
+        $jobs = $paginator->paginate(
+            $jobs, /* query NOT result */
+            $request->query->getInt('page', 1),
+            9
+        );
         return $this->render('company/list_jobs.html.twig', [
             'jobs' =>  $jobs,
         ]);
@@ -80,6 +86,15 @@ class CompanyController extends AbstractController
      */
     public function edit(Request $request, Job $job): Response
     {
+        /** @var User */
+        $user = $this->getUser();
+        /** @var Company */
+        $company = $user->getCompany();
+
+        if (!$company->getJobs()->contains($job)) {
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
+
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
 

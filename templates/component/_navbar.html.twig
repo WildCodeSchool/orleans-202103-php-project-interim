@@ -10,7 +10,7 @@
                     <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('admin_job_index') }}">Offres</a>
+                    <a class="nav-link" href="{{ path('offer') }}">Offres</a>
                 </li>
                 <div class="dropdown">
                     <button class="nav-link py-1 px-3 mx-1 dropdown-toggle blue-button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -75,7 +75,7 @@
                 <li class="nav-item ml-5">
                     <a class="nav-link py-1 px-3 ms-3 blue-button" href="{{ path('company_profile') }}">
                         <i class="fas fa-user-alt"></i>
-                        {{ app.user.company.companyName }}
+                        {{ app.user.company.companyName ?? "Compte" }}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -98,7 +98,7 @@
                     <a class="nav-link" href="{{ path('contact') }}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link py-1 px-4 mx-1 red-button" href="#">
+                    <a class="nav-link py-1 px-4 mx-1 red-button" href="{{ path('app_register') }}">
                         Inscription
                    </a>
                 </li>

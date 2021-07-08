@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -21,7 +22,10 @@ class User implements UserInterface
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Le champ Email est obligatoire")
+     * @Assert\Email(message = "L'adresse '{{ value }}' n'est pas une adresse mail valide.")
+     * @Assert\Length(max="100", maxMessage="L'adresse mail ne doit pas dépasser {{ limit }} caractères")
      */
     private string $email;
 
@@ -37,12 +41,16 @@ class User implements UserInterface
     private string $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Le champ Prénom est obligatoire")
+     * @Assert\Length(max=255, maxMessage="Le prénom ne doit pas dépasser {{ limit }} caractères")
      */
     private string $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Le champ Prénom est obligatoire")
+     * @Assert\Length(max=255, maxMessage="Le prénom ne doit pas dépasser {{ limit }} caractères")
      */
     private string $lastname;
 

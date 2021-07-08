@@ -4,26 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Job;
 use App\Form\AdminJobType;
-use App\Repository\JobRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/admin/offres", name="admin_job_")
  */
 class AdminJobController extends AbstractController
 {
-    /**
-     * @Route("/", name="index", methods={"GET"})
-     */
-    public function index(JobRepository $jobRepository): Response
-    {
-        return $this->render('admin_job/index.html.twig', [
-            'jobs' => $jobRepository->findAll(),
-        ]);
-    }
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */

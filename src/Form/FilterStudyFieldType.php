@@ -18,6 +18,7 @@ class FilterStudyFieldType extends AbstractType
                 'class' => StudyField::class,
                 'choice_label' => 'studyFieldName',
                 'label' => 'Domaine d\'étude',
+                'required' => false,
                 'multiple' => false,
                 'expanded' => false,
                 'attr' => [
