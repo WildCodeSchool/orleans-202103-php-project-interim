@@ -2,34 +2,47 @@
 
 namespace App\Form;
 
-use App\Entity\Student;
-use App\Form\RegistrationFormType;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class StudentEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('RegistrationFormType', RegistrationFormType::class, [
-                'label' => ''
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'placeholder' => 'Jean'
+                ]
             ])
-            ->add('Level', TextType::class, [
-                'label' => ' Niveau d\'étude'
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'Dupond'
+                ]
             ])
-            ->add('Birthdate', DateType::class, [
-                'label' => 'Date de naissance',
+            ->add('email', EmailType::class, [
+                'label' => ' Email'
+            ])
+            ->add('phone', TelType::class, [
+                'label' => 'Téléphone',
+                'attr' => [
+                    'placeholder' => '0600000000'
+                ]
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Student::class,
+            'data_class' => User::class,
         ]);
     }
 }
