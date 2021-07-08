@@ -7,7 +7,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
@@ -29,7 +28,10 @@ class StudentEditType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
-                'label' => ' Email'
+                'label' => ' Email',
+                'attr' => [
+                    'placeholder' => 'jeandupond@gmail.com'
+                ]
             ])
             ->add('phone', TelType::class, [
                 'label' => 'Téléphone',
