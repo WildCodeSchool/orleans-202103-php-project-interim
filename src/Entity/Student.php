@@ -30,7 +30,6 @@ class Student
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\Date()
      */
     private ?DateTimeInterface $birthdate;
 

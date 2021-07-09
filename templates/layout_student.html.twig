@@ -2,6 +2,10 @@
 
 {% block title %}Student-Interim{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
 {% block navbar %}
     {% include 'component/_navbar.html.twig' %}
 {% endblock %}
