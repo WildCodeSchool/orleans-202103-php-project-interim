@@ -36,11 +36,9 @@ class StudentController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $student = $user->getStudent();
 
         return $this->render('student/profile.html.twig', [
             "user" => $user,
-            "student" => $student,
         ]);
     }
     /**
