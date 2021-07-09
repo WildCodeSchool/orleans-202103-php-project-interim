@@ -54,9 +54,17 @@
                     <div class="d-flex justify-content-center pb-3 mt-5">
                         <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-50">Je veux un devis</a>
                     </div>
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                    <div class="d-flex justify-content-center pb-3 mt-5">
+                        <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-50">Je veux un devis</a>
+                    </div>
+                    {% elseif is_granted('ROLE_STUDENT') %}
+                    <div class="d-flex justify-content-center pb-3 mt-5">
+                        <a href="#" class="postuler btn btn-primary text-center w-50 disabled">Je veux un devis</a>
+                    </div>
                     {% else %}
                     <div class="d-flex justify-content-center pb-3 mt-5">
-                        <a href="#" class="postuler btn btn-primary text-center w-25 py-2 mt-4 disabled">Je veux un devis</a>
+                        <a href="{{ path('app_register') }}" class="postuler btn btn-primary text-center w-50">Je veux un devis</a>
                     </div>
                     {% endif %}
                 </div>

@@ -11,23 +11,24 @@ use App\Entity\QuotationRequest;
 use App\Repository\JobRepository;
 use Symfony\Component\Mime\Email;
 use App\Form\QuotationRequestType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/entreprise", name="company_")
- * @IsGranted("ROLE_COMPANY")
  */
 class CompanyController extends AbstractController
 {
     /**
      * @Route("/", name="home")
+     * @IsGranted("ROLE_COMPANY")
      */
     public function index(): Response
     {
@@ -36,6 +37,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/offres", name="jobs")
+     * @IsGranted("ROLE_COMPANY")
      */
     public function list(PaginatorInterface $paginator, Request $request): Response
     {
@@ -57,6 +59,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/offres/ajouter", name="jobs_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function new(Request $request): Response
     {
@@ -83,6 +86,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/offres/modifier/{id}", name="jobs_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function edit(Request $request, Job $job): Response
     {
@@ -112,6 +116,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/devis", name="quotation")
+     * @Security("is_granted('ROLE_COMPANY') or is_granted('ROLE_ADMIN')")
      */
     public function quotationRequest(Request $request, MailerInterface $mailer): Response
     {
@@ -148,6 +153,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/profil", name="profile")
+     * @IsGranted("ROLE_COMPANY")
      */
     public function profile(): Response
     {
