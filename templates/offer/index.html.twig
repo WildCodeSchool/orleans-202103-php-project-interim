@@ -9,20 +9,12 @@
     <section class="adminOffre">
         <h3 class="text-center pt-3 my-5">Offres d'emploi</h3>
         <div class="container">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex mb-3 justify-content-center">
                 {{ form_start(form) }}
-                <div class="column">
-                    <div class="row text-center">
-                        {{ form_label(form.studyField) }}
-                    </div>
-                    <div class="row">
-                        {{ form_widget(form.studyField) }}
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center py-3">
-                    <button class="filter btn btn-primary btn-lg w-50">Filtrer</button>
-                    {{ form_end(form) }}
-                </div>
+                {{ form_label(form.studyField) }}
+                {{ form_widget(form.studyField) }}
+                <button class="filter btn btn-primary btn-lg">Filtrer</button>
+                {{ form_end(form) }}
             </div>
         </div>
         <div class="row pb-3 d-flex justify-content-center">
