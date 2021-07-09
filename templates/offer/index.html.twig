@@ -41,7 +41,7 @@
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
                     </h3>
-                    <p>{{ job.description|length > 200 ? job.description|slice(0, 200) ~ '...' : job.description }}</p>
+                    <p>{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
                     {% if is_granted('ROLE_ADMIN') %}
                         <form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post mt-2 text-center">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
