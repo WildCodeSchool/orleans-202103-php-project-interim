@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Job;
 use App\Entity\User;
+use App\Form\CompanyType;
 use App\Form\JobType;
 use App\Entity\Company;
 use App\Entity\QuotationRequest;
@@ -33,6 +34,29 @@ class CompanyController extends AbstractController
     public function index(): Response
     {
         return $this->render('company/index.html.twig');
+    }
+    /**
+     * @Route("/profil/modifier", name="edit", methods={"GET","POST"})
+     */
+    public function companyEdit(Request $request): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $company = $user->getCompany();
+        $form = $this->createForm(CompanyType::class, $company);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            // give mesage if success
+            $this->addFlash('success', 'Votre profil a été modifié.');
+
+            return $this->redirectToRoute('company_profile');
+        }
+        return $this->render('company/_form.html.twig', [
+            'company' => $company,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

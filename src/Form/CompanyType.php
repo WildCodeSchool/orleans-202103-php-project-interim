@@ -2,14 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Student;
+use App\Entity\Company;
+use App\Form\UserEditType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class StudentType extends AbstractType
+class CompanyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -17,18 +17,21 @@ class StudentType extends AbstractType
             ->add('user', UserEditType::class, [
                 'label' => ''
             ])
-            ->add('level', TextType::class, [
-                'label' => ' Niveau d\'étude'
+            ->add('companyName', TextType::class, [
+                'label' => ' Nom de la société'
             ])
-            ->add('birthdate', BirthdayType::class, [
-                'label' => 'Date de naissance',
+            ->add('socialReason', TextType::class, [
+                'label' => 'Raison sociale',
+            ])
+            ->add('siret', TextType::class, [
+                'label' => 'Siret',
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Student::class,
+            'data_class' => Company::class,
         ]);
     }
 }
