@@ -19,6 +19,7 @@ class FilterStudyFieldType extends AbstractType
                 'choice_label' => 'studyFieldName',
                 'label' => 'Domaine d\'étude',
                 'required' => false,
+                'placeholder' => 'Toutes les annonces',
                 'multiple' => false,
                 'expanded' => false,
                 'attr' => [
