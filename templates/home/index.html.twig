@@ -18,10 +18,10 @@
     </header>
 
     <h2 class="m-3 d-flex justify-content-center p-xl-4">Nos dernières annonces</h2>
-    <section class="adminOffre pb-5">
-        <div class="row d-flex justify-content-center">
+    <section class="container-fluid adminOffre pb-5">
+        <div class="row d-flex justify-content-center mx-1">
             {% for job in jobs %}
-                <div class=" col-lg-3 mx-5 data-card">
+                <div class=" col-lg-3 mx-5 data-card my-2">
                     <h2 class="text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
                     <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
@@ -30,7 +30,7 @@
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
 
-                    <h3 class="postalCode mb-3 pb-2">
+                    <h3 class="postalCode mt-3">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
