@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminJobController extends AbstractController
 {
     /**
-     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
+     * @Route("/{id}/edition", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Job $job): Response
     {

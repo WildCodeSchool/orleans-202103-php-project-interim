@@ -22,25 +22,25 @@ class Company
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=255,
      * maxMessage = "Le nom de l'entreprise ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $companyName;
+    private ?string $companyName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * max=255,
      * maxMessage = "La raison sociale ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $socialReason;
+    private ?string $socialReason;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *  @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * min=14,
@@ -48,7 +48,7 @@ class Company
      * minMessage = "Le numéro de siret doit contenir {{ limit }} caractères")
      *maxMessage = "Le numéro de siret ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $siret;
+    private ?string $siret;
 
     /**
      * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company", cascade={"persist", "remove"})
@@ -75,7 +75,7 @@ class Company
         return $this->companyName;
     }
 
-    public function setCompanyName(string $companyName): self
+    public function setCompanyName(?string $companyName): self
     {
         $this->companyName = $companyName;
 
@@ -87,7 +87,7 @@ class Company
         return $this->socialReason;
     }
 
-    public function setSocialReason(string $socialReason): self
+    public function setSocialReason(?string $socialReason): self
     {
         $this->socialReason = $socialReason;
 
@@ -99,7 +99,7 @@ class Company
         return $this->siret;
     }
 
-    public function setSiret(string $siret): self
+    public function setSiret(?string $siret): self
     {
         $this->siret = $siret;
 

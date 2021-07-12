@@ -20,16 +20,16 @@ class Student
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il-vous-plait")
      * @Assert\Length(
      * max=255,
      * maxMessage = "Le niveau d'étude ne peut pas dépasser {{ limit }} caractères")
      */
-    private string $level;
+    private ?string $level;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private ?DateTimeInterface $birthdate;
 

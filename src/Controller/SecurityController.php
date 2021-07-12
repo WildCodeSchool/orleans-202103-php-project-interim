@@ -2,22 +2,24 @@
 
 namespace App\Controller;
 
+use LogicException;
 use App\Entity\User;
+use App\Entity\Company;
+use App\Entity\Student;
+use App\Form\RegistrationFormType;
 use App\Security\UserAuthenticator;
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use LogicException;
-use App\Form\RegistrationFormType;
 
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/connexion", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -30,7 +32,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/deconnexion", name="app_logout")
      */
     public function logout(): string
     {
@@ -38,7 +40,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/inscription", name="app_register")
      */
     public function register(
         Request $request,
@@ -52,7 +54,17 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
+            $entityManager = $this->getDoctrine()->getManager();
             $user->setRoles([$form->get('roles')->getData()]);
+            if (in_array('ROLE_STUDENT', $user->getRoles())) {
+                $student = new Student();
+                $user->setStudent($student);
+                $entityManager->persist($student);
+            } elseif (in_array('ROLE_COMPANY', $user->getRoles())) {
+                $company = new Company();
+                $user->setCompany($company);
+                $entityManager->persist($company);
+            }
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -60,7 +72,6 @@ class SecurityController extends AbstractController
                 )
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email

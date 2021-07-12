@@ -1,6 +1,6 @@
 {% extends 'layout_company.html.twig' %}
 
-{% block title %}{{ parent() }} - Profil{% endblock %}
+{% block title %}Profil - {{ parent() }}{% endblock %}
 
 {% block body %}
     <h3 class="text-center pt-3 pb-3 my-lg-5">Profil</h3>
@@ -46,7 +46,7 @@
                     </ul>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary btn-lg w-25 mt-4">EDITER</a>
+            <a href="{{ path('company_edit') }}" class="btn btn-primary btn-lg w-25 mt-4">Modifier</a>
         </div>
     </div>
 {% endblock %}

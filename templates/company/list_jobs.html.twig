@@ -1,8 +1,7 @@
 {% extends 'layout_company.html.twig' %}
 
 {% block title %}
-    {{ parent() }}
-    - Offres
+    Offres - {{ parent() }}
 {% endblock %}
 
 {% block body %}
@@ -10,23 +9,6 @@
         <h3 class="text-center pt-3 my-5">Mes offres</h3>
         <div class="form-group pb-5 col pt-3 col-lg-6 col-md-12 mx-auto">
             <a class="btn btn-primary btn-lg w-100" href="{{ path('company_jobs_new') }}">+ Ajouter une offre</a>
-        </div>
-        <div class="row my-3">
-            <div class="col-lg-2">
-                <a class="btn btn-primary dropdown-toggle ms-5 me-5 text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Trier par
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <a class="dropdown-item" href="#"></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-8 d-flex justify-content-center">
-                <form class="form-inline mt-3 d-flex justify-content-start">
-                    <input class="form-control mr-sm-2 text-center" type="search" placeholder="Rechercher " aria-label="Search">
-                </form>
-            </div>
         </div>
         <div class="row d-flex justify-content-center">
             {% for job in jobs %}

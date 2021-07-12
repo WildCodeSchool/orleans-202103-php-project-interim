@@ -1,13 +1,11 @@
 {% extends 'layout_company.html.twig' %}
 
 {% block title %}
-    {{ parent() }}
-    - Profil
+    Profil - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-    <h2 class="text-center my-3 my-lg-4 my-xl-5">Student Interim Étudiant</h2>
-    <h3 class="text-center my-lg-5">Profil</h3>
+    <h3 class="text-center pt-3 my-lg-5">Profil</h3>
     <div class="card container-fluid text-center pb-2 mb-5 w-75">
         <div class="card-body">
             <div class="row pt-3">
@@ -31,7 +29,7 @@
                             <i class="fas fa-user-graduate"></i>
                             Niveau d'étude
                         </li>
-                        <li>{{ student.level ?? "Non défini" }}</li>
+                        <li>{{ user.student.level ?? "Non défini" }}</li>
                         <li class="text-muted">
                             <i class="fas fa-phone-square-alt"></i>
                             Téléphone
@@ -47,10 +45,10 @@
                         Date de naissance
                     </li>
                     <li>
-                        {% if student.birthdate is defined %}
-                            {{ student.birthdate|date("d/m/Y") }}
+                        {% if user.student.birthdate is defined %}
+                            {{ user.student.birthdate|date("d/m/Y") }}
                         {% else %}
-                            non défini
+                            Non définie
                         {% endif %}
                     </li>
                 </ul>
