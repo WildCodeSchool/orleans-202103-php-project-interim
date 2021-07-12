@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OfferController extends AbstractController
 {
     /**
-     * @Route("/offre", name="offer")
+     * @Route("/offres", name="offer")
      */
     public function index(JobRepository $jobRepository, Request $request, PaginatorInterface $paginator): Response
     {
