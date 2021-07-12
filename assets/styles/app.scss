@@ -9,6 +9,7 @@ main {
 
 body {
     background-image: url(../images/background.jpg);
+    background-position: 100% 100%;
     color: $dark;
     font-family: $text-font;
     scroll-behavior: smooth;

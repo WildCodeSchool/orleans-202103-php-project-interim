@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Student-Interim{% endblock %}
+{% block title %}
+    {{ parent() }}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
