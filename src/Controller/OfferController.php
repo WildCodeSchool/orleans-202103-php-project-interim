@@ -24,9 +24,7 @@ class OfferController extends AbstractController
         $form->handleRequest($request);
         $jobs = $jobRepository->findAll();
         if ($form->isSubmitted() && $form->isValid() && $filter->getStudyField() != '') {
-            $jobs = $jobRepository->findBy([
-                'studyField' => $filter->getStudyField()
-            ]);
+            $jobs = $jobRepository->findBy(['studyField' => $filter->getStudyField()], ['studyField' => 'ASC']);
         }
         $jobs = $paginator->paginate(
             $jobs, /* query NOT result */
