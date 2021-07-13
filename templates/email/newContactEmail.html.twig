@@ -1,16 +1,20 @@
-<!DOCTYPE html>
+{% extends 'email/layoutEmail.html.twig' %}
 
-<html>
+{% block title %}Demande de contact - {{ parent() }}{% endblock %}
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Nouveau message</title>
-	</head>
-
-	<body>
-		<h1>Nouveau message de {{ contact.lastname }} {{ contact.firstname }} reçu</h1>
-		<p>Message :{{ contact.message }}</p>
-	</body>
-
-</html>
+{% block body %}
+    {{ parent() }}
+    <h2>Nouvelle demande de contact</h2>
+    <p>Bonjour, {{ contact.firstname ~ ' ' ~ contact.lastname }} a demandé à être recontacté(e).</p>
+    <table style="border: 0;">
+        <tr>
+            <td>Personne à contacter : </td>
+            <td>{{ contact.firstname ~ ' ' ~ contact.lastname }}</td>
+        </tr>
+        <tr>
+            <td>Adresse mail: </td>
+            <td>{{ contact.email }}</td>
+        </tr>
+    </table>
+    <p>Message : {{ contact.message }}</p>
+{% endblock %}
