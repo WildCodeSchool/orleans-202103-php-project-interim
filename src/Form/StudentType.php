@@ -4,10 +4,11 @@ namespace App\Form;
 
 use App\Entity\Student;
 use Symfony\Component\Form\AbstractType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class StudentType extends AbstractType
 {
@@ -22,6 +23,12 @@ class StudentType extends AbstractType
             ])
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'Date de naissance',
+            ])
+            ->add('resumeFile', VichFileType::class, [
+                'label' => 'CV',
+            ])
+            ->add('coverLetterFile', VichFileType::class, [
+                'label' => 'Lettre de motivation',
             ]);
     }
 

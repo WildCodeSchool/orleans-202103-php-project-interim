@@ -66,6 +66,22 @@
                                 {{ user.student.level ?? "Non défini" }}
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">CV</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.student.resumeFile ?? "Non défini" }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Lettre de motivation</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ user.student.coverLetterFile ?? "Non défini" }}
+                            </div>
+                        </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
