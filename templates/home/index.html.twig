@@ -29,12 +29,12 @@
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
 
-                    <h3 class="postalCode mt-3">
+                    <h3 class="postalCode text-center">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
                     </h3>
-                    <p>{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
+                    <p class="pt-3">{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
                     <div class="d-flex justify-content-center">
                         {% if app.user %}
                             <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>

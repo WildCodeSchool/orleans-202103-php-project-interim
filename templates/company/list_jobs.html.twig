@@ -17,15 +17,15 @@
                     <h3 class="post mt-2 text-center">
                         <i class="fas fa-industry"></i>
                         {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
-                    <h3 class="postalCode  pb-2 text-center">
+                    <h3 class="postalCode pb-2 text-center">
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
-                    <h3 class="postalCode mb-3 pb-2">
+                    <h3 class="postalCode text-center">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
                     </h3>
-                    <p>{{ job.description|length > 200 ? job.description|slice(0, 200) ~ '...' : job.description }}</p>
+                    <p class="pt-3">{{ job.description|length > 200 ? job.description|slice(0, 200) ~ '...' : job.description }}</p>
                     <div class="d-flex justify-content-center">
                         <a href="{{ path('company_jobs_edit', {'id': job.id}) }}" class="postuler btn btn-light text-center">Modifier</a>
                     </div>
