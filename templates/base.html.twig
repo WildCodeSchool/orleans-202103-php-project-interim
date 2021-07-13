@@ -19,12 +19,8 @@
     </head>
     <body>
         {% block navbar %}{% endblock %}
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success" role"alert">
-                {{ message }}
-            </div>
-        {% endfor %}
         <main class="pb-5">
+        {% block flash %}{% include 'component/_flash.html.twig' %}{% endblock %}
         {% block body %}{% endblock %}
         </main>
         {% block footer %}{% endblock %}

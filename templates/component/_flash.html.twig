@@ -1,0 +1,8 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="d-flex justify-content-between align-items-center alert alert-{{ label }}" role="alert">
+            {{ message }}
+            <button type="button" class="btn-closeFlash" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endfor %}

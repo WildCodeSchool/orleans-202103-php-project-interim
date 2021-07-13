@@ -40,12 +40,19 @@
                             <form method="post" action="{{ path('admin_delete_student', {'id': student.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');" class="post d-flex justify-content-center w-100">
                                 <input type="hidden" name="_token" value="{{ csrf_token('deleteStudent' ~ student.id) }}">
                                 <h4>
-                                    <i class="fas fa-file"></i>
-                                    {{ 'CV' }}</h4>
+                                   {% if student.resume %}
+                                    <a target="_blank" href="/uploads/resumes/{{ student.resume }}"> <i class="fas fa-file"></i> CV</a>
+                                    {% else %}
+                                        Non défini
+                                    {% endif %}</h4>
                                 <button class="delete btn mx-3 text-center h-100 align-items-center btn-sm">Supprimer</button>
                                 <h4>
-                                    <i class="fas fa-envelope-open-text"></i>
-                                    {{ 'LM' }}</h4>
+                                    {% if student.coverLetter %}
+                                    <a target="_blank" href="/uploads/coverLetters/{{ student.coverLetter }}"><i class="fas fa-envelope-open-text"></i> LM</a>
+                                    {% else %}
+                                        Non défini
+                                    {% endif %}
+                                    </h4>
                             </form>
 
 

@@ -1,9 +1,10 @@
 {% extends 'email/layoutEmail.html.twig' %}
 
-{% block title %}{{ parent() }} - Postulation{% endblock %}
+{% block title %}Candidature - {{ parent() }}{% endblock %}
 
 {% block body %}
     {{ parent() }}
+    <h2>Nouvelle candidature pour {{ job.company.companyName }}</h2>
     <p>Bonjour,</p>
     <p>un étudiant a confirmé vouloir postuler à l'offre : "{{ job.post }}"
     postée par l'entreprise : "{{ job.company.companyName|upper }}"
@@ -22,4 +23,4 @@
             <td>{{ user.email }}</td>
         </tr>
     </table>
-{% endblock %} 
+{% endblock %}

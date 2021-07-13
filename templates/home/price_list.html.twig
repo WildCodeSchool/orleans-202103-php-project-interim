@@ -1,7 +1,8 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    Tarifs - {{ parent() }}
+    Tarifs -
+    {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -42,54 +43,54 @@
             </div>
         </div>
         <div class="container">
-            <h2 class="m-3 d-flex justify-content-center pt-5 pb-5">Placement des étudiants dans les entreprises</h2>
+            <h2 class="m-3 d-flex justify-content-center pt-5 pb-5 mb-2">Placement des étudiants dans les entreprises</h2>
             <div class="row mb-4 mb-lg-5">
                 <div class="col-5 mb-lg-3 align-self-center">
-                    <img class="d-none d-lg-block img-fluid rounded shadow-lg" src="{{ asset('build/images/contrat.jpg') }}" alt="Deux personnes assises l'une à côté de l'autre, devant une table avec des papiers à signer">
+                    <img class="d-none d-lg-block img-fluid rounded shadow-lg mb-3" src="{{ asset('build/images/contrat.jpg') }}" alt="Deux personnes assises l'une à côté de l'autre, devant une table avec des papiers à signer">
                 </div>
-                <div class="col-12 col-lg-7 mb-lg-3">
+                <div class="col-12 col-lg-7 mb-lg-3 px-5">
                     <ul class="list-unstyled">
-                        <li>Vous avez besoin d’un étudiant rapidement ?</li>
-                        <li>Student Intérim vous offre la possibilité de recruter rapidement des étudiants compétents dont le cursus d’étude est en cohérence avec votre entreprise. Avec cette offre, vous ne vous occupez de rien !</li>
-                        <li>Sourcing, entretien, contrats : on s’occupe de tout (missions ponctuelles, jobs d’été, temps partiels..) !</li>
-                        <li>Notre marge commerciale est de 2 000€, ajouté à cela, vous payerez un coefficient de facturation de 1,9% par rapport au salaire de l’étudiant.</li>
+                        <li class="pb-2">Vous avez besoin d’un étudiant rapidement ?</li>
+                        <li class="pb-1">Student Intérim vous offre la possibilité de recruter rapidement des étudiants compétents dont le cursus d’étude est en cohérence avec votre entreprise. Avec cette offre, vous ne vous occupez de rien !</li>
+                        <li class="pb-1">Sourcing, entretien, contrats : on s’occupe de tout (missions ponctuelles, jobs d’été, temps partiels..) !</li>
+                        <li class="pb-1">Notre marge commerciale est de 2 000€, ajouté à cela, vous payerez un coefficient de facturation de 1,9% par rapport au salaire de l’étudiant.</li>
                     </ul>
-                    {% if is_granted('ROLE_COMPANY') %}
-                    <div class="d-flex justify-content-center pb-3 mt-5">
-                        <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-50">Je veux un devis</a>
-                    </div>
-                    {% elseif is_granted('ROLE_ADMIN') %}
-                    <div class="d-flex justify-content-center pb-3 mt-5">
-                        <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-50">Je veux un devis</a>
-                    </div>
-                    {% elseif is_granted('ROLE_STUDENT') %}
-                    <div class="d-flex justify-content-center pb-3 mt-5">
-                        <a href="#" class="postuler btn btn-primary text-center w-50 disabled">Je veux un devis</a>
-                    </div>
-                    {% else %}
-                    <div class="d-flex justify-content-center pb-3 mt-5">
-                        <a href="{{ path('app_register') }}" class="postuler btn btn-primary text-center w-50">Je veux un devis</a>
-                    </div>
-                    {% endif %}
                 </div>
+                {% if is_granted('ROLE_COMPANY') %}
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-25 mt-4">Je veux un devis</a>
+                    </div>
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-25 mt-4">Je veux un devis</a>
+                    </div>
+                {% elseif is_granted('ROLE_STUDENT') %}
+                    <div class="d-flex justify-content-center">
+                        <a href="#" class="postuler btn btn-primary text-center w-25 mt-4 disabled">Je veux un devis</a>
+                    </div>
+                {% else %}
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ path('app_register') }}" class="postuler btn btn-primary text-center w-25 mt-4">Je veux un devis</a>
+                    </div>
+                {% endif %}
             </div>
-            <h2 class="m-3 d-flex justify-content-center pt-4 pb-5">Recruter le profil idéal pour votre entreprise</h2>
+            <h2 class="m-3 d-flex justify-content-center pt-4 pb-5 mb-2">Recruter le profil idéal pour votre entreprise</h2>
             <div class="row">
                 <div class="col-12 col-lg-7">
-                    <div>
+                    <div class="pt-4 mt-5 pe-1">
                         <ul class="list-unstyled">
                             <li>Vous cherchez à recruter ? Premiers emplois, stages, alternances.</li>
                             <li>Student Interim sollicite son réseau d’étudiants pour vous ! Nous cherchons et trouvons des candidats qui correspondent à votre besoin.</li>
                             <li>Nous prenons de 12% à 15% du salaire annuel de l’étudiant recruté.</li>
                         </ul>
-                        <div class="d-flex justify-content-center pb-3 mt-5">
-                            <a href="{{ path('contact') }}" class="postuler btn btn-primary text-center w-25 py-2 mt-4">Nous contacter</a>
-                        </div>
                     </div>
                 </div>
-                <div class="col-lg-5 align-self-center pb-5">
+                <div class="col-lg-5 align-self-center pb-2">
                     <img class="d-none d-lg-block img-fluid rounded shadow-lg" src="{{ asset('build/images/recrutement.jpg') }}" alt="Trois personnes discutent autour d'une table">
                 </div>
+            </div>
+            <div class="d-flex justify-content-center pb-3 mt-5">
+                <a href="{{ path('contact') }}" class="postuler btn btn-primary text-center w-25 mb-2">Nous contacter</a>
             </div>
         </div>
     </section>

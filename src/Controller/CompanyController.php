@@ -28,15 +28,8 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 class CompanyController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
-     * @IsGranted("ROLE_COMPANY")
-     */
-    public function index(): Response
-    {
-        return $this->render('company/index.html.twig');
-    }
-    /**
      * @Route("/profil/modifier", name="edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function companyEdit(Request $request): Response
     {

@@ -1,12 +1,10 @@
 {% extends 'email/layoutEmail.html.twig' %}
 
-{% block title %}
-    {{ parent() }}
-{% endblock %}
+{% block title %}Mot de passe perdu - {{ parent() }}{% endblock %}
 
 {% block body %}
     {{ parent() }}
-    <h1>Student Interim - mot de passe perdu</h1>
+    <h2>Mot de passe perdu</h2>
     <p>Bonjour!</p>
     <p>Vous avez demandé à réinitialiser votre mot de passe. Pour cela, veuillez cliquer sur le lien ci-dessous :</p>
     <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
