@@ -18,7 +18,8 @@ To install this project, you will need to have some packages installed on your m
     You will also need a test SMTP connection, which you can configure using tools like Mailtrap
 
 Please note that you may also need to install other packages to fully make everything work together (like php-mysql).
-INSTALLATION
+
+### INSTALLATION
 
 If your machine follows all the prerequisites, then you can just follow the instructions below to install the project in a dev environment:
 
