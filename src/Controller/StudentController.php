@@ -79,9 +79,12 @@ class StudentController extends AbstractController
             ]));
         //on envoie le message
         $mailer->send($message);
-        // give mesage if success
-        $this->addFlash('success', 'Nous prenons en compte votre demande, 
-        nous vous répondrons dans les meilleurs délais.');
+        // Displaying a confirmation message to the user
+        $this->addFlash(
+            'success',
+            'Nous prenons en compte votre demande, nous vous répondrons dans les meilleurs délais.'
+        );
+
         return $this->redirectToRoute('offer');
     }
 }
