@@ -22,14 +22,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class StudentController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
-     */
-    public function index(): Response
-    {
-        return $this->render('student/index.html.twig');
-    }
-
-    /**
      * @Route("/profil", name="profile")
      */
     public function profile(): Response
