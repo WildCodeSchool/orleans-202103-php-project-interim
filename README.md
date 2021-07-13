@@ -4,15 +4,6 @@
 
 This is a 5 weeks project at the Wild Code School. It's a professionnal project based on a symfony website-skeleton with some additional tools to validate code standards.
 Our client: company Student Interim.
- 
-### TODO
-
-Please note that this is still a work in progress, and as such, some functionnalities are yet to be implemented, such as :
-
-    [GENERAL] : having a fully responsive website
-    [GENERAL] : having a complete, clear, and clean README
-    [GENERAL] : having customized error pages (401, 404, 500)
-    [GENERAL] : having access to a footer linking to legal mentions
 
 ### PREREQUISITES
 
@@ -57,28 +48,3 @@ If your machine follows all the prerequisites, then you can just follow the inst
 ## Authors
 
 Wild Code School - Student Interim (POUILLART Alexandre, MOINEAU Julien, LOSANGE Endrick, GUICHARD Maxime, GIRAUDEAU Maxime)
-
-## License
-
-MIT License
-
-Copyright (c) 2019 aurelien@wildcodeschool.fr
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
