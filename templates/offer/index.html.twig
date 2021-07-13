@@ -30,12 +30,12 @@
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
 
-                    <h3 class="postalCode mt-3">
+                    <h3 class="postalCode text-center">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
                     </h3>
-                    <p>{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
+                    <p class="pt-3">{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
                     {% if is_granted('ROLE_ADMIN') %}
                         <form method="post" action="{{ path('admin_job_delete', {'id': job.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément ?');" class="post mt-2 text-center">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ job.id) }}">
