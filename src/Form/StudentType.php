@@ -26,9 +26,11 @@ class StudentType extends AbstractType
             ])
             ->add('resumeFile', VichFileType::class, [
                 'label' => 'CV',
+                'required' => false,
             ])
             ->add('coverLetterFile', VichFileType::class, [
                 'label' => 'Lettre de motivation',
+                'required' => false,
             ]);
     }
 

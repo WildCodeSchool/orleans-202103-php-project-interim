@@ -66,22 +66,6 @@
                                 {{ user.student.level ?? "Non défini" }}
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">CV</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.student.resumeFile ?? "Non défini" }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <h6 class="mb-0">Lettre de motivation</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.student.coverLetterFile ?? "Non défini" }}
-                            </div>
-                        </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
@@ -95,6 +79,33 @@
                                 {% endif %}
                             </div>
                         </div>
+						<hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">CV</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {% if user.student.resume %}
+                                    <a target="_blank" href="/uploads/resumes/{{ user.student.resume }}">CV</a>
+                                    {% else %}
+                                        Non défini
+                                    {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Lettre de motivation</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {% if user.student.coverLetter %}
+                                    <a target="_blank" href="/uploads/coverLetters/{{ user.student.coverLetter }}">Lettre de motivation</a>
+                                    {% else %}
+                                        Non défini
+                                    {% endif %}
+                            </div>
+                        </div>
+                        <hr>
                         <div class="text-center">
                             <a href="{{ path('student_edit') }}" class="btn btn-primary btn-lg w-25 mt-4">Modifier</a>
                         </div>

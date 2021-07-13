@@ -200,7 +200,7 @@ class Student
      * Set the value of coverLetter
      *
      */
-    public function setCoverLetter(?File $coverLetter): self
+    public function setCoverLetter(?string $coverLetter): self
     {
         $this->coverLetter = $coverLetter;
 
