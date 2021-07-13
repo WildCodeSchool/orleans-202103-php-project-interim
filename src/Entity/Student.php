@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\StudentRepository;
+use DateTime;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=StudentRepository::class)
+ * @Vich\Uploadable
  */
 class Student
 {
@@ -43,9 +48,61 @@ class Student
      */
     private ?StudyField $studyField;
 
+    /**
+     * @ORM\Column(type="string", length=255 ,nullable=true)
+     */
+    private ?string $resume;
+
+    /**
+     * @Vich\UploadableField(mapping="resume", fileNameProperty="resume")
+     * @var File|null
+     */
+    private ?File $resumeFile = null;
+
+    /**
+     * @ORM\Column(type="string", length=255 ,nullable=true)
+     */
+    private ?string $coverLetter;
+
+    /**
+     * @Vich\UploadableField(mapping="coverLetter", fileNameProperty="coverLetter")
+     * @var File|null
+     */
+    private ?File $coverLetterFile = null;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private ?DateTimeInterface $updatedAt;
+
     public function __serialize(): array
     {
         return [];
+    }
+    public function setResumeFile(File $resume = null): void
+    {
+        $this->resumeFile = $resume;
+        if ($resume) {
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    public function getResumeFile(): ?File
+    {
+        return $this->resumeFile;
+    }
+
+    public function setCoverLetterFile(File $coverLetter = null): void
+    {
+        $this->coverLetterFile = $coverLetter;
+        if ($coverLetter) {
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    public function getCoverLetterFile(): ?File
+    {
+        return $this->coverLetterFile;
     }
 
     public function getId(): ?int
@@ -107,6 +164,64 @@ class Student
     public function setStudyField(?StudyField $studyField): self
     {
         $this->studyField = $studyField;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    /**
+     * Set the value of resume
+     *
+     */
+    public function setResume(?string $resume): self
+    {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of coverLetter
+     * @return null|string
+     */
+    public function getCoverLetter(): ?string
+    {
+        return $this->coverLetter;
+    }
+
+    /**
+     * Set the value of coverLetter
+     *
+     */
+    public function setCoverLetter(?string $coverLetter): self
+    {
+        $this->coverLetter = $coverLetter;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     */
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
