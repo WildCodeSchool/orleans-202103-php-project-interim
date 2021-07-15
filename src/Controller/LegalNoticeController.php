@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/mentions/legales",name="legal_notice_")
+ * @Route("/mentions-legales",name="legal_notice_")
  */
 class LegalNoticeController extends AbstractController
 {
