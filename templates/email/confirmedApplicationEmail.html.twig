@@ -1,0 +1,15 @@
+{% extends 'email/layoutEmail.html.twig' %}
+
+{% block title %}Candidature - {{ parent() }}{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h2>Votre candidature auprès de {{ job.company.companyName }}</h2>
+    <p>Bonjour,</p>
+    <p>Vous avez postulé à l'offre : "{{ job.post }}"
+    postée par l'entreprise : "{{ job.company.companyName|upper }}"
+    située à {{ job.city|capitalize }} ({{ job.postalCode }}).
+    Nous étudions actuellement votre dossier et reviendrons vers vous si votre candidature est sélectionnée.</p>
+    <p>Bonne journée.</p>
+    <p>L'Équipe Student Interim</p>
+{% endblock %}

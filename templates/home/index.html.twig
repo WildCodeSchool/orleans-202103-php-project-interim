@@ -16,20 +16,20 @@
         <h1 class="justify-content-center">Student Interim</h1>
     </header>
 
-    <h2 class="m-3 d-flex justify-content-center p-xl-4">Nos dernières annonces</h2>
+    <h2 class="text-center pt-3 my-3">Nos dernières annonces</h2>
     <section class="container-fluid adminOffre pb-5">
         <div class="row d-flex justify-content-center mx-1">
             {% for job in jobs %}
-                <div class=" col-lg-3 mx-5 data-card my-2">
-                    <h2 class="text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
+                 <div class=" col-lg-3 col-md-5 data-card my-2">
+                    <h2 class="postname text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
                     <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
                         {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
-                    <h3 class="postalCode pb-2 text-center">
+                    <h3 class="studyField text-center">
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
 
-                    <h3 class="postalCode text-center">
+                    <h3 class="postalCode">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})
@@ -39,7 +39,7 @@
                         {% if app.user %}
                             <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
                         {% else %}
-                            <a href="{{ path('app_register') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
+                            <a href="{{ path('app_login') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
                         {% endif %}
                     </div>
                     <h4 class="mt-2 text-center">
@@ -61,7 +61,7 @@
             <div class="col-5 mb-lg-3 align-self-center">
                 <img class="d-none d-lg-block img-fluid rounded shadow-lg" src="{{ asset('build/images/pexels-fauxels-3184338.jpg') }}" alt="trois personnes en réunion de travail">
             </div>
-            <div class="col-12 col-lg-7 mb-lg-3 ps-5">
+            <div class="col-12 col-lg-7 mb-lg-3 ps-lg-5">
                 <p>
                     Chez Student Intérim nous apportons une nouvelle perspective de job étudiant.
                                                                                                     Nous vous aidons à acquérir de l’expérience et des compétences en lien avec le
@@ -77,7 +77,7 @@
         </div>
         <h2 class="m-3 d-flex justify-content-center">Nos services</h2>
         <div class="row">
-            <div class="col-12 col-lg-7 pe-5">
+            <div class="col-12 col-lg-7 pe-lg-5">
                 <p>
                     <div>
                         Student intérim permet aux entreprises d’avoir une main d’œuvre compétente

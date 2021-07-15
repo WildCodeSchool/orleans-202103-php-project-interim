@@ -76,6 +76,11 @@ footer {
     font-size: 20px;
 }
 
+.foot-link:hover {
+    background-color: $white;
+    color: $secondary !important;
+}
+
 .btn-closeFlash {
     box-sizing: content-box;
     width: 0.25em;

@@ -51,7 +51,7 @@ class StudentController extends AbstractController
 
             return $this->redirectToRoute('student_profile');
         }
-        return $this->render('student/_form.html.twig', [
+        return $this->render('student/edit.html.twig', [
             'student' => $student,
             'studentForm' => $form->createView(),
         ]);
@@ -79,6 +79,19 @@ class StudentController extends AbstractController
             ]));
         //on envoie le message
         $mailer->send($message);
+
+        // Sending an email to the student
+        $email = (new Email())
+        ->from(strval($this->getParameter('mailer_from')))
+        ->to(strval($user->getEmail()))
+        ->subject('Votre candidature au poste de ' . $job->getPost())
+        ->html($this->renderView('email/confirmedApplicationEmail.html.twig', [
+            'user' => $user,
+            'job' => $job,
+        ]));
+
+        $mailer->send($email);
+
         // Displaying a confirmation message to the user
         $this->addFlash(
             'success',

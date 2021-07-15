@@ -1,6 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Offres - {{ parent() }}{% endblock %}
+{% block title %}Offres -
+    {{ parent() }}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -9,28 +11,35 @@
 
 {% block body %}
     <section class="container-fluid adminOffre">
-            <h3 class="text-center pt-3 pb-3">Offres d'emploi</h3>
-			<div class="container">
-				<div class="d-flex mb-3 justify-content-center">
-					{{ form_start(form) }}
-					{{ form_label(form.studyField) }}
-					{{ form_widget(form.studyField) }}
-					<button class="filter btn btn-primary btn-lg">Filtrer</button>
-					{{ form_end(form) }}
-				</div>
-			</div>
+
+        <h3 class="text-center pt-3 pb-3">Offres d'emploi</h3>
+        <div class="container">
+            <div class="d-flex mb-1 justify-content-center">
+                {{ form_start(form, {'attr': {'class': 'text-center'}}) }}
+                {{ form_label(form.studyField) }}
+                <div class="d-flex mb-1 justify-content-center">
+                    {{ form_widget(form.studyField) }}
+                    <button class="filter btn btn-primary btn-lg mx-1">Filtrer</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            {% if jobs.currentPageNumber > 1 %}
+                <h5 class="text-center">Page :
+                    {{ jobs.currentPageNumber }}</h5>
+            {% endif %}
+        </div>
         <div class="row pb-3 d-flex justify-content-center mx-1">
             {% for job in jobs %}
-                <div class=" col-lg-3 col-md-5 data-card my-2">
+                <div class="col-lg-3 col-md-5 data-card my-2">
                     <h2 class="postname text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
                     <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
                         {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
-                    <h3 class="postalCode pb-2 text-center">
+                    <h3 class="studyField text-center">
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
 
-                    <h3 class="postalCode text-center">
+                    <h3 class="postalCode">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})

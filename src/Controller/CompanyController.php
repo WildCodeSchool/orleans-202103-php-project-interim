@@ -80,6 +80,17 @@ class CompanyController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        /** @var User */
+        $user = $this->getUser();
+        /** @var Company */
+        $company = $user->getCompany();
+        if ($company->getSocialReason() == null && $company->getSiret() == null && $company->getCompanyName() == null) {
+            $this->addFlash(
+                'warning',
+                'Veuillez remplir vos informations avant de pouvoir ajouter une annonce.'
+            );
+            return $this->redirectToRoute('company_profile');
+        }
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
@@ -111,6 +122,14 @@ class CompanyController extends AbstractController
         $user = $this->getUser();
         /** @var Company */
         $company = $user->getCompany();
+
+        if ($company->getSocialReason() == null && $company->getSiret() == null && $company->getCompanyName() == null) {
+            $this->addFlash(
+                'warning',
+                'Veuillez remplir vos informations avant de pouvoir modifier une annonce.'
+            );
+            return $this->redirectToRoute('company_profile');
+        }
 
         if (!$company->getJobs()->contains($job)) {
             throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');

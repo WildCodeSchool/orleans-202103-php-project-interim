@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ajout - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <h3 class="text-center pt-3 my-5">Ajouter une mention</h3>
+        <div class="form-group pb-5 col col-lg-6 col-md-12 mx-auto">
+            <a href="{{ path('legal_notice_index') }}" class="btn btn-primary btn-lg w-100 mb-2">← Retour aux mentions</a>
+        </div>
+    {{ include('legal_notice/_form.html.twig') }}
+    </section>
+{% endblock %}

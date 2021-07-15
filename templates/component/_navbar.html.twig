@@ -6,15 +6,18 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('offer') }}">Offres</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('legal_notice_index') }}">Mentions légales</a>
+                </li>
                 <li class="dropdown">
                     <button class="nav-link my-2 mx-3 my-md-0 py-1 px-3 w-75 dropdown-toggle blue-button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Gestion
+                        Admin
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
@@ -35,8 +38,8 @@
     {% elseif is_granted('ROLE_STUDENT') %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('offer') }}">Offres</a>
@@ -60,8 +63,8 @@
     {% elseif is_granted('ROLE_COMPANY') %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('company_jobs') }}">Offres</a>
@@ -91,8 +94,8 @@
     {% else %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('offer') }}">Offres</a>

@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Student;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\StudyField;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Student|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,34 @@ class StudentRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Student::class);
+    }
+
+    /**
+    * @return Student[] Returns an array of Student objects ordered by lastname ASC
+    */
+    public function findAllLastnameOrdered()
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.user', 'u')
+            ->orderBy('u.lastname', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+    * @return Student[] Returns an array of Student objects ordered by lastname ASC
+    */
+    public function findByStudyFieldLastnameOrdered(?StudyField $studyField)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.user', 'u')
+            ->andWhere('s.studyField = :studyField')
+            ->setParameter('studyField', $studyField)
+            ->orderBy('u.lastname', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     // /**
