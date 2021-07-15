@@ -6,8 +6,8 @@
     {% if is_granted('ROLE_ADMIN') %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('offer') }}">Offres</a>
@@ -38,8 +38,8 @@
     {% elseif is_granted('ROLE_STUDENT') %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('offer') }}">Offres</a>
@@ -63,8 +63,8 @@
     {% elseif is_granted('ROLE_COMPANY') %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('company_jobs') }}">Offres</a>
@@ -94,8 +94,8 @@
     {% else %}
         <div class="navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{{ path('home') }}">Accueil</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('offer') }}">Offres</a>
