@@ -86,11 +86,9 @@ class AdminController extends AbstractController
         $filter = new FilterStudyField();
         $form = $this->createForm(FilterStudyFieldType::class, $filter);
         $form->handleRequest($request);
-        $students = $studentRepository->findAll();
+        $students = $studentRepository->findAllLastnameOrdered();
         if ($form->isSubmitted() && $form->isValid()) {
-            $students = $studentRepository->findBy([
-                'studyField' => $filter->getStudyField()
-            ]);
+            $students = $studentRepository->findByStudyFieldLastnameOrdered($filter->getStudyField());
         }
         $students = $paginator->paginate(
             $students, /* query NOT result */
