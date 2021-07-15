@@ -1,6 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Offres - {{ parent() }}{% endblock %}
+{% block title %}Offres -
+    {{ parent() }}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -9,16 +11,21 @@
 
 {% block body %}
     <section class="container-fluid adminOffre">
-            <h3 class="text-center pt-3 pb-3">Offres d'emploi</h3>
-			<div class="container">
-				<div class="d-flex mb-3 justify-content-center">
-					{{ form_start(form) }}
-					{{ form_label(form.studyField) }}
-					{{ form_widget(form.studyField) }}
-					<button class="filter btn btn-primary btn-lg">Filtrer</button>
-					{{ form_end(form) }}
-				</div>
-			</div>
+
+        <h3 class="text-center pt-3 pb-3">Offres d'emploi</h3>
+        <div class="container">
+            <div class="d-flex mb-1 justify-content-center">
+                {{ form_start(form) }}
+                {{ form_label(form.studyField) }}
+                {{ form_widget(form.studyField) }}
+                <button class="filter btn btn-primary btn-lg">Filtrer</button>
+                {{ form_end(form) }}
+            </div>
+            {% if jobs.currentPageNumber > 1 %}
+                <h5 class="text-center">Page :
+                    {{ jobs.currentPageNumber }}</h5>
+            {% endif %}
+        </div>
         <div class="row pb-3 d-flex justify-content-center mx-1">
             {% for job in jobs %}
                 <div class=" col-lg-3 col-md-5 data-card my-2">
