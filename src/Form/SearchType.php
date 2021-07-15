@@ -18,7 +18,7 @@ class SearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Rechercher',
+                    'placeholder' => 'Nom de l\'entreprise',
                     'aria-label' => 'Rechercher'
                 ]
             ]);
