@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Modifier - {{ parent() }}
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminJob') }}
+{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <h3 class="text-center pt-3 my-5">Modifier les Mentions légales</h3>
+        <div class="form-group pb-5 col col-lg-6 col-md-12 mx-auto">
+            <a href="{{ path('legal_notice_index') }}" class="btn btn-primary btn-lg w-100 mb-2">Retour</a>
+        </div>
+
+        {{ include('legal_notice/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    </section>
+
+{% endblock %}
