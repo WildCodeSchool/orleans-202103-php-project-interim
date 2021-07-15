@@ -33,11 +33,11 @@
                     <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
                         {{ job.company.companyName|upper|length > 20 ? job.company.companyName|slice(0, 20) ~ '...' : job.company.companyName }}</h3>
-                    <h3 class="postalCode pb-2 text-center">
+                    <h3 class="studyField text-center">
                         <i class="fas fa-graduation-cap"></i>
                         {{ job.studyField.studyFieldName }}</h3>
 
-                    <h3 class="postalCode text-center">
+                    <h3 class="postalCode">
                         <i class="fas fa-map-marker-alt"></i>
                         {{ job.city|capitalize }}
                         ({{ job.postalCode }})

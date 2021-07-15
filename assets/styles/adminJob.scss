@@ -30,7 +30,7 @@
         font-weight: $card-font-weight;
         line-height: 1;
         transition: color 0.45s ease, border 0.45s ease;
-        min-height: 70px;
+        min-height: 6vh;
     }
 
     .postuler {
@@ -59,6 +59,13 @@
 
     .postalCode {
         color: $secondary;
+        margin-top: 2.5vh;
+        margin-left: 0.5vw;
+    }
+
+    .studyField {
+        color: $secondary;
+        margin-top: 0.2vh;
     }
 
     h4,
@@ -69,7 +76,6 @@
     }
 
     .post {
-        height: 30px;
         font-size: 0.7em;
         color: $secondary;
     }
@@ -79,17 +85,33 @@
     }
 
     p {
-        margin-top: 30px;
         font-size: 0.7em;
         color: $card-text-color;
         line-height: 1.2;
         transform: translateY(-1em);
         transition: opacity 0.45s ease, transform 0.5s ease;
+        height: 10vh;
+        margin: 0.7vh 0.5vw 2vh 0.5vw;
     }
 
     &:hover {
-        transform: scale(1.04);
+        transform: scale(1.02);
         box-shadow: 0px 5px 20px rgb(107, 107, 107);
+    }
+    @media only screen and (max-width: 768px) {
+        p {
+            font-size: 0.9em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        h3,
+        h4,
+        .post {
+            font-size: 0.8em;
+        }
     }
 }
 
