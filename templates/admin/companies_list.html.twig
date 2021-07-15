@@ -16,6 +16,10 @@
                 </div>
                 {{ form_end(form) }}
             </div>
+            {% if companies.currentPageNumber > 1 %}
+                    <h5 class="text-center">Page :
+                        {{ companies.currentPageNumber }}</h5>
+            {% endif %}
             <div class="row d-flex justify-content-center">
                 {% for company in companies %}
                     {% if company.user is not null %}

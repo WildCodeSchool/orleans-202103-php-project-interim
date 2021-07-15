@@ -29,6 +29,7 @@ class CompanyRepository extends ServiceEntityRepository
             ->andWhere('company.companyName LIKE :searchQuery')
             ->setParameter('searchQuery', "%{$search->getSearchQuery()}%");
         }
+        $query = $query->orderBy('company.companyName', 'ASC');
         return $query->getQuery()->getResult();
     }
 }

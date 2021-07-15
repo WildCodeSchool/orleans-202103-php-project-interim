@@ -1,22 +1,27 @@
 {% extends 'layout_admin.html.twig' %}
 
 {% block title %}
-    Étudiants - {{ parent() }}
+    Étudiants -
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}
     <section class="adminOffre">
         <div class="container">
             <h3 class="text-center pt-3 pb-3">Liste des comptes Étudiants</h3>
-			<div class="container">
-				<div class="d-flex mb-3 justify-content-center">
-					{{ form_start(form) }}
-					{{ form_label(form.studyField) }}
-					{{ form_widget(form.studyField) }}
-					<button class="filter btn btn-primary btn-lg">Filtrer</button>
-					{{ form_end(form) }}
-				</div>
-			</div>
+            <div class="container">
+                <div class="d-flex mb-3 justify-content-center">
+                    {{ form_start(form) }}
+                    {{ form_label(form.studyField) }}
+                    {{ form_widget(form.studyField) }}
+                    <button class="filter btn btn-primary btn-lg">Filtrer</button>
+                    {{ form_end(form) }}
+                </div>
+                {% if students.currentPageNumber > 1 %}
+                    <h5 class="text-center">Page :
+                        {{ students.currentPageNumber }}</h5>
+                {% endif %}
+            </div>
             <div class="row pb-3 d-flex justify-content-center">
                 {% for student in students %}
                     {% if student.user is not null %}
@@ -35,35 +40,33 @@
                             <h3 class="mb-3">
                                 <i class="fas fa-birthday-cake"></i>
                                 {{ student.birthdate|date("d/m/Y") }}</h3>
-
-
                             <form method="post" action="{{ path('admin_delete_student', {'id': student.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');" class="post d-flex justify-content-center w-100">
                                 <input type="hidden" name="_token" value="{{ csrf_token('deleteStudent' ~ student.id) }}">
                                 <h4>
-                                   {% if student.resume %}
-                                    <a target="_blank" href="/uploads/resumes/{{ student.resume }}"> <i class="fas fa-file"></i> CV</a>
+                                    {% if student.resume %}
+                                        <a target="_blank" href="/uploads/resumes/{{ student.resume }}">
+                                            <i class="fas fa-file"></i>
+                                            CV</a>
                                     {% else %}
                                         CV Non défini
                                     {% endif %}</h4>
                                 <button class="delete btn mx-3 text-center h-100 align-items-center btn-sm">Supprimer</button>
                                 <h4>
                                     {% if student.coverLetter %}
-                                    <a target="_blank" href="/uploads/coverLetters/{{ student.coverLetter }}"><i class="fas fa-envelope-open-text"></i> LM</a>
+                                        <a target="_blank" href="/uploads/coverLetters/{{ student.coverLetter }}">
+                                            <i class="fas fa-envelope-open-text"></i>
+                                            LM</a>
                                     {% else %}
                                         LDM Non définie
                                     {% endif %}
-                                    </h4>
+                                </h4>
                             </form>
-
-
                         </div>
-
                     {% endif %}
                 {% else %}
                     <p class="alert alert-warning text-center bg-primary text-light">Aucun compte Etudiant</p>
                 {% endfor %}
             </div>
-
             {{ knp_pagination_render(students) }}
         </div>
     </section>
