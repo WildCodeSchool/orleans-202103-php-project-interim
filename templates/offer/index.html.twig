@@ -15,10 +15,12 @@
         <h3 class="text-center pt-3 pb-3">Offres d'emploi</h3>
         <div class="container">
             <div class="d-flex mb-1 justify-content-center">
-                {{ form_start(form) }}
+                {{ form_start(form, {'attr': {'class': 'text-center'}}) }}
                 {{ form_label(form.studyField) }}
-                {{ form_widget(form.studyField) }}
-                <button class="filter btn btn-primary btn-lg">Filtrer</button>
+                <div class="d-flex mb-1 justify-content-center">
+                    {{ form_widget(form.studyField) }}
+                    <button class="filter btn btn-primary btn-lg mx-1">Filtrer</button>
+                </div>
                 {{ form_end(form) }}
             </div>
             {% if jobs.currentPageNumber > 1 %}
@@ -28,7 +30,7 @@
         </div>
         <div class="row pb-3 d-flex justify-content-center mx-1">
             {% for job in jobs %}
-                <div class=" col-lg-3 col-md-5 data-card my-2">
+                <div class="col-lg-3 col-md-5 data-card my-2">
                     <h2 class="postname text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
                     <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
@@ -54,7 +56,7 @@
                             {% if app.user %}
                                 <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
                             {% else %}
-                                <a href="{{ path('app_login') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
+                                <a href="{{ path('app_register') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
                             {% endif %}
                         </div>
                     {% endif %}
