@@ -22,7 +22,7 @@ class OfferController extends AbstractController
         $filter = new FilterStudyField();
         $form = $this->createForm(FilterStudyFieldType::class, $filter);
         $form->handleRequest($request);
-        $jobs = $jobRepository->findAllDateOrdered();
+        $jobs = $jobRepository->findBy([], ['registeredAt' => 'DESC']);
         if ($form->isSubmitted() && $form->isValid() && $filter->getStudyField() != '') {
             $jobs = $jobRepository->findBy(['studyField' => $filter->getStudyField()], ['registeredAt' => 'DESC']);
         }
@@ -32,7 +32,7 @@ class OfferController extends AbstractController
             9
         );
         return $this->render('offer/index.html.twig', [
-            'jobs' => $jobs ?? $jobRepository->findAllDateOrdered(),
+            'jobs' => $jobs ?? $jobRepository->findBy([], ['registeredAt' => 'DESC']),
             'form' => $form->createView(),
         ]);
     }
