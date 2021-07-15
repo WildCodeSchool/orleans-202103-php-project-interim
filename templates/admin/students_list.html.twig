@@ -10,13 +10,15 @@
         <div class="container">
             <h3 class="text-center pt-3 pb-3">Liste des comptes Étudiants</h3>
             <div class="container">
-                <div class="d-flex mb-3 justify-content-center">
-                    {{ form_start(form) }}
-                    {{ form_label(form.studyField) }}
+                 <div class="d-flex mb-1 justify-content-center">
+                {{ form_start(form, {'attr': {'class': 'text-center'}}) }}
+                {{ form_label(form.studyField) }}
+                <div class="d-flex mb-1 justify-content-center">
                     {{ form_widget(form.studyField) }}
-                    <button class="filter btn btn-primary btn-lg">Filtrer</button>
-                    {{ form_end(form) }}
+                    <button class="filter btn btn-primary btn-lg mx-1">Filtrer</button>
                 </div>
+                {{ form_end(form) }}
+            </div>
                 {% if students.currentPageNumber > 1 %}
                     <h5 class="text-center">Page :
                         {{ students.currentPageNumber }}</h5>
