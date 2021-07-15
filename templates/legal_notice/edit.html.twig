@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LegalNotice{% endblock %}
+
+{% block body %}
+    <h1>Edit LegalNotice</h1>
+
+    {{ include('legal_notice/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('legal_notice_index') }}">back to list</a>
+
+    {{ include('legal_notice/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LegalNotice index
+{% endblock %}
+
+{% block body %}
+    <h1>LegalNotice index</h1>
+
+
+    {% for legal_notice in legal_notices %}
+        <tr>
+            <h2>{{ legal_notice.title }}</h2>
+            <p>{{ legal_notice.text }}</p>
+            <a href="{{ path('legal_notice_show', {'id': legal_notice.id}) }}">show</a>
+            <a href="{{ path('legal_notice_edit', {'id': legal_notice.id}) }}">edit</a>
+
+            {% else %}
+        {% endfor %}
+
+
+        <a href="{{ path('legal_notice_new') }}">Create new</a>
+    {% endblock %}
