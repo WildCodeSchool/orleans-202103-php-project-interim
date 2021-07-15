@@ -23,6 +23,7 @@ class StudentType extends AbstractType
             ])
             ->add('birthdate', BirthdayType::class, [
                 'label' => 'Date de naissance',
+                'years' => range(2021, 1980),
             ])
             ->add('resumeFile', VichFileType::class, [
                 'label' => 'CV',
