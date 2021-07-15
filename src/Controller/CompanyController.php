@@ -84,7 +84,7 @@ class CompanyController extends AbstractController
         $user = $this->getUser();
         /** @var Company */
         $company = $user->getCompany();
-        if ($company->getSocialReason() == null && $company->getSocialReason() == null) {
+        if ($company->getSocialReason() == null && $company->getSiret() == null && $company->getCompanyName() == null) {
             return $this->redirectToRoute('company_profile');
         }
         $job = new Job();
@@ -119,7 +119,7 @@ class CompanyController extends AbstractController
         /** @var Company */
         $company = $user->getCompany();
 
-        if ($company->getSocialReason() == null && $company->getSocialReason() == null) {
+        if ($company->getSocialReason() == null && $company->getSiret() == null && $company->getCompanyName() == null) {
             return $this->redirectToRoute('company_profile');
         }
 
