@@ -27,7 +27,7 @@ class AdminJobController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_job_index');
+            return $this->redirectToRoute('offer');
         }
 
         return $this->render('admin_job/edit.html.twig', [
@@ -47,6 +47,6 @@ class AdminJobController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_job_index');
+        return $this->redirectToRoute('offer');
     }
 }
