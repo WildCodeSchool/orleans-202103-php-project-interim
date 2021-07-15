@@ -87,7 +87,7 @@ class AdminController extends AbstractController
         $form = $this->createForm(FilterStudyFieldType::class, $filter);
         $form->handleRequest($request);
         $students = $studentRepository->findAllLastnameOrdered();
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $filter->getStudyField() != '') {
             $students = $studentRepository->findByStudyFieldLastnameOrdered($filter->getStudyField());
         }
         $students = $paginator->paginate(
@@ -97,7 +97,9 @@ class AdminController extends AbstractController
         );
         return $this->render(
             'admin/students_list.html.twig',
-            ['students' => $students, 'form' => $form->createView()]
+            ['students' => $students ?? $studentRepository->findAllLastnameOrdered(),
+            'form' => $form->createView(),
+            ]
         );
     }
 }
