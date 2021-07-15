@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/legal/notice")
+ * @Route("/mentions/légales",name="legal_notice_")
  */
 class LegalNoticeController extends AbstractController
 {
     /**
-     * @Route("/", name="legal_notice_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(LegalNoticeRepository $repository): Response
     {
@@ -26,7 +26,7 @@ class LegalNoticeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="legal_notice_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -47,19 +47,8 @@ class LegalNoticeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
-     * @Route("/{id}", name="legal_notice_show", methods={"GET"})
-     */
-    public function show(LegalNotice $legalNotice): Response
-    {
-        return $this->render('legal_notice/show.html.twig', [
-            'legal_notice' => $legalNotice,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="legal_notice_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, LegalNotice $legalNotice): Response
     {
@@ -79,7 +68,7 @@ class LegalNoticeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="legal_notice_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, LegalNotice $legalNotice): Response
     {

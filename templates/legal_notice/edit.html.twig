@@ -1,13 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Edit LegalNotice{% endblock %}
+{% block title %}Edit LegalNotice
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('adminJob') }}
+{% endblock %}
 
 {% block body %}
-    <h1>Edit LegalNotice</h1>
+    <section class="container">
+        <h3 class="text-center pt-3 my-5">Modifier les Mentions légales</h3>
+        <div class="form-group pb-5 col col-lg-6 col-md-12 mx-auto">
+            <a href="{{ path('legal_notice_index') }}" class="btn btn-primary btn-lg w-100 mb-2">Retour</a>
+        </div>
 
-    {{ include('legal_notice/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('legal_notice/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('legal_notice_index') }}">back to list</a>
+    </section>
 
-    {{ include('legal_notice/_delete_form.html.twig') }}
 {% endblock %}
