@@ -32,15 +32,15 @@
                             <h3 class="mb-3">
                                 <i class="fas fa-phone-square-alt"></i>
                                 {{ company.user.phone }}</h3>
-                            <h4 class="mb-3">
+                            <h4 class="mb-1">
                                 <i class="fas fa-envelope"></i>
                                 {{ company.user.email }}</h4>
+                            <h4 class="mb-3">Siret :
+                                {{ company.siret }}</h4>
                             <form method="post" action="{{ path('admin_delete_company', {'id': company.id}) }}" onsubmit="return confirm('Êtes-vous sûr vouloir supprimer cet élément');">
                                 <input type="hidden" name="_token" value="{{ csrf_token('deleteCompany' ~ company.id) }}">
                                 <button class="delete btn">Supprimer</button>
                             </form>
-                            <h4 class="mt-">Siret :
-                                {{ company.siret }}</h4>
                         </div>
                     {% endif %}
                 {% else %}
