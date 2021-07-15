@@ -65,9 +65,6 @@
                         <a href="{{ path('company_quotation') }}" class="postuler btn btn-primary text-center w-25 mt-4">Je veux un devis</a>
                     </div>
                 {% elseif is_granted('ROLE_STUDENT') %}
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="postuler btn btn-primary text-center w-25 mt-4 disabled">Je veux un devis</a>
-                    </div>
                 {% else %}
                     <div class="d-flex justify-content-center">
                         <a href="{{ path('app_register') }}" class="postuler btn btn-primary text-center w-25 mt-4">Je veux un devis</a>
