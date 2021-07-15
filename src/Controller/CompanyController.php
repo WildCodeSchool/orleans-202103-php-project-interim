@@ -85,6 +85,10 @@ class CompanyController extends AbstractController
         /** @var Company */
         $company = $user->getCompany();
         if ($company->getSocialReason() == null && $company->getSiret() == null && $company->getCompanyName() == null) {
+            $this->addFlash(
+                'warning',
+                'Veuillez remplir vos informations avant de pouvoir ajouter une annonce.'
+            );
             return $this->redirectToRoute('company_profile');
         }
         $job = new Job();
@@ -120,6 +124,10 @@ class CompanyController extends AbstractController
         $company = $user->getCompany();
 
         if ($company->getSocialReason() == null && $company->getSiret() == null && $company->getCompanyName() == null) {
+            $this->addFlash(
+                'warning',
+                'Veuillez remplir vos informations avant de pouvoir modifier une annonce.'
+            );
             return $this->redirectToRoute('company_profile');
         }
 
