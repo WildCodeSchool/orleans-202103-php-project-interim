@@ -13,12 +13,12 @@ class LegalNoticeFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         for ($i = 1; $i <= self::LOOPNUMBER; $i++) {
-        $faker = Factory::create('FR,fr');
-         $legalNotice = new LegalNotice();
-         $legalNotice->setTitle('Mention Légale ' . $i);
-         $legalNotice->setText($faker->text(1000));
+            $faker = Factory::create('FR,fr');
+            $legalNotice = new LegalNotice();
+            $legalNotice->setTitle('Mention Légale ' . $i);
+            $legalNotice->setText($faker->text(1000));
 
-         $manager->persist($legalNotice);
+            $manager->persist($legalNotice);
         }
         $manager->flush();
     }
