@@ -1,7 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Mentions légales
-{% endblock %}
+{% block title %}Mentions légales - {{ parent() }}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('adminJob') }}
@@ -9,15 +8,14 @@
 
 {% block body %}
     <section class="container-fluid">
-
-        <h2 class="text-center">Mentions légales</h2>
+        <h3 class="text-center pt-4 pb-3">Mentions légales</h3>
         {% if is_granted('ROLE_ADMIN') %}
-            <div class="pb-5 col pt-3 col-lg-6 col-md-12 mx-auto text-center">
-                <a href="{{ path('legal_notice_new') }}" class="delete btn bg-primary text-light btn-lg w-100">Ajouter</a>
+            <div class="col pt-5 col-lg-6 col-md-12 mx-auto text-center">
+                <a href="{{ path('legal_notice_new') }}" class="delete btn bg-primary text-light btn-lg w-100">+ Ajouter une mention</a>
             </div>
         {% endif %}
         {% for legal_notice in legal_notices %}
-            <h3>{{ legal_notice.title }}</h3>
+            <h2 class="m-3 pt-5">{{ legal_notice.title }}</h2>
             <p>{{ legal_notice.text }}</p>
             {% if is_granted('ROLE_ADMIN') %}
                 <div class="pb-5 col pt-3 col-lg-6 col-md-12 mx-auto">
@@ -26,5 +24,7 @@
                 </div>
             {% endif %}
         {% endfor %}
+        <h2 class="m-3 pt-5">Crédit icônes</h2>
+        <p>Font awesome (<a href="https://fontawesome.com/license" class="text-secondary">découvrir par ici →</a>)</p>
     </section>
 {% endblock %}
