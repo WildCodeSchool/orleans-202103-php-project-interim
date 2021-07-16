@@ -55,6 +55,11 @@ class Student
 
     /**
      * @Vich\UploadableField(mapping="resume", fileNameProperty="resume")
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"application/pdf", "application/x-pdf"},
+     *     mimeTypesMessage = "Veuillez mettre un fichier PDF"
+     * )
      * @var File|null
      */
     private ?File $resumeFile = null;
@@ -66,6 +71,11 @@ class Student
 
     /**
      * @Vich\UploadableField(mapping="coverLetter", fileNameProperty="coverLetter")
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"application/pdf", "application/x-pdf"},
+     *     mimeTypesMessage = "Veuillez mettre un fichier PDF"
+     * )
      * @var File|null
      */
     private ?File $coverLetterFile = null;
