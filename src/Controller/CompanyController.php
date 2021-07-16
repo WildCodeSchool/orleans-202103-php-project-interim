@@ -157,6 +157,18 @@ class CompanyController extends AbstractController
     public function quotationRequest(Request $request, MailerInterface $mailer): Response
     {
         $quotationRequest = new QuotationRequest();
+        /**
+         * @var User
+         */
+        $user = $this->getUser();
+        /**
+         * @var Company
+         */
+        $company = $user->getCompany();
+        $quotationRequest->setCompanyName((string)$company->getCompanyName());
+        $quotationRequest->setEmail((string)$user->getEmail());
+        $quotationRequest->setContactName($user->getFirstname() . ' ' . $user->getLastname());
+        $quotationRequest->setPhone((string)$user->getPhone());
         $form = $this->createForm(QuotationRequestType::class, $quotationRequest);
         $form->handleRequest($request);
 
