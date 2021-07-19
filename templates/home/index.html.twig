@@ -13,9 +13,15 @@
 {% block body %}
     <header class="d-flex justify-content-center align-items-center pb-3">
         <img class="banner banner-head" src="{{ asset('build/images/pexels-fauxels-3182757.jpg') }}" alt"plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
-        <h1 class="justify-content-center">Student Interim</h1>
+        <h1 class="justify-content-center text-center home-title pt-5 pb-4 mb-4 pb-lg-5 mb-lg-5">
+            Ton projet professionnel,<br>ton job étudiant</br>
+            {% if is_granted('ROLE_STUDENT') %}
+                <a href="{{ path('offer') }}" class="postuler btn btn-primary text-center text-decoration-none px-4 py-2 mt-4 mt-lg-2">Trouve ton job étudiant →</a>
+            {% else %}
+                <a href="{{ path('app_register') }}" class="postuler btn btn-primary text-center text-decoration-none px-4 py-2 mt-4 mt-lg-2">Trouve ton job étudiant →</a>
+            {% endif %}
+        </h1>
     </header>
-
     <h2 class="text-center pt-3 my-3">Nos dernières annonces</h2>
     <section class="container-fluid adminOffre pb-5">
         <div class="row d-flex justify-content-center mx-1">
@@ -54,7 +60,7 @@
 
     </section>
 
-    <img class="banner pt-lg-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
+    <img class="banner pt-lg-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt="plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
     <div class="container">
         <h2 class="m-3 d-flex justify-content-center pt-5">Nos valeurs</h2>
         <div class="row mb-4 mb-lg-5">
@@ -81,12 +87,12 @@
                 <p>
                     <div>
                         Student intérim permet aux entreprises d’avoir une main d’œuvre compétente
-                                                                                                                        en lien avec le domaine de votre entreprise. Vous ne vous occupez de rien, le
-                                                                                                                        processus de recrutement est géré à 100% par nous et rapidement, vous
-                                                                                                                        pouvez donc vous concentrer sur votre entreprise. Nous vous garantissons de
-                                                                                                                        trouver les meilleurs profils en 48h. Suivez en direct le recrutement des
-                                                                                                                        étudiants. Notre site internet vous permet de trouver des étudiants disponibles
-                                                                                                                        qui coïncident avec vos besoins.
+                                                                                                                                                en lien avec le domaine de votre entreprise. Vous ne vous occupez de rien, le
+                                                                                                                                                processus de recrutement est géré à 100% par nous et rapidement, vous
+                                                                                                                                                pouvez donc vous concentrer sur votre entreprise. Nous vous garantissons de
+                                                                                                                                                trouver les meilleurs profils en 48h. Suivez en direct le recrutement des
+                                                                                                                                                étudiants. Notre site internet vous permet de trouver des étudiants disponibles
+                                                                                                                                                qui coïncident avec vos besoins.
                     </div>
                     <a href="{{ path('price_list') }}">Découvrez nos tarifs ici.</a>
                 </p>
