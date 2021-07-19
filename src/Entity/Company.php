@@ -41,12 +41,13 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     *  @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(
      * min=14,
      * max=14,
      * minMessage = "Le numéro de siret doit contenir {{ limit }} caractères")
-     *maxMessage = "Le numéro de siret ne peut pas dépasser {{ limit }} caractères")
+     * maxMessage = "Le numéro de siret ne peut pas dépasser {{ limit }} caractères")
+     * @Assert\Luhn(message="Le numéro entré n'est pas un SIRET")
      */
     private ?string $siret;
 
