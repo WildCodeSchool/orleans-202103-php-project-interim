@@ -20,7 +20,7 @@
     <section class="container-fluid adminOffre pb-5">
         <div class="row d-flex justify-content-center mx-1">
             {% for job in jobs %}
-                 <div class=" col-lg-3 col-md-5 data-card my-2">
+                 <div class=" col-xl-3 col-lg-6 data-card my-2">
                     <h2 class="postname text-center d-flex align-items-center justify-content-center">{{ job.post|upper|length > 20 ? job.post|slice(0, 20) ~ '...' : job.post }}</h2>
                     <h3 class="post text-center">
                         <i class="fas fa-industry"></i>
