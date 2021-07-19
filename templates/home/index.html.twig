@@ -43,7 +43,7 @@
                     <p class="pt-3">{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
                     <div class="d-flex justify-content-center">
                         {% if app.user %}
-                            <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light text-center">+ Voir plus</a>
+                            <a href="{{ path('app_register') }}" class="postuler btn btn-light mt-2 text-center">+ Voir plus</a>
                         {% else %}
                             <a href="{{ path('app_login') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
                         {% endif %}
@@ -60,7 +60,7 @@
 
     </section>
 
-    <img class="banner pt-lg-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt"plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
+    <img class="banner pt-lg-5" src="{{ asset('build/images/pexels-fauxels-3183150.jpg') }}" alt="plusieurs personnes travaillant ensemble (photo de fauxels provenant de pexels">
     <div class="container">
         <h2 class="m-3 d-flex justify-content-center pt-5">Nos valeurs</h2>
         <div class="row mb-4 mb-lg-5">
@@ -70,14 +70,14 @@
             <div class="col-12 col-lg-7 mb-lg-3 ps-lg-5">
                 <p>
                     Chez Student Intérim nous apportons une nouvelle perspective de job étudiant.
-                                                                                                                        Nous vous aidons à acquérir de l’expérience et des compétences en lien avec le
-                                                                                                                        métier de vos rêves ! Grâce à notre offre nous vous accompagnons dans votre
-                                                                                                                        projet professionnel et nous vous guidons pour une meilleure insertion
-                                                                                                                        professionnelle. Remplissez vos disponibilités et on s’occupe du reste ! Tous
-                                                                                                                        nos jobs étudiants sont adaptés à votre emploi du temps.
-                                                                                                                        Concernant la rémunération, notre taux horaire est de 13,19€ de plus à la fin de
-                                                                                                                        votre job étudiant, Student Intérim vous délivrera une indemnité de fin de
-                                                                                                                        mission égale à 10% de votre rémunération brute.
+                                                                                                    Nous vous aidons à acquérir de l’expérience et des compétences en lien avec le
+                                                                                                    métier de vos rêves ! Grâce à notre offre nous vous accompagnons dans votre
+                                                                                                    projet professionnel et nous vous guidons pour une meilleure insertion
+                                                                                                    professionnelle. Remplissez vos disponibilités et on s’occupe du reste ! Tous
+                                                                                                    nos jobs étudiants sont adaptés à votre emploi du temps.
+                                                                                                    Concernant la rémunération, notre taux horaire est de 8.12€ de plus à la fin de
+                                                                                                    votre job étudiant, Student Intérim vous délivrera une indemnité de fin de
+                                                                                                    mission égale à 10% de votre rémunération brute.
                 </p>
             </div>
         </div>
