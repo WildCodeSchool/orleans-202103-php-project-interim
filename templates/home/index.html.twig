@@ -43,9 +43,9 @@
                     <p class="pt-3">{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
                     <div class="d-flex justify-content-center">
                         {% if app.user %}
-                            <a href="{{ path('app_register') }}" class="postuler btn btn-light mt-2 text-center">+ Voir plus</a>
+                            <a href="{{ path('app_register') }}" class="postuler btn btn-light mt-3 text-center">+ Voir plus</a>
                         {% else %}
-                            <a href="{{ path('app_login') }}" class="postuler btn btn-light text-center">+ Voir plus</a>
+                            <a href="{{ path('app_login') }}" class="postuler btn btn-light mt-3 text-center">+ Voir plus</a>
                         {% endif %}
                     </div>
                     <h4 class="mt-2 text-center">
