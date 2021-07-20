@@ -62,12 +62,12 @@ class User implements UserInterface
     /**
      * @ORM\OneToOne(targetEntity=Company::class, inversedBy="user", cascade={"persist", "remove"})
      */
-    private ?Company $company;
+    private ?Company $company = null;
 
     /**
      * @ORM\OneToOne(targetEntity=Student::class, inversedBy="user", cascade={"persist", "remove"})
      */
-    private ?Student $student;
+    private ?Student $student = null;
 
     public function getId(): ?int
     {
