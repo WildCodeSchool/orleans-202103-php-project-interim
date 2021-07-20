@@ -14,6 +14,7 @@ header {
     width: 100%;
     height: 90vh;
     object-fit: cover;
+    object-position: right center;
 }
 
 header h1 {
@@ -71,11 +72,19 @@ header h1 {
     .home-title {
         font-size: $h4-size;
     }
+
+    .banner-head {
+        object-position: left center;
+    }
 }
 
 @media only screen and (max-width: 550px) {
     .home-title {
         font-size: $h5-size;
+    }
+
+    .banner-head {
+        object-position: right center;
     }
 }
 
