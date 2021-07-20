@@ -75,14 +75,19 @@ class SecurityController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            /** @var Response */
-            $response = $guardHandler->authenticateUserAndHandleSuccess(
+            $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,
                 $authenticator,
                 'main' // firewall name in security.yaml
             );
-            return $response;
+            $company = $user->getCompany();
+            $student = $user->getStudent();
+            if ($company) {
+                return $this->redirectToRoute('company_profile');
+            } elseif ($student) {
+                return $this->redirectToRoute('student_profile');
+            }
         }
 
         return $this->render('registration/register.html.twig', [

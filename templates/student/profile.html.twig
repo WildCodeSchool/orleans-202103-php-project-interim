@@ -22,18 +22,27 @@
                                 <h6 class="mb-0">Profil</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                Etudiant
+                                Étudiant
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Nom</h6>
+                                <h6 class="mb-0">Nom complet</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {{ user.firstname ~ ' ' ~ user.lastname }}
                             </div>
                         </div>
+                        <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Téléphone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{ user.phone }}
+                                </div>
+                            </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
@@ -46,57 +55,50 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Téléphone</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                {{ user.phone }}
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
                                 <h6 class="mb-0">Niveau d'étude</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
-                                {{ user.student.level ?? "Non défini" }}
+                                {{ user.student.level ?? "À renseigner" }}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Domaine d'etude</h6>
+
+                                <h6 class="mb-0">Date de naissance</h6>
+
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {% if user.student.birthdate is defined %}
                                     {{ user.student.birthdate|date("d/m/Y") }}
                                 {% else %}
-                                    Non défini
+                                    À renseigner
                                 {% endif %}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">CV</h6>
+                                <h6 class="mb-0">CV (format .pdf)</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {% if user.student.resume %}
                                     <a target="_blank" href="/uploads/resumes/{{ user.student.resume }}">CV</a>
                                 {% else %}
-                                    Non défini
+                                    À renseigner
                                 {% endif %}
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <h6 class="mb-0">Lettre de motivation</h6>
+                                <h6 class="mb-0">Lettre de motivation (format .pdf)</h6>
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 {% if user.student.coverLetter %}
                                     <a target="_blank" href="/uploads/coverLetters/{{ user.student.coverLetter }}">Lettre de motivation</a>
                                 {% else %}
-                                    Non défini
+                                    À renseigner
                                 {% endif %}
                             </div>
                         </div>

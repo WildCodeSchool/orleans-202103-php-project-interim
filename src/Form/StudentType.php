@@ -39,12 +39,12 @@ class StudentType extends AbstractType
                 'years' => range(2021, 1980),
             ])
             ->add('resumeFile', VichFileType::class, [
-                'label' => 'CV',
+                'label' => 'CV (format .pdf)',
                 'required' => false,
                 'download_uri' => false,
             ])
             ->add('coverLetterFile', VichFileType::class, [
-                'label' => 'Lettre de motivation',
+                'label' => 'Lettre de motivation (format .pdf)',
                 'required' => false,
                 'download_uri' => false,
             ])
