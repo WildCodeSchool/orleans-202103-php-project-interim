@@ -40,9 +40,9 @@ class QuotationRequestType extends AbstractType
                 ]
             ])
             ->add('message', TextareaType::class, [
-                'label' => 'Message',
+                'label' => 'Besoin',
                 'attr' => [
-                    'placeholder' => 'Votre message'
+                    'placeholder' => 'Précisez votre besoin'
                 ]
             ])
         ;
