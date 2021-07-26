@@ -42,8 +42,8 @@
                     </h3>
                     <p class="pt-3">{{ job.description|length > 250 ? job.description|slice(0, 250) ~ '...' : job.description }}</p>
                     <div class="d-flex justify-content-center">
-                        {% if app.user %}
-                            <a href="{{ path('app_register') }}" class="postuler btn btn-light mt-3 text-center">+ Voir plus</a>
+                        {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('offer_show', {'id': job.id}) }}" class="postuler btn btn-light mt-3 text-center">+ Voir plus</a>
                         {% else %}
                             <a href="{{ path('app_login') }}" class="postuler btn btn-light mt-3 text-center">+ Voir plus</a>
                         {% endif %}
