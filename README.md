@@ -3,7 +3,7 @@
 ![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
 
 This is a 5 weeks project at the Wild Code School. It's a professionnal project based on a symfony website-skeleton with some additional tools to validate code standards.
-Our client: company Student Interim.
+Our partner: Student Interim.
 
 ### PREREQUISITES
 
@@ -30,6 +30,8 @@ If your machine follows all the prerequisites, then you can just follow the inst
     * run yarn encore dev to build assets
     * use the .env file as a template to create a .env.local file (which should never be versionned by Git), and fill the MAILER_DSN, MAILER_TO_ADDRESS, MAILER_FROM_ADDRESS and DATABASE_URL lines with the appropriate information
         note : the DATABASE_URL variable should contain the connection information of a user that has CREATE/DROP DATABASE, CREATE/DROP TABLE, INSERT INTO, UPDATE, DELETE and SELECT rights on the given database, and you may need to create that user and grant it those rights beforehand
+    * MAILER_FROM_ADDRESS -> Address that will send the mails to the
+    * MAILER_TO_ADDRESS -> Address that will receive the mails corresponding to the users
     * run bin/console doctrine:database:create to create your database with the informations that you wrote in .env.local
     * run bin/console doctrine:migrations:migrate to create the tables structure of the database
     * run bin/console doctrine:fixtures:load to fill the database with fictive information
