@@ -47,7 +47,7 @@ class Job
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
      * @Assert\Length(max=2,
-     *     maxMessage = "Le nom de la ville ne peut pas dépasser {{ limit }} caractères")
+     *     maxMessage = "Le nombre d'heure ne peut pas dépasser {{ limit }} chiffres")
      * @Assert\Range(
      *     min = 1,
      *     max = 48,
