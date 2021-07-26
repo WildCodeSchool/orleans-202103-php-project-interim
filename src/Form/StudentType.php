@@ -22,6 +22,17 @@ class StudentType extends AbstractType
             ->add('user', UserEditType::class, [
                 'label' => ''
             ])
+            ->add('birthdate', BirthdayType::class, [
+                'label' => 'Date de naissance',
+                'years' => range(2021, 1980),
+            ])
+            ->add('studyField', EntityType::class, [
+                'class' => StudyField::class,
+                'choice_label' => 'studyFieldName',
+                'label' => 'Domaine',
+                'multiple' => false,
+                'expanded' => false,
+            ])
             ->add('level', ChoiceType::class, [
                 'label' => ' Niveau d\'étude',
                 'choices' => [
@@ -34,10 +45,6 @@ class StudentType extends AbstractType
                     'Bac + 8' => 'Bac + 8',
                 ],
             ])
-            ->add('birthdate', BirthdayType::class, [
-                'label' => 'Date de naissance',
-                'years' => range(2021, 1980),
-            ])
             ->add('resumeFile', VichFileType::class, [
                 'label' => 'CV (format .pdf)',
                 'required' => false,
@@ -47,13 +54,6 @@ class StudentType extends AbstractType
                 'label' => 'Lettre de motivation (format .pdf)',
                 'required' => false,
                 'download_uri' => false,
-            ])
-            ->add('studyField', EntityType::class, [
-                'class' => StudyField::class,
-                'choice_label' => 'studyFieldName',
-                'label' => 'Domaine',
-                'multiple' => false,
-                'expanded' => false,
             ]);
     }
 
