@@ -49,7 +49,7 @@ class Job
      * @Assert\Range(
      *     min = 1,
      *     max = 35,
-     *     notInRangeMessage = "vous devez choisir entre {{ min }}h et {{ max }}h.",
+     *     notInRangeMessage = "Vous devez choisir entre {{ min }}h et {{ max }}h.",
      * )
      * @Assert\Positive
      */
