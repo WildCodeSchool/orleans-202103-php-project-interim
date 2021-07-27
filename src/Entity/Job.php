@@ -46,6 +46,11 @@ class Job
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Veuillez remplir ce champ s'il vous plait")
+     * @Assert\Range(
+     *     min = 1,
+     *     max = 35,
+     *     notInRangeMessage = "Vous devez choisir entre {{ min }}h et {{ max }}h.",
+     * )
      * @Assert\Positive
      */
     private ?int $hoursAWeek;
