@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="d-flex flex-column align-items-center text-center p-5">
+        <h2 class="my-3">Erreur 500</h2>
+
+        <p>
+            Désolé, votre requête n'a pas pu être traitée pour une raison inconnue.
+            Merci de réessayer ultérieurement ou de <a href="{{ path('contact') }}">nous prévenir</a> si le problème perdure.
+        </p>
+        <p>
+            Vous pouvez également retourner <a href="{{ path('home') }}">sur la page d'accueil</a>.
+        </p>
+    </div>
+{% endblock %}
