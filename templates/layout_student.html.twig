@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ parent() }}
+	{{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
+	{{ parent() }}
+	{{ encore_entry_link_tags('adminJob') }}
 {% endblock %}
 
 {% block navbar %}
-    {% include 'component/_navbar.html.twig' %}
+	{% include 'component/_navbar.html.twig' %}
 {% endblock %}
 
 {% block footer %}
