@@ -18,7 +18,7 @@ class ChangePasswordFormType extends AbstractType
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options' => [
-                    'attr' => ['autocomplete' => 'new-password'],
+                    'attr' => ['autocomplete' => 'new-password','class' => 'form-control'],
                     'constraints' => [
                         new NotBlank([
                             'message' => 'Merci d\'entrer votre nouveau mot de passe',
@@ -30,10 +30,9 @@ class ChangePasswordFormType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
-                    'label' => 'Nouveau mot de passe',
-                ],
+                    'label' => 'Nouveau mot de passe', ],
                 'second_options' => [
-                    'attr' => ['autocomplete' => 'new-password'],
+                    'attr' => ['autocomplete' => 'new-password','class' => 'my-2 form-control'],
                     'label' => 'Répéter mot de passe',
                 ],
                 'invalid_message' => 'Les champs mot de passe doivent coïncider.',
